@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import css2 from 'rollup-plugin-css-porter';
+import babel from 'rollup-plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -54,6 +55,34 @@ export default [{
         // some cases you'll need additional configuration -
         // consult the documentation for details:
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
+
+        // compile to IE11 compatible ES5
+        babel({
+            runtimeHelpers: true,
+            extensions: [ '.js', '.mjs', '.html', '.svelte' ],
+            exclude: [ 'node_modules/@babel/**', 'node_modules/core-js/**' ],
+            presets: [
+                [
+                    '@babel/preset-env',
+                    {
+                        targets: {
+                        ie: '11'
+                        },
+                        useBuiltIns: 'usage',
+                        corejs: 3
+                    }
+                ]
+            ],
+            plugins: [
+                '@babel/plugin-syntax-dynamic-import',
+                [
+                '@babel/plugin-transform-runtime',
+                    {
+                        useESModules: true
+                    }
+                ]
+            ]
+        }),
         resolve({
             browser: true,
             dedupe: ['svelte']
