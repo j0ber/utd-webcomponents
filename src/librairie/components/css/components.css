@@ -370,11 +370,11 @@ utd-dialog::part(backdrop) {
     margin-bottom: 0;
   }
 
-  utd-dialog [slot="pied"] > * {
-    margin-right: 16px;
+  utd-dialog [slot="pied"] > button {
+    margin-right: 32px;
   }
 
-  utd-dialog [slot="pied"] > *:last-child {
+  utd-dialog [slot="pied"] > button:last-child {
     margin-right: 0;
   }
 
