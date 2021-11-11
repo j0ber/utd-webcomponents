@@ -31,9 +31,9 @@ function serve() {
 }
 
 export default [{
-    input: 'src/librairie.js',
+    input: 'src/utd-components.js',
     output: {
-        sourcemap: true,
+        sourcemap: false,
         format: 'iife',
         name: 'app',
         file: 'public/build/utd-webcomponents-v1.1.0.js'
@@ -96,7 +96,8 @@ export default [{
     watch: {
         clearScreen: false
     }
-}, {
+},
+{
     input: 'src/siteDemo.js',
     output: {
         sourcemap: true,
