@@ -347,9 +347,7 @@ p:last-child {
     margin-bottom: 0!important;
 }
 
-.backdrop,
-utd-infobulle::part(backdrop),
-utd-dialog::part(backdrop) {
+.utd-backdrop {
     /*Backdrop*/
     opacity: 0.5;
     position: fixed;
@@ -395,7 +393,7 @@ utd-dialog::part(backdrop) {
 
 
 /*====================================================================================================
-  -40- WebComponent aide contextuelle
+  -40- WebComponent infobulle
 ====================================================================================================*/
 
 utd-infobulle p:first-of-type {
@@ -422,15 +420,13 @@ html.modale-ouverte body {
   -60- Redéfinitions Bootstrap
 ====================================================================================================*/
 
-.container,
-utd-infobulle::part(container) {
+.container {
     margin: 0 auto;
     padding-left: 16px;
     padding-right: 16px;
 }
 
-.sr-only,
-utd-infobulle::part(sr-only) {
+.sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -448,8 +444,7 @@ utd-infobulle::part(sr-only) {
 ====================================================================================================*/
 
 @media (max-width: 425px) {
-    .container,
-    utd-infobulle::part(container) {
+    .container {
         max-width: 100%;
         padding-right: 8px;
         padding-left: 8px;
@@ -461,9 +456,7 @@ utd-infobulle::part(sr-only) {
   -900- Sprites
 ====================================================================================================*/
 
-.utd-icone-svg,
-utd-infobulle::part(icone-svg),
-utd-dialog::part(icone-svg) {
+.utd-icone-svg {
     display: inline-block;
     content: "";
     background-repeat: no-repeat;

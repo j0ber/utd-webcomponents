@@ -92,7 +92,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="backdrop" part="backdrop" on:click={() => masquerModale('ClickBackdrop')} />
+  <div class="utd-backdrop" on:click={() => masquerModale('ClickBackdrop')} />
   <div
     tabindex="-1"
     aria-labelledby={idEntete}
@@ -117,7 +117,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       >
         <span
           aria-hidden="true"
-          part="icone-svg"
           class="utd-icone-svg x-fermer-bleu"
         />
       </button>
@@ -140,9 +139,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>  
 {/if}
 
+<link rel='stylesheet' href='/build/utd-webcomponents-v1.1.0.css'>
 <style>
-
-  .modale {
+.modale {
       position: fixed;
       display: block;
       top: 0;
@@ -248,7 +247,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;

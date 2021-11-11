@@ -81,7 +81,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         <span aria-hidden="true" class="puce">
           <span
             aria-hidden="true"
-            part="icone-svg"
             class="utd-icone-svg question"
           />
         </span>
@@ -90,7 +89,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </span>
 
   {#if afficher}
-    <div class="backdrop" part="backdrop" on:click={masquerModale} />
+    <div class="utd-backdrop" on:click={masquerModale} />
     <span
       tabindex="-1"
       aria-labelledby={idEntete}
@@ -104,9 +103,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       aria-modal="true"
       role="dialog"
     >
-      <span class="entete" part="container">
+      <span class="container entete">
         <h1 id={idEntete} tabindex="-1">
-          <span class="sr-only" part="sr-only">{@html srTexteTitre}</span>
+          <span class="sr-only">{@html srTexteTitre}</span>
           <span>
             {#if titre}
               {titre}
@@ -121,12 +120,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         >
           <span
             aria-hidden="true"
-            part="icone-svg"
             class="utd-icone-svg x-fermer-bleu"
           />
         </button>
       </span>
-      <span class="conteneur-corps" part="container">
+      <span class="container conteneur-corps">
         <span class="corps">
           {#if contenu}
             {@html contenu}
@@ -139,8 +137,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {/if}
 </span>
 
+<link rel='stylesheet' href='/build/utd-webcomponents-v1.1.0.css'>
 <style>
-  .texte-lie:hover,
+.texte-lie:hover,
   button:hover {
     cursor: pointer;
   }
@@ -205,7 +204,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     height: 10px;
     min-width: 10px;
     margin-left: 0;
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-question");
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-question");
   }
 
   .modale {
@@ -269,7 +268,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
