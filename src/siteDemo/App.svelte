@@ -4,7 +4,7 @@
     import AideContextuelle from './pages/AideContextuelle.svelte'; 
     import Modal from './pages/Modal.svelte'; 
 </script>
-<div class="container">
+<div class="utd-container">
     <nav>
         <a href="/">Accueil</a>
         <a on:click|preventDefault={() => window.location.href = '/aidecontextuelle'} href="/aidecontextuelle">Aide contextuelle</a>
