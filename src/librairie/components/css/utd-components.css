@@ -1,4 +1,79 @@
 /*! utd-webcomponents */
+
+
+/*====================================================================================================*/
+/*  -35- Avis 
+/*====================================================================================================*/
+/*
+--couleur-fond-message-information: #D9E6F0;
+--couleur-fond-message-bienvenue: #D9E6F0;
+--couleur-fond-message-avertissement: #F8E69A;
+--couleur-fond-message-nouveaute: #BCDA9A;
+--couleur-fond-message-erreur: #EDBAB1;
+*/
+  .utd-avis {
+    display: flex;
+    border: 1px solid var(--couleur-filet-secondaire);
+    background-color: #fff;
+    word-break: break-word;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .utd-avis .zone-icone {
+    display: flex;  
+    padding: 24px 8px;
+  }
+
+  .utd-avis .zone-icone .utd-icone-svg {
+      background-size: 100% auto;
+      min-width: 24px;
+      height: 24px;
+  }
+
+  .utd-avis .zone-icone, .utd-avis.information .zone-icone {
+      background-color: #D9E6F0;
+  }
+
+  .utd-avis.avertissement .zone-icone {
+      background-color: #F8E69A;
+  }
+
+  .utd-avis.succes .zone-icone {
+      background-color: #BCDA9A;
+  }
+
+  .utd-avis.erreur .zone-icone {
+      background-color: #EDBAB1;
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a {
+    color: var(--couleur-erreur);
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a:hover, utd-avis[type="erreur"] [slot="contenu"] ul li a:focus {
+    text-decoration: none;
+  }
+
+  .utd-avis .titre {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: OpenSans-Bold;
+    font-size: 14px !important;
+}
+
+  .utd-avis .contenu {
+      padding: 24px var(--tc-32-24-val) 24px 16px;
+      width: 100%;
+  }
+
+  
+  .utd-avis .contenu :last-child {
+      margin-bottom: 0;
+  }
+
+
 /* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
 
 /*====================================================================================================
@@ -75,7 +150,7 @@
 }
 
 .utd-infobulle .modale {
-    font-family: "OpenSans-Regular", sans-serif;
+    font-family: "OpenSans", sans-serif;
     display: block !important;
     position: fixed;
     top: auto;

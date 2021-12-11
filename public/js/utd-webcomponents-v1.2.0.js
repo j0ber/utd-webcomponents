@@ -1,21 +1,6 @@
 (function () {
   'use strict';
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -168,7 +153,7 @@
     return Function.toString.call(fn).indexOf("[native code]") !== -1;
   }
 
-  function _isNativeReflectConstruct$3() {
+  function _isNativeReflectConstruct$4() {
     if (typeof Reflect === "undefined" || !Reflect.construct) return false;
     if (Reflect.construct.sham) return false;
     if (typeof Proxy === "function") return true;
@@ -182,7 +167,7 @@
   }
 
   function _construct(Parent, args, Class) {
-    if (_isNativeReflectConstruct$3()) {
+    if (_isNativeReflectConstruct$4()) {
       _construct = Reflect.construct;
     } else {
       _construct = function _construct(Parent, args, Class) {
@@ -248,9 +233,9 @@
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread();
   }
 
-  function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
   function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -1009,7 +994,7 @@
     SvelteElement = /*#__PURE__*/function (_HTMLElement) {
       _inherits(SvelteElement, _HTMLElement);
 
-      var _super2 = _createSuper$2(SvelteElement);
+      var _super2 = _createSuper$3(SvelteElement);
 
       function SvelteElement() {
         var _this3;
@@ -1162,6 +1147,317 @@
     }
   }
 
+  function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$2 = "src\\librairie\\components\\avis.svelte"; // (26:6) {#if contenu}
+
+  function create_if_block$2(ctx) {
+    var html_tag;
+    var html_anchor;
+    var block = {
+      c: function create() {
+        html_tag = new HtmlTag();
+        html_anchor = empty();
+        html_tag.a = html_anchor;
+      },
+      m: function mount(target, anchor) {
+        html_tag.m(
+        /*contenu*/
+        ctx[2], target, anchor);
+        insert_dev(target, html_anchor, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*contenu*/
+        4) html_tag.p(
+        /*contenu*/
+        ctx[2]);
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(html_anchor);
+        if (detaching) html_tag.d();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block$2.name,
+      type: "if",
+      source: "(26:6) {#if contenu}",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function create_fragment$2(ctx) {
+    var div4;
+    var div1;
+    var div0;
+    var div0_class_value;
+    var t0;
+    var div3;
+    var h2;
+    var t1;
+    var t2;
+    var div2;
+    var t3;
+    var slot;
+    var div4_class_value;
+    var t4;
+    var link;
+    var if_block =
+    /*contenu*/
+    ctx[2] && create_if_block$2(ctx);
+    var block = {
+      c: function create() {
+        div4 = element("div");
+        div1 = element("div");
+        div0 = element("div");
+        t0 = space();
+        div3 = element("div");
+        h2 = element("h2");
+        t1 = text(
+        /*titre*/
+        ctx[0]);
+        t2 = space();
+        div2 = element("div");
+        if (if_block) if_block.c();
+        t3 = space();
+        slot = element("slot");
+        t4 = space();
+        link = element("link");
+        this.c = noop;
+        attr_dev(div0, "aria-hidden", "true");
+        attr_dev(div0, "class", div0_class_value = "utd-icone-svg " +
+        /*type*/
+        ctx[1]);
+        add_location(div0, file$2, 18, 4, 437);
+        attr_dev(div1, "class", "zone-icone");
+        add_location(div1, file$2, 17, 2, 407);
+        attr_dev(h2, "class", "titre d-flex justify-content-between align-self-center");
+        add_location(h2, file$2, 21, 4, 547);
+        attr_dev(slot, "name", "contenu");
+        add_location(slot, file$2, 28, 6, 732);
+        attr_dev(div2, "class", "texte");
+        add_location(div2, file$2, 24, 4, 646);
+        attr_dev(div3, "class", "contenu zone-html");
+        add_location(div3, file$2, 20, 2, 510);
+        attr_dev(div4, "class", div4_class_value = "utd-avis " +
+        /*type*/
+        ctx[1]);
+        attr_dev(div4, "role",
+        /*role*/
+        ctx[3]);
+        add_location(div4, file$2, 16, 0, 367);
+        attr_dev(link, "rel", "stylesheet");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        add_location(link, file$2, 33, 0, 789);
+      },
+      l: function claim(nodes) {
+        throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, div4, anchor);
+        append_dev(div4, div1);
+        append_dev(div1, div0);
+        append_dev(div4, t0);
+        append_dev(div4, div3);
+        append_dev(div3, h2);
+        append_dev(h2, t1);
+        append_dev(div3, t2);
+        append_dev(div3, div2);
+        if (if_block) if_block.m(div2, null);
+        append_dev(div2, t3);
+        append_dev(div2, slot);
+        insert_dev(target, t4, anchor);
+        insert_dev(target, link, anchor);
+      },
+      p: function update(ctx, _ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            dirty = _ref2[0];
+
+        if (dirty &
+        /*type*/
+        2 && div0_class_value !== (div0_class_value = "utd-icone-svg " +
+        /*type*/
+        ctx[1])) {
+          attr_dev(div0, "class", div0_class_value);
+        }
+
+        if (dirty &
+        /*titre*/
+        1) set_data_dev(t1,
+        /*titre*/
+        ctx[0]);
+
+        if (
+        /*contenu*/
+        ctx[2]) {
+          if (if_block) {
+            if_block.p(ctx, dirty);
+          } else {
+            if_block = create_if_block$2(ctx);
+            if_block.c();
+            if_block.m(div2, t3);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+
+        if (dirty &
+        /*type*/
+        2 && div4_class_value !== (div4_class_value = "utd-avis " +
+        /*type*/
+        ctx[1])) {
+          attr_dev(div4, "class", div4_class_value);
+        }
+      },
+      i: noop,
+      o: noop,
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(div4);
+        if (if_block) if_block.d();
+        if (detaching) detach_dev(t4);
+        if (detaching) detach_dev(link);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_fragment$2.name,
+      type: "component",
+      source: "",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function instance$2($$self, $$props, $$invalidate) {
+    var _$$props$$$slots = $$props.$$slots,
+        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
+        $$props.$$scope;
+    validate_slots('utd-avis', slots, []);
+    var _$$props$titre = $$props.titre,
+        titre = _$$props$titre === void 0 ? "" : _$$props$titre;
+    var _$$props$type = $$props.type,
+        type = _$$props$type === void 0 ? "information" : _$$props$type;
+    var _$$props$contenu = $$props.contenu,
+        contenu = _$$props$contenu === void 0 ? "" : _$$props$contenu;
+    var role = type === 'erreur' || type === 'avertissement' ? 'alert' : null;
+    var writable_props = ['titre', 'type', 'contenu'];
+    Object.keys($$props).forEach(function (key) {
+      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-avis> was created with unknown prop '".concat(key, "'"));
+    });
+
+    $$self.$$set = function ($$props) {
+      if ('titre' in $$props) $$invalidate(0, titre = $$props.titre);
+      if ('type' in $$props) $$invalidate(1, type = $$props.type);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+    };
+
+    $$self.$capture_state = function () {
+      return {
+        titre: titre,
+        type: type,
+        contenu: contenu,
+        role: role
+      };
+    };
+
+    $$self.$inject_state = function ($$props) {
+      if ('titre' in $$props) $$invalidate(0, titre = $$props.titre);
+      if ('type' in $$props) $$invalidate(1, type = $$props.type);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+    };
+
+    if ($$props && "$$inject" in $$props) {
+      $$self.$inject_state($$props.$$inject);
+    }
+
+    return [titre, type, contenu, role];
+  }
+
+  var Avis = /*#__PURE__*/function (_SvelteElement) {
+    _inherits(Avis, _SvelteElement);
+
+    var _super = _createSuper$2(Avis);
+
+    function Avis(options) {
+      var _this;
+
+      _classCallCheck(this, Avis);
+
+      _this = _super.call(this);
+      init(_assertThisInitialized(_this), {
+        target: _this.shadowRoot,
+        props: attribute_to_object(_this.attributes),
+        customElement: true
+      }, instance$2, create_fragment$2, safe_not_equal, {
+        titre: 0,
+        type: 1,
+        contenu: 2
+      }, null);
+
+      if (options) {
+        if (options.target) {
+          insert_dev(options.target, _assertThisInitialized(_this), options.anchor);
+        }
+
+        if (options.props) {
+          _this.$set(options.props);
+
+          flush();
+        }
+      }
+
+      return _this;
+    }
+
+    _createClass(Avis, [{
+      key: "titre",
+      get: function get() {
+        return this.$$.ctx[0];
+      },
+      set: function set(titre) {
+        this.$$set({
+          titre: titre
+        });
+        flush();
+      }
+    }, {
+      key: "type",
+      get: function get() {
+        return this.$$.ctx[1];
+      },
+      set: function set(type) {
+        this.$$set({
+          type: type
+        });
+        flush();
+      }
+    }, {
+      key: "contenu",
+      get: function get() {
+        return this.$$.ctx[2];
+      },
+      set: function set(contenu) {
+        this.$$set({
+          contenu: contenu
+        });
+        flush();
+      }
+    }], [{
+      key: "observedAttributes",
+      get: function get() {
+        return ["titre", "type", "contenu"];
+      }
+    }]);
+
+    return Avis;
+  }(SvelteElement);
+
+  customElements.define("utd-avis", Avis);
+
   function cubicOut(t) {
     var f = t - 1.0;
     return f * f * f + 1.0;
@@ -1194,6 +1490,21 @@
         return "\n\t\t\ttransform: ".concat(transform, " translate(").concat((1 - t) * x, "px, ").concat((1 - t) * y, "px);\n\t\t\topacity: ").concat(target_opacity - od * u);
       }
     };
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
   }
 
   var Utils = /*#__PURE__*/function () {
@@ -1320,754 +1631,12 @@
     }));
   });
 
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
   function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
   function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$1 = "src\\librairie\\components\\infobulle.svelte"; // (76:2) {#if $$slots["texte-lie"]}
-
-  function create_if_block_3(ctx) {
-    var span;
-    var slot;
-    var mounted;
-    var dispose;
-    var block = {
-      c: function create() {
-        span = element("span");
-        slot = element("slot");
-        attr_dev(slot, "name", "texte-lie");
-        add_location(slot, file$1, 76, 54, 2069);
-        attr_dev(span, "class", "texte-lie");
-        add_location(span, file$1, 76, 4, 2019);
-      },
-      m: function mount(target, anchor) {
-        insert_dev(target, span, anchor);
-        append_dev(span, slot);
-
-        if (!mounted) {
-          dispose = listen_dev(span, "click",
-          /*afficherModale*/
-          ctx[8], false, false, false);
-          mounted = true;
-        }
-      },
-      p: noop,
-      d: function destroy(detaching) {
-        if (detaching) detach_dev(span);
-        mounted = false;
-        dispose();
-      }
-    };
-    dispatch_dev("SvelteRegisterBlock", {
-      block: block,
-      id: create_if_block_3.name,
-      type: "if",
-      source: "(76:2) {#if $$slots[\\\"texte-lie\\\"]}",
-      ctx: ctx
-    });
-    return block;
-  } // (91:2) {#if afficher}
-
+  var file$1 = "src\\librairie\\components\\dialogueModal.svelte"; // (94:0) {#if estModaleAffichee}
 
   function create_if_block$1(ctx) {
-    var div;
-    var t0;
-    var span6;
-    var span3;
-    var h1;
-    var span0;
-    var t1;
-    var span1;
-    var t2;
-    var button;
-    var span2;
-    var t3;
-    var span5;
-    var span4;
-    var t4;
-    var slot;
-    var t5;
-    var p;
-    var span6_intro;
-    var span6_outro;
-    var current;
-    var mounted;
-    var dispose;
-    var if_block0 =
-    /*titre*/
-    ctx[1] && create_if_block_2(ctx);
-    var if_block1 =
-    /*contenu*/
-    ctx[2] && create_if_block_1$1(ctx);
-    var block = {
-      c: function create() {
-        div = element("div");
-        t0 = space();
-        span6 = element("span");
-        span3 = element("span");
-        h1 = element("h1");
-        span0 = element("span");
-        t1 = space();
-        span1 = element("span");
-        if (if_block0) if_block0.c();
-        t2 = space();
-        button = element("button");
-        span2 = element("span");
-        t3 = space();
-        span5 = element("span");
-        span4 = element("span");
-        if (if_block1) if_block1.c();
-        t4 = space();
-        slot = element("slot");
-        t5 = space();
-        p = element("p");
-        attr_dev(div, "class", "utd-backdrop");
-        add_location(div, file$1, 91, 4, 2534);
-        attr_dev(span0, "class", "sr-only");
-        add_location(span0, file$1, 107, 10, 3054);
-        add_location(span1, file$1, 108, 10, 3115);
-        attr_dev(h1, "id",
-        /*idEntete*/
-        ctx[4]);
-        attr_dev(h1, "tabindex", "-1");
-        add_location(h1, file$1, 106, 8, 3010);
-        attr_dev(span2, "aria-hidden", "true");
-        attr_dev(span2, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span2, file$1, 120, 10, 3392);
-        attr_dev(button, "type", "button");
-        attr_dev(button, "class", "close");
-        attr_dev(button, "aria-label",
-        /*srTexteBoutonFermer*/
-        ctx[7]);
-        add_location(button, file$1, 114, 8, 3232);
-        attr_dev(span3, "class", "utd-container entete");
-        add_location(span3, file$1, 105, 6, 2965);
-        attr_dev(slot, "name", "contenu");
-        add_location(slot, file$1, 131, 10, 3691);
-        attr_dev(p, "class", "d-none");
-        add_location(p, file$1, 132, 10, 3726);
-        attr_dev(span4, "class", "corps");
-        add_location(span4, file$1, 127, 8, 3588);
-        attr_dev(span5, "class", "utd-container conteneur-corps");
-        add_location(span5, file$1, 126, 6, 3534);
-        attr_dev(span6, "tabindex", "-1");
-        attr_dev(span6, "aria-labelledby",
-        /*idEntete*/
-        ctx[4]);
-        attr_dev(span6, "class", "modale");
-        attr_dev(span6, "id",
-        /*idModale*/
-        ctx[3]);
-        attr_dev(span6, "aria-modal", "true");
-        attr_dev(span6, "role", "dialog");
-        add_location(span6, file$1, 92, 4, 2593);
-      },
-      m: function mount(target, anchor) {
-        insert_dev(target, div, anchor);
-        insert_dev(target, t0, anchor);
-        insert_dev(target, span6, anchor);
-        append_dev(span6, span3);
-        append_dev(span3, h1);
-        append_dev(h1, span0);
-        span0.innerHTML =
-        /*srTexteTitre*/
-        ctx[5];
-        append_dev(h1, t1);
-        append_dev(h1, span1);
-        if (if_block0) if_block0.m(span1, null);
-        append_dev(span3, t2);
-        append_dev(span3, button);
-        append_dev(button, span2);
-        append_dev(span6, t3);
-        append_dev(span6, span5);
-        append_dev(span5, span4);
-        if (if_block1) if_block1.m(span4, null);
-        append_dev(span4, t4);
-        append_dev(span4, slot);
-        append_dev(span4, t5);
-        append_dev(span4, p);
-        current = true;
-
-        if (!mounted) {
-          dispose = [listen_dev(div, "click",
-          /*masquerModale*/
-          ctx[9], false, false, false), listen_dev(button, "click",
-          /*masquerModale*/
-          ctx[9], false, false, false), listen_dev(span6, "keydown",
-          /*keydown*/
-          ctx[10], false, false, false), listen_dev(span6, "introend",
-          /*conserverFocusAideContextuelle*/
-          ctx[12], false, false, false), listen_dev(span6, "outroend",
-          /*finAnimationFermeture*/
-          ctx[11], false, false, false)];
-          mounted = true;
-        }
-      },
-      p: function update(ctx, dirty) {
-        if (
-        /*titre*/
-        ctx[1]) {
-          if (if_block0) {
-            if_block0.p(ctx, dirty);
-          } else {
-            if_block0 = create_if_block_2(ctx);
-            if_block0.c();
-            if_block0.m(span1, null);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
-
-        if (
-        /*contenu*/
-        ctx[2]) {
-          if (if_block1) {
-            if_block1.p(ctx, dirty);
-          } else {
-            if_block1 = create_if_block_1$1(ctx);
-            if_block1.c();
-            if_block1.m(span4, t4);
-          }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
-        }
-      },
-      i: function intro(local) {
-        if (current) return;
-        add_render_callback(function () {
-          if (span6_outro) span6_outro.end(1);
-          span6_intro = create_in_transition(span6, fly, {
-            y: 200,
-            duration: 750
-          });
-          span6_intro.start();
-        });
-        current = true;
-      },
-      o: function outro(local) {
-        if (span6_intro) span6_intro.invalidate();
-        span6_outro = create_out_transition(span6, fly, {
-          y: 200,
-          duration: 500
-        });
-        current = false;
-      },
-      d: function destroy(detaching) {
-        if (detaching) detach_dev(div);
-        if (detaching) detach_dev(t0);
-        if (detaching) detach_dev(span6);
-        if (if_block0) if_block0.d();
-        if (if_block1) if_block1.d();
-        if (detaching && span6_outro) span6_outro.end();
-        mounted = false;
-        run_all(dispose);
-      }
-    };
-    dispatch_dev("SvelteRegisterBlock", {
-      block: block,
-      id: create_if_block$1.name,
-      type: "if",
-      source: "(91:2) {#if afficher}",
-      ctx: ctx
-    });
-    return block;
-  } // (110:12) {#if titre}
-
-
-  function create_if_block_2(ctx) {
-    var t;
-    var block = {
-      c: function create() {
-        t = text(
-        /*titre*/
-        ctx[1]);
-      },
-      m: function mount(target, anchor) {
-        insert_dev(target, t, anchor);
-      },
-      p: function update(ctx, dirty) {
-        if (dirty &
-        /*titre*/
-        2) set_data_dev(t,
-        /*titre*/
-        ctx[1]);
-      },
-      d: function destroy(detaching) {
-        if (detaching) detach_dev(t);
-      }
-    };
-    dispatch_dev("SvelteRegisterBlock", {
-      block: block,
-      id: create_if_block_2.name,
-      type: "if",
-      source: "(110:12) {#if titre}",
-      ctx: ctx
-    });
-    return block;
-  } // (129:10) {#if contenu}
-
-
-  function create_if_block_1$1(ctx) {
-    var html_tag;
-    var html_anchor;
-    var block = {
-      c: function create() {
-        html_tag = new HtmlTag();
-        html_anchor = empty();
-        html_tag.a = html_anchor;
-      },
-      m: function mount(target, anchor) {
-        html_tag.m(
-        /*contenu*/
-        ctx[2], target, anchor);
-        insert_dev(target, html_anchor, anchor);
-      },
-      p: function update(ctx, dirty) {
-        if (dirty &
-        /*contenu*/
-        4) html_tag.p(
-        /*contenu*/
-        ctx[2]);
-      },
-      d: function destroy(detaching) {
-        if (detaching) detach_dev(html_anchor);
-        if (detaching) html_tag.d();
-      }
-    };
-    dispatch_dev("SvelteRegisterBlock", {
-      block: block,
-      id: create_if_block_1$1.name,
-      type: "if",
-      source: "(129:10) {#if contenu}",
-      ctx: ctx
-    });
-    return block;
-  }
-
-  function create_fragment$1(ctx) {
-    var span4;
-    var t0;
-    var span3;
-    var t1;
-    var button;
-    var span2;
-    var span1;
-    var span0;
-    var t2;
-    var t3;
-    var link;
-    var current;
-    var mounted;
-    var dispose;
-    var if_block0 =
-    /*$$slots*/
-    ctx[13]["texte-lie"] && create_if_block_3(ctx);
-    var if_block1 =
-    /*afficher*/
-    ctx[0] && create_if_block$1(ctx);
-    var block = {
-      c: function create() {
-        span4 = element("span");
-        if (if_block0) if_block0.c();
-        t0 = space();
-        span3 = element("span");
-        t1 = space();
-        button = element("button");
-        span2 = element("span");
-        span1 = element("span");
-        span0 = element("span");
-        t2 = space();
-        if (if_block1) if_block1.c();
-        t3 = space();
-        link = element("link");
-        this.c = noop;
-        attr_dev(span0, "aria-hidden", "true");
-        attr_dev(span0, "class", "utd-icone-svg question");
-        add_location(span0, file$1, 81, 10, 2355);
-        attr_dev(span1, "aria-hidden", "true");
-        attr_dev(span1, "class", "puce");
-        add_location(span1, file$1, 80, 8, 2305);
-        attr_dev(span2, "class", "conteneur-puce");
-        add_location(span2, file$1, 79, 6, 2266);
-        attr_dev(button, "type", "button");
-        attr_dev(button, "aria-label",
-        /*srTexteBoutonOuvrir*/
-        ctx[6]);
-        attr_dev(button, "class", "tooltip-toggle");
-        add_location(button, file$1, 78, 42, 2154);
-        attr_dev(span3, "class", "conteneur-tooltip");
-        add_location(span3, file$1, 78, 2, 2114);
-        attr_dev(span4, "class", "utd-infobulle");
-        add_location(span4, file$1, 74, 0, 1955);
-        attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$1, 139, 0, 3813);
-      },
-      l: function claim(nodes) {
-        throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-      },
-      m: function mount(target, anchor) {
-        insert_dev(target, span4, anchor);
-        if (if_block0) if_block0.m(span4, null);
-        append_dev(span4, t0);
-        append_dev(span4, span3);
-        append_dev(span3, t1);
-        append_dev(span3, button);
-        append_dev(button, span2);
-        append_dev(span2, span1);
-        append_dev(span1, span0);
-        append_dev(span4, t2);
-        if (if_block1) if_block1.m(span4, null);
-        insert_dev(target, t3, anchor);
-        insert_dev(target, link, anchor);
-        current = true;
-
-        if (!mounted) {
-          dispose = listen_dev(button, "click",
-          /*afficherModale*/
-          ctx[8], false, false, false);
-          mounted = true;
-        }
-      },
-      p: function update(ctx, _ref) {
-        var _ref2 = _slicedToArray(_ref, 1),
-            dirty = _ref2[0];
-
-        if (
-        /*$$slots*/
-        ctx[13]["texte-lie"]) {
-          if (if_block0) {
-            if_block0.p(ctx, dirty);
-          } else {
-            if_block0 = create_if_block_3(ctx);
-            if_block0.c();
-            if_block0.m(span4, t0);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
-
-        if (
-        /*afficher*/
-        ctx[0]) {
-          if (if_block1) {
-            if_block1.p(ctx, dirty);
-
-            if (dirty &
-            /*afficher*/
-            1) {
-              transition_in(if_block1, 1);
-            }
-          } else {
-            if_block1 = create_if_block$1(ctx);
-            if_block1.c();
-            transition_in(if_block1, 1);
-            if_block1.m(span4, null);
-          }
-        } else if (if_block1) {
-          group_outros();
-          transition_out(if_block1, 1, 1, function () {
-            if_block1 = null;
-          });
-          check_outros();
-        }
-      },
-      i: function intro(local) {
-        if (current) return;
-        transition_in(if_block1);
-        current = true;
-      },
-      o: function outro(local) {
-        transition_out(if_block1);
-        current = false;
-      },
-      d: function destroy(detaching) {
-        if (detaching) detach_dev(span4);
-        if (if_block0) if_block0.d();
-        if (if_block1) if_block1.d();
-        if (detaching) detach_dev(t3);
-        if (detaching) detach_dev(link);
-        mounted = false;
-        dispose();
-      }
-    };
-    dispatch_dev("SvelteRegisterBlock", {
-      block: block,
-      id: create_fragment$1.name,
-      type: "component",
-      source: "",
-      ctx: ctx
-    });
-    return block;
-  }
-
-  function instance$1($$self, $$props, $$invalidate) {
-    var _$$props$$$slots = $$props.$$slots,
-        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
-        $$props.$$scope;
-    validate_slots('utd-infobulle', slots, []);
-    var $$slots = compute_slots(slots);
-    var _$$props$afficher = $$props.afficher,
-        afficher = _$$props$afficher === void 0 ? false : _$$props$afficher;
-    var _$$props$titre = $$props.titre,
-        titre = _$$props$titre === void 0 ? "" : _$$props$titre;
-    var _$$props$lang = $$props.lang,
-        lang = _$$props$lang === void 0 ? "fr" : _$$props$lang;
-    var _$$props$srtitre = $$props.srtitre,
-        srtitre = _$$props$srtitre === void 0 ? "" : _$$props$srtitre;
-    var _$$props$srboutonouvr = $$props.srboutonouvrir,
-        srboutonouvrir = _$$props$srboutonouvr === void 0 ? "" : _$$props$srboutonouvr;
-    var _$$props$srboutonferm = $$props.srboutonfermer,
-        srboutonfermer = _$$props$srboutonferm === void 0 ? "" : _$$props$srboutonferm;
-    var _$$props$contenu = $$props.contenu,
-        contenu = _$$props$contenu === void 0 ? "" : _$$props$contenu;
-    var idModale = Utils.genererId();
-    var idEntete = Utils.genererId();
-    var srTexteTitre = srtitre ? srtitre : lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;";
-    var srTexteBoutonOuvrir = srboutonouvrir ? srboutonouvrir : lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about";
-    var srTexteBoutonFermer = srboutonfermer ? srboutonfermer : lang === "fr" ? "Fermer" : "Close";
-    var thisComponent = get_current_component();
-    var html;
-    var body;
-    onMount(function () {
-      html = thisComponent.getRootNode().getElementsByTagName("html")[0];
-      body = thisComponent.getRootNode().getElementsByTagName("body")[0];
-
-      if (Utils.estMobile()) {
-        html.classList.add("est-mobile");
-      }
-    });
-
-    function afficherModale(e) {
-      Utils.ajusterInterfaceAvantAffichageModale(html, body);
-      $$invalidate(0, afficher = true);
-    }
-
-    function masquerModale(e) {
-      $$invalidate(0, afficher = false);
-    }
-
-    function keydown(e) {
-      if (e.key === "Escape") {
-        masquerModale();
-      }
-    }
-
-    function finAnimationFermeture(e) {
-      Utils.ajusterInterfaceApresFermetureModale(html, body);
-    }
-
-    function conserverFocusAideContextuelle(e) {
-      thisComponent.shadowRoot.getElementById(idEntete).focus();
-      Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent);
-    }
-
-    var writable_props = ['afficher', 'titre', 'lang', 'srtitre', 'srboutonouvrir', 'srboutonfermer', 'contenu'];
-    Object.keys($$props).forEach(function (key) {
-      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-infobulle> was created with unknown prop '".concat(key, "'"));
-    });
-
-    $$self.$$set = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
-      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
-      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
-      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
-      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
-      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
-    };
-
-    $$self.$capture_state = function () {
-      return {
-        onMount: onMount,
-        fly: fly,
-        get_current_component: get_current_component,
-        Utils: Utils,
-        afficher: afficher,
-        titre: titre,
-        lang: lang,
-        srtitre: srtitre,
-        srboutonouvrir: srboutonouvrir,
-        srboutonfermer: srboutonfermer,
-        contenu: contenu,
-        idModale: idModale,
-        idEntete: idEntete,
-        srTexteTitre: srTexteTitre,
-        srTexteBoutonOuvrir: srTexteBoutonOuvrir,
-        srTexteBoutonFermer: srTexteBoutonFermer,
-        thisComponent: thisComponent,
-        html: html,
-        body: body,
-        afficherModale: afficherModale,
-        masquerModale: masquerModale,
-        keydown: keydown,
-        finAnimationFermeture: finAnimationFermeture,
-        conserverFocusAideContextuelle: conserverFocusAideContextuelle
-      };
-    };
-
-    $$self.$inject_state = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
-      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
-      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
-      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
-      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
-      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
-      if ('html' in $$props) html = $$props.html;
-      if ('body' in $$props) body = $$props.body;
-    };
-
-    if ($$props && "$$inject" in $$props) {
-      $$self.$inject_state($$props.$$inject);
-    }
-
-    return [afficher, titre, contenu, idModale, idEntete, srTexteTitre, srTexteBoutonOuvrir, srTexteBoutonFermer, afficherModale, masquerModale, keydown, finAnimationFermeture, conserverFocusAideContextuelle, $$slots, lang, srtitre, srboutonouvrir, srboutonfermer];
-  }
-
-  var Infobulle = /*#__PURE__*/function (_SvelteElement) {
-    _inherits(Infobulle, _SvelteElement);
-
-    var _super = _createSuper$1(Infobulle);
-
-    function Infobulle(options) {
-      var _this;
-
-      _classCallCheck(this, Infobulle);
-
-      _this = _super.call(this);
-      init(_assertThisInitialized(_this), {
-        target: _this.shadowRoot,
-        props: _objectSpread(_objectSpread({}, attribute_to_object(_this.attributes)), {}, {
-          $$slots: get_custom_elements_slots(_assertThisInitialized(_this))
-        }),
-        customElement: true
-      }, instance$1, create_fragment$1, safe_not_equal, {
-        afficher: 0,
-        titre: 1,
-        lang: 14,
-        srtitre: 15,
-        srboutonouvrir: 16,
-        srboutonfermer: 17,
-        contenu: 2
-      }, null);
-
-      if (options) {
-        if (options.target) {
-          insert_dev(options.target, _assertThisInitialized(_this), options.anchor);
-        }
-
-        if (options.props) {
-          _this.$set(options.props);
-
-          flush();
-        }
-      }
-
-      return _this;
-    }
-
-    _createClass(Infobulle, [{
-      key: "afficher",
-      get: function get() {
-        return this.$$.ctx[0];
-      },
-      set: function set(afficher) {
-        this.$$set({
-          afficher: afficher
-        });
-        flush();
-      }
-    }, {
-      key: "titre",
-      get: function get() {
-        return this.$$.ctx[1];
-      },
-      set: function set(titre) {
-        this.$$set({
-          titre: titre
-        });
-        flush();
-      }
-    }, {
-      key: "lang",
-      get: function get() {
-        return this.$$.ctx[14];
-      },
-      set: function set(lang) {
-        this.$$set({
-          lang: lang
-        });
-        flush();
-      }
-    }, {
-      key: "srtitre",
-      get: function get() {
-        return this.$$.ctx[15];
-      },
-      set: function set(srtitre) {
-        this.$$set({
-          srtitre: srtitre
-        });
-        flush();
-      }
-    }, {
-      key: "srboutonouvrir",
-      get: function get() {
-        return this.$$.ctx[16];
-      },
-      set: function set(srboutonouvrir) {
-        this.$$set({
-          srboutonouvrir: srboutonouvrir
-        });
-        flush();
-      }
-    }, {
-      key: "srboutonfermer",
-      get: function get() {
-        return this.$$.ctx[17];
-      },
-      set: function set(srboutonfermer) {
-        this.$$set({
-          srboutonfermer: srboutonfermer
-        });
-        flush();
-      }
-    }, {
-      key: "contenu",
-      get: function get() {
-        return this.$$.ctx[2];
-      },
-      set: function set(contenu) {
-        this.$$set({
-          contenu: contenu
-        });
-        flush();
-      }
-    }], [{
-      key: "observedAttributes",
-      get: function get() {
-        return ["afficher", "titre", "lang", "srtitre", "srboutonouvrir", "srboutonfermer", "contenu"];
-      }
-    }]);
-
-    return Infobulle;
-  }(SvelteElement);
-
-  customElements.define("utd-infobulle", Infobulle);
-
-  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file = "src\\librairie\\components\\dialogueModal.svelte"; // (94:0) {#if estModaleAffichee}
-
-  function create_if_block(ctx) {
     var div0;
     var t0;
     var div5;
@@ -2091,7 +1660,7 @@
     var current;
     var mounted;
     var dispose;
-    var if_block = show_if && create_if_block_1(ctx);
+    var if_block = show_if && create_if_block_1$1(ctx);
     var block = {
       c: function create() {
         div0 = element("div");
@@ -2113,31 +1682,31 @@
         t4 = space();
         if (if_block) if_block.c();
         attr_dev(div0, "class", "utd-backdrop");
-        add_location(div0, file, 94, 2, 2773);
+        add_location(div0, file$1, 94, 2, 2773);
         attr_dev(span, "aria-hidden", "true");
         attr_dev(span, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span, file, 117, 8, 3434);
+        add_location(span, file$1, 117, 8, 3434);
         attr_dev(button, "type", "button");
         attr_dev(button, "class", "close");
         attr_dev(button, "aria-label",
         /*srTexteBoutonFermer*/
         ctx[5]);
-        add_location(button, file, 111, 8, 3264);
+        add_location(button, file$1, 111, 8, 3264);
         attr_dev(h1, "id",
         /*idEntete*/
         ctx[4]);
         attr_dev(h1, "tabindex", "-1");
-        add_location(h1, file, 124, 10, 3618);
+        add_location(h1, file$1, 124, 10, 3618);
         attr_dev(div1, "class", "entete");
-        add_location(div1, file, 123, 8, 3586);
+        add_location(div1, file$1, 123, 8, 3586);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file, 129, 10, 3745);
+        add_location(slot, file$1, 129, 10, 3745);
         attr_dev(div2, "class", "corps");
-        add_location(div2, file, 128, 8, 3714);
+        add_location(div2, file$1, 128, 8, 3714);
         attr_dev(div3, "class", "principal");
-        add_location(div3, file, 122, 6, 3553);
+        add_location(div3, file$1, 122, 6, 3553);
         attr_dev(div4, "class", "conteneur");
-        add_location(div4, file, 110, 4, 3231);
+        add_location(div4, file$1, 110, 4, 3231);
         attr_dev(div5, "tabindex", "-1");
         attr_dev(div5, "aria-labelledby",
         /*idEntete*/
@@ -2148,7 +1717,7 @@
         ctx[3]);
         attr_dev(div5, "aria-modal", "true");
         attr_dev(div5, "role", "dialog");
-        add_location(div5, file, 95, 2, 2853);
+        add_location(div5, file$1, 95, 2, 2853);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div0, anchor);
@@ -2200,7 +1769,7 @@
 
         if (show_if) {
           if (if_block) ; else {
-            if_block = create_if_block_1(ctx);
+            if_block = create_if_block_1$1(ctx);
             if_block.c();
             if_block.m(div3, null);
           }
@@ -2241,7 +1810,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_if_block.name,
+      id: create_if_block$1.name,
       type: "if",
       source: "(94:0) {#if estModaleAffichee}",
       ctx: ctx
@@ -2250,7 +1819,7 @@
   } // (132:8) {#if Utils.slotExiste(slots, 'pied')}
 
 
-  function create_if_block_1(ctx) {
+  function create_if_block_1$1(ctx) {
     var div;
     var slot;
     var block = {
@@ -2258,9 +1827,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file, 133, 12, 3875);
+        add_location(slot, file$1, 133, 12, 3875);
         attr_dev(div, "class", "pied");
-        add_location(div, file, 132, 10, 3843);
+        add_location(div, file$1, 132, 10, 3843);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2272,7 +1841,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_if_block_1.name,
+      id: create_if_block_1$1.name,
       type: "if",
       source: "(132:8) {#if Utils.slotExiste(slots, 'pied')}",
       ctx: ctx
@@ -2280,13 +1849,13 @@
     return block;
   }
 
-  function create_fragment(ctx) {
+  function create_fragment$1(ctx) {
     var t;
     var link;
     var current;
     var if_block =
     /*estModaleAffichee*/
-    ctx[1] && create_if_block(ctx);
+    ctx[1] && create_if_block$1(ctx);
     var block = {
       c: function create() {
         if (if_block) if_block.c();
@@ -2295,7 +1864,7 @@
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
         attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file, 141, 0, 3985);
+        add_location(link, file$1, 141, 0, 3985);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2322,7 +1891,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block(ctx);
+            if_block = create_if_block$1(ctx);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
@@ -2352,7 +1921,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_fragment.name,
+      id: create_fragment$1.name,
       type: "component",
       source: "",
       ctx: ctx
@@ -2360,7 +1929,7 @@
     return block;
   }
 
-  function instance($$self, $$props, $$invalidate) {
+  function instance$1($$self, $$props, $$invalidate) {
     var _$$props$$$slots = $$props.$$slots,
         slots$1 = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
         $$props.$$scope;
@@ -2526,7 +2095,7 @@
   var DialogueModal = /*#__PURE__*/function (_SvelteElement) {
     _inherits(DialogueModal, _SvelteElement);
 
-    var _super = _createSuper(DialogueModal);
+    var _super = _createSuper$1(DialogueModal);
 
     function DialogueModal(options) {
       var _this;
@@ -2538,7 +2107,7 @@
         target: _this.shadowRoot,
         props: attribute_to_object(_this.attributes),
         customElement: true
-      }, instance, create_fragment, safe_not_equal, {
+      }, instance$1, create_fragment$1, safe_not_equal, {
         afficher: 11,
         titre: 0,
         lang: 12,
@@ -2627,5 +2196,747 @@
   }(SvelteElement);
 
   customElements.define("utd-dialog", DialogueModal);
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file = "src\\librairie\\components\\infobulle.svelte"; // (76:2) {#if $$slots["texte-lie"]}
+
+  function create_if_block_3(ctx) {
+    var span;
+    var slot;
+    var mounted;
+    var dispose;
+    var block = {
+      c: function create() {
+        span = element("span");
+        slot = element("slot");
+        attr_dev(slot, "name", "texte-lie");
+        add_location(slot, file, 76, 54, 2069);
+        attr_dev(span, "class", "texte-lie");
+        add_location(span, file, 76, 4, 2019);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, span, anchor);
+        append_dev(span, slot);
+
+        if (!mounted) {
+          dispose = listen_dev(span, "click",
+          /*afficherModale*/
+          ctx[8], false, false, false);
+          mounted = true;
+        }
+      },
+      p: noop,
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(span);
+        mounted = false;
+        dispose();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_3.name,
+      type: "if",
+      source: "(76:2) {#if $$slots[\\\"texte-lie\\\"]}",
+      ctx: ctx
+    });
+    return block;
+  } // (91:2) {#if afficher}
+
+
+  function create_if_block(ctx) {
+    var div;
+    var t0;
+    var span6;
+    var span3;
+    var h1;
+    var span0;
+    var t1;
+    var span1;
+    var t2;
+    var button;
+    var span2;
+    var t3;
+    var span5;
+    var span4;
+    var t4;
+    var slot;
+    var t5;
+    var p;
+    var span6_intro;
+    var span6_outro;
+    var current;
+    var mounted;
+    var dispose;
+    var if_block0 =
+    /*titre*/
+    ctx[1] && create_if_block_2(ctx);
+    var if_block1 =
+    /*contenu*/
+    ctx[2] && create_if_block_1(ctx);
+    var block = {
+      c: function create() {
+        div = element("div");
+        t0 = space();
+        span6 = element("span");
+        span3 = element("span");
+        h1 = element("h1");
+        span0 = element("span");
+        t1 = space();
+        span1 = element("span");
+        if (if_block0) if_block0.c();
+        t2 = space();
+        button = element("button");
+        span2 = element("span");
+        t3 = space();
+        span5 = element("span");
+        span4 = element("span");
+        if (if_block1) if_block1.c();
+        t4 = space();
+        slot = element("slot");
+        t5 = space();
+        p = element("p");
+        attr_dev(div, "class", "utd-backdrop");
+        add_location(div, file, 91, 4, 2534);
+        attr_dev(span0, "class", "sr-only");
+        add_location(span0, file, 107, 10, 3054);
+        add_location(span1, file, 108, 10, 3115);
+        attr_dev(h1, "id",
+        /*idEntete*/
+        ctx[4]);
+        attr_dev(h1, "tabindex", "-1");
+        add_location(h1, file, 106, 8, 3010);
+        attr_dev(span2, "aria-hidden", "true");
+        attr_dev(span2, "class", "utd-icone-svg x-fermer-bleu");
+        add_location(span2, file, 120, 10, 3392);
+        attr_dev(button, "type", "button");
+        attr_dev(button, "class", "close");
+        attr_dev(button, "aria-label",
+        /*srTexteBoutonFermer*/
+        ctx[7]);
+        add_location(button, file, 114, 8, 3232);
+        attr_dev(span3, "class", "utd-container entete");
+        add_location(span3, file, 105, 6, 2965);
+        attr_dev(slot, "name", "contenu");
+        add_location(slot, file, 131, 10, 3691);
+        attr_dev(p, "class", "d-none");
+        add_location(p, file, 132, 10, 3726);
+        attr_dev(span4, "class", "corps");
+        add_location(span4, file, 127, 8, 3588);
+        attr_dev(span5, "class", "utd-container conteneur-corps");
+        add_location(span5, file, 126, 6, 3534);
+        attr_dev(span6, "tabindex", "-1");
+        attr_dev(span6, "aria-labelledby",
+        /*idEntete*/
+        ctx[4]);
+        attr_dev(span6, "class", "modale");
+        attr_dev(span6, "id",
+        /*idModale*/
+        ctx[3]);
+        attr_dev(span6, "aria-modal", "true");
+        attr_dev(span6, "role", "dialog");
+        add_location(span6, file, 92, 4, 2593);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, div, anchor);
+        insert_dev(target, t0, anchor);
+        insert_dev(target, span6, anchor);
+        append_dev(span6, span3);
+        append_dev(span3, h1);
+        append_dev(h1, span0);
+        span0.innerHTML =
+        /*srTexteTitre*/
+        ctx[5];
+        append_dev(h1, t1);
+        append_dev(h1, span1);
+        if (if_block0) if_block0.m(span1, null);
+        append_dev(span3, t2);
+        append_dev(span3, button);
+        append_dev(button, span2);
+        append_dev(span6, t3);
+        append_dev(span6, span5);
+        append_dev(span5, span4);
+        if (if_block1) if_block1.m(span4, null);
+        append_dev(span4, t4);
+        append_dev(span4, slot);
+        append_dev(span4, t5);
+        append_dev(span4, p);
+        current = true;
+
+        if (!mounted) {
+          dispose = [listen_dev(div, "click",
+          /*masquerModale*/
+          ctx[9], false, false, false), listen_dev(button, "click",
+          /*masquerModale*/
+          ctx[9], false, false, false), listen_dev(span6, "keydown",
+          /*keydown*/
+          ctx[10], false, false, false), listen_dev(span6, "introend",
+          /*conserverFocusAideContextuelle*/
+          ctx[12], false, false, false), listen_dev(span6, "outroend",
+          /*finAnimationFermeture*/
+          ctx[11], false, false, false)];
+          mounted = true;
+        }
+      },
+      p: function update(ctx, dirty) {
+        if (
+        /*titre*/
+        ctx[1]) {
+          if (if_block0) {
+            if_block0.p(ctx, dirty);
+          } else {
+            if_block0 = create_if_block_2(ctx);
+            if_block0.c();
+            if_block0.m(span1, null);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+
+        if (
+        /*contenu*/
+        ctx[2]) {
+          if (if_block1) {
+            if_block1.p(ctx, dirty);
+          } else {
+            if_block1 = create_if_block_1(ctx);
+            if_block1.c();
+            if_block1.m(span4, t4);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+      },
+      i: function intro(local) {
+        if (current) return;
+        add_render_callback(function () {
+          if (span6_outro) span6_outro.end(1);
+          span6_intro = create_in_transition(span6, fly, {
+            y: 200,
+            duration: 750
+          });
+          span6_intro.start();
+        });
+        current = true;
+      },
+      o: function outro(local) {
+        if (span6_intro) span6_intro.invalidate();
+        span6_outro = create_out_transition(span6, fly, {
+          y: 200,
+          duration: 500
+        });
+        current = false;
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(div);
+        if (detaching) detach_dev(t0);
+        if (detaching) detach_dev(span6);
+        if (if_block0) if_block0.d();
+        if (if_block1) if_block1.d();
+        if (detaching && span6_outro) span6_outro.end();
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block.name,
+      type: "if",
+      source: "(91:2) {#if afficher}",
+      ctx: ctx
+    });
+    return block;
+  } // (110:12) {#if titre}
+
+
+  function create_if_block_2(ctx) {
+    var t;
+    var block = {
+      c: function create() {
+        t = text(
+        /*titre*/
+        ctx[1]);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, t, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*titre*/
+        2) set_data_dev(t,
+        /*titre*/
+        ctx[1]);
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(t);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_2.name,
+      type: "if",
+      source: "(110:12) {#if titre}",
+      ctx: ctx
+    });
+    return block;
+  } // (129:10) {#if contenu}
+
+
+  function create_if_block_1(ctx) {
+    var html_tag;
+    var html_anchor;
+    var block = {
+      c: function create() {
+        html_tag = new HtmlTag();
+        html_anchor = empty();
+        html_tag.a = html_anchor;
+      },
+      m: function mount(target, anchor) {
+        html_tag.m(
+        /*contenu*/
+        ctx[2], target, anchor);
+        insert_dev(target, html_anchor, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*contenu*/
+        4) html_tag.p(
+        /*contenu*/
+        ctx[2]);
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(html_anchor);
+        if (detaching) html_tag.d();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_1.name,
+      type: "if",
+      source: "(129:10) {#if contenu}",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function create_fragment(ctx) {
+    var span4;
+    var t0;
+    var span3;
+    var t1;
+    var button;
+    var span2;
+    var span1;
+    var span0;
+    var t2;
+    var t3;
+    var link;
+    var current;
+    var mounted;
+    var dispose;
+    var if_block0 =
+    /*$$slots*/
+    ctx[13]["texte-lie"] && create_if_block_3(ctx);
+    var if_block1 =
+    /*afficher*/
+    ctx[0] && create_if_block(ctx);
+    var block = {
+      c: function create() {
+        span4 = element("span");
+        if (if_block0) if_block0.c();
+        t0 = space();
+        span3 = element("span");
+        t1 = space();
+        button = element("button");
+        span2 = element("span");
+        span1 = element("span");
+        span0 = element("span");
+        t2 = space();
+        if (if_block1) if_block1.c();
+        t3 = space();
+        link = element("link");
+        this.c = noop;
+        attr_dev(span0, "aria-hidden", "true");
+        attr_dev(span0, "class", "utd-icone-svg question");
+        add_location(span0, file, 81, 10, 2355);
+        attr_dev(span1, "aria-hidden", "true");
+        attr_dev(span1, "class", "puce");
+        add_location(span1, file, 80, 8, 2305);
+        attr_dev(span2, "class", "conteneur-puce");
+        add_location(span2, file, 79, 6, 2266);
+        attr_dev(button, "type", "button");
+        attr_dev(button, "aria-label",
+        /*srTexteBoutonOuvrir*/
+        ctx[6]);
+        attr_dev(button, "class", "tooltip-toggle");
+        add_location(button, file, 78, 42, 2154);
+        attr_dev(span3, "class", "conteneur-tooltip");
+        add_location(span3, file, 78, 2, 2114);
+        attr_dev(span4, "class", "utd-infobulle");
+        add_location(span4, file, 74, 0, 1955);
+        attr_dev(link, "rel", "stylesheet");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        add_location(link, file, 139, 0, 3813);
+      },
+      l: function claim(nodes) {
+        throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, span4, anchor);
+        if (if_block0) if_block0.m(span4, null);
+        append_dev(span4, t0);
+        append_dev(span4, span3);
+        append_dev(span3, t1);
+        append_dev(span3, button);
+        append_dev(button, span2);
+        append_dev(span2, span1);
+        append_dev(span1, span0);
+        append_dev(span4, t2);
+        if (if_block1) if_block1.m(span4, null);
+        insert_dev(target, t3, anchor);
+        insert_dev(target, link, anchor);
+        current = true;
+
+        if (!mounted) {
+          dispose = listen_dev(button, "click",
+          /*afficherModale*/
+          ctx[8], false, false, false);
+          mounted = true;
+        }
+      },
+      p: function update(ctx, _ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            dirty = _ref2[0];
+
+        if (
+        /*$$slots*/
+        ctx[13]["texte-lie"]) {
+          if (if_block0) {
+            if_block0.p(ctx, dirty);
+          } else {
+            if_block0 = create_if_block_3(ctx);
+            if_block0.c();
+            if_block0.m(span4, t0);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+
+        if (
+        /*afficher*/
+        ctx[0]) {
+          if (if_block1) {
+            if_block1.p(ctx, dirty);
+
+            if (dirty &
+            /*afficher*/
+            1) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block(ctx);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(span4, null);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, function () {
+            if_block1 = null;
+          });
+          check_outros();
+        }
+      },
+      i: function intro(local) {
+        if (current) return;
+        transition_in(if_block1);
+        current = true;
+      },
+      o: function outro(local) {
+        transition_out(if_block1);
+        current = false;
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(span4);
+        if (if_block0) if_block0.d();
+        if (if_block1) if_block1.d();
+        if (detaching) detach_dev(t3);
+        if (detaching) detach_dev(link);
+        mounted = false;
+        dispose();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_fragment.name,
+      type: "component",
+      source: "",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function instance($$self, $$props, $$invalidate) {
+    var _$$props$$$slots = $$props.$$slots,
+        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
+        $$props.$$scope;
+    validate_slots('utd-infobulle', slots, []);
+    var $$slots = compute_slots(slots);
+    var _$$props$afficher = $$props.afficher,
+        afficher = _$$props$afficher === void 0 ? false : _$$props$afficher;
+    var _$$props$titre = $$props.titre,
+        titre = _$$props$titre === void 0 ? "" : _$$props$titre;
+    var _$$props$lang = $$props.lang,
+        lang = _$$props$lang === void 0 ? "fr" : _$$props$lang;
+    var _$$props$srtitre = $$props.srtitre,
+        srtitre = _$$props$srtitre === void 0 ? "" : _$$props$srtitre;
+    var _$$props$srboutonouvr = $$props.srboutonouvrir,
+        srboutonouvrir = _$$props$srboutonouvr === void 0 ? "" : _$$props$srboutonouvr;
+    var _$$props$srboutonferm = $$props.srboutonfermer,
+        srboutonfermer = _$$props$srboutonferm === void 0 ? "" : _$$props$srboutonferm;
+    var _$$props$contenu = $$props.contenu,
+        contenu = _$$props$contenu === void 0 ? "" : _$$props$contenu;
+    var idModale = Utils.genererId();
+    var idEntete = Utils.genererId();
+    var srTexteTitre = srtitre ? srtitre : lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;";
+    var srTexteBoutonOuvrir = srboutonouvrir ? srboutonouvrir : lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about";
+    var srTexteBoutonFermer = srboutonfermer ? srboutonfermer : lang === "fr" ? "Fermer" : "Close";
+    var thisComponent = get_current_component();
+    var html;
+    var body;
+    onMount(function () {
+      html = thisComponent.getRootNode().getElementsByTagName("html")[0];
+      body = thisComponent.getRootNode().getElementsByTagName("body")[0];
+
+      if (Utils.estMobile()) {
+        html.classList.add("est-mobile");
+      }
+    });
+
+    function afficherModale(e) {
+      Utils.ajusterInterfaceAvantAffichageModale(html, body);
+      $$invalidate(0, afficher = true);
+    }
+
+    function masquerModale(e) {
+      $$invalidate(0, afficher = false);
+    }
+
+    function keydown(e) {
+      if (e.key === "Escape") {
+        masquerModale();
+      }
+    }
+
+    function finAnimationFermeture(e) {
+      Utils.ajusterInterfaceApresFermetureModale(html, body);
+    }
+
+    function conserverFocusAideContextuelle(e) {
+      thisComponent.shadowRoot.getElementById(idEntete).focus();
+      Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent);
+    }
+
+    var writable_props = ['afficher', 'titre', 'lang', 'srtitre', 'srboutonouvrir', 'srboutonfermer', 'contenu'];
+    Object.keys($$props).forEach(function (key) {
+      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-infobulle> was created with unknown prop '".concat(key, "'"));
+    });
+
+    $$self.$$set = function ($$props) {
+      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
+      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+    };
+
+    $$self.$capture_state = function () {
+      return {
+        onMount: onMount,
+        fly: fly,
+        get_current_component: get_current_component,
+        Utils: Utils,
+        afficher: afficher,
+        titre: titre,
+        lang: lang,
+        srtitre: srtitre,
+        srboutonouvrir: srboutonouvrir,
+        srboutonfermer: srboutonfermer,
+        contenu: contenu,
+        idModale: idModale,
+        idEntete: idEntete,
+        srTexteTitre: srTexteTitre,
+        srTexteBoutonOuvrir: srTexteBoutonOuvrir,
+        srTexteBoutonFermer: srTexteBoutonFermer,
+        thisComponent: thisComponent,
+        html: html,
+        body: body,
+        afficherModale: afficherModale,
+        masquerModale: masquerModale,
+        keydown: keydown,
+        finAnimationFermeture: finAnimationFermeture,
+        conserverFocusAideContextuelle: conserverFocusAideContextuelle
+      };
+    };
+
+    $$self.$inject_state = function ($$props) {
+      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
+      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+      if ('html' in $$props) html = $$props.html;
+      if ('body' in $$props) body = $$props.body;
+    };
+
+    if ($$props && "$$inject" in $$props) {
+      $$self.$inject_state($$props.$$inject);
+    }
+
+    return [afficher, titre, contenu, idModale, idEntete, srTexteTitre, srTexteBoutonOuvrir, srTexteBoutonFermer, afficherModale, masquerModale, keydown, finAnimationFermeture, conserverFocusAideContextuelle, $$slots, lang, srtitre, srboutonouvrir, srboutonfermer];
+  }
+
+  var Infobulle = /*#__PURE__*/function (_SvelteElement) {
+    _inherits(Infobulle, _SvelteElement);
+
+    var _super = _createSuper(Infobulle);
+
+    function Infobulle(options) {
+      var _this;
+
+      _classCallCheck(this, Infobulle);
+
+      _this = _super.call(this);
+      init(_assertThisInitialized(_this), {
+        target: _this.shadowRoot,
+        props: _objectSpread(_objectSpread({}, attribute_to_object(_this.attributes)), {}, {
+          $$slots: get_custom_elements_slots(_assertThisInitialized(_this))
+        }),
+        customElement: true
+      }, instance, create_fragment, safe_not_equal, {
+        afficher: 0,
+        titre: 1,
+        lang: 14,
+        srtitre: 15,
+        srboutonouvrir: 16,
+        srboutonfermer: 17,
+        contenu: 2
+      }, null);
+
+      if (options) {
+        if (options.target) {
+          insert_dev(options.target, _assertThisInitialized(_this), options.anchor);
+        }
+
+        if (options.props) {
+          _this.$set(options.props);
+
+          flush();
+        }
+      }
+
+      return _this;
+    }
+
+    _createClass(Infobulle, [{
+      key: "afficher",
+      get: function get() {
+        return this.$$.ctx[0];
+      },
+      set: function set(afficher) {
+        this.$$set({
+          afficher: afficher
+        });
+        flush();
+      }
+    }, {
+      key: "titre",
+      get: function get() {
+        return this.$$.ctx[1];
+      },
+      set: function set(titre) {
+        this.$$set({
+          titre: titre
+        });
+        flush();
+      }
+    }, {
+      key: "lang",
+      get: function get() {
+        return this.$$.ctx[14];
+      },
+      set: function set(lang) {
+        this.$$set({
+          lang: lang
+        });
+        flush();
+      }
+    }, {
+      key: "srtitre",
+      get: function get() {
+        return this.$$.ctx[15];
+      },
+      set: function set(srtitre) {
+        this.$$set({
+          srtitre: srtitre
+        });
+        flush();
+      }
+    }, {
+      key: "srboutonouvrir",
+      get: function get() {
+        return this.$$.ctx[16];
+      },
+      set: function set(srboutonouvrir) {
+        this.$$set({
+          srboutonouvrir: srboutonouvrir
+        });
+        flush();
+      }
+    }, {
+      key: "srboutonfermer",
+      get: function get() {
+        return this.$$.ctx[17];
+      },
+      set: function set(srboutonfermer) {
+        this.$$set({
+          srboutonfermer: srboutonfermer
+        });
+        flush();
+      }
+    }, {
+      key: "contenu",
+      get: function get() {
+        return this.$$.ctx[2];
+      },
+      set: function set(contenu) {
+        this.$$set({
+          contenu: contenu
+        });
+        flush();
+      }
+    }], [{
+      key: "observedAttributes",
+      get: function get() {
+        return ["afficher", "titre", "lang", "srtitre", "srboutonouvrir", "srboutonfermer", "contenu"];
+      }
+    }]);
+
+    return Infobulle;
+  }(SvelteElement);
+
+  customElements.define("utd-infobulle", Infobulle);
 
 })();
