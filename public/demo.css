@@ -291,11 +291,23 @@ header {
     position: relative;
 }
 
+.code-source pre {
+    margin: 0;
+}
+
 .code-source code {
     min-height: 78px;
 }
 
+.code-source .zone-copie {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+}
 
+.code-source .message-copie {
+    margin-left: 8px;
+}
 
 /*====================================================================================================
   -10- Page "Boutons"

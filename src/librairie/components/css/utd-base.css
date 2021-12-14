@@ -153,8 +153,6 @@
     --couleur-avertissement: #ffcc00;
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
-
-
 }
 
 
@@ -425,38 +423,6 @@ p:last-child {
     width: 100vw;
     height: 100vh;
     background-color: #000;
-}
-
-[slot="contenu"] ul {
-    padding-left: 20px
-}
-
-[slot="contenu"] ul li {
-    margin-bottom: 16px
-}
-
-[slot="contenu"] ul li:last-of-type {
-    margin-bottom: 0
-}
-
-/*====================================================================================================
-  -11- Zone html
-====================================================================================================*/
-
-[slot="contenu"] ul {
-    padding-left: 16px;
-}
-
-[slot="contenu"] ul:last-child {
-    margin-bottom: 0;
-}
-
-[slot="contenu"] ul li {
-    margin-bottom: 16px;
-}
-
-[slot="contenu"] ul li:last-of-type {
-    margin-bottom: 0;
 }
 
 /*====================================================================================================
@@ -890,6 +856,14 @@ input.utd-form-control.sm {
 
 .utd-icone-svg.clipboard {
     background-image: url(/images/utd-sprite-v1.2.0.svg#ico-clipboard);
+}
+
+.utd-icone-svg.plus {
+    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-plus);
+}
+
+.utd-icone-svg.moins {
+    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-moins);
 }
 
 .utd-icone-svg.x-fermer-bleu {

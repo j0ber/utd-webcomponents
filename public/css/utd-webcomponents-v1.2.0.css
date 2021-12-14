@@ -153,8 +153,6 @@
     --couleur-avertissement: #ffcc00;
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
-
-
 }
 
 
@@ -425,38 +423,6 @@ p:last-child {
     width: 100vw;
     height: 100vh;
     background-color: #000;
-}
-
-[slot="contenu"] ul {
-    padding-left: 20px
-}
-
-[slot="contenu"] ul li {
-    margin-bottom: 16px
-}
-
-[slot="contenu"] ul li:last-of-type {
-    margin-bottom: 0
-}
-
-/*====================================================================================================
-  -11- Zone html
-====================================================================================================*/
-
-[slot="contenu"] ul {
-    padding-left: 16px;
-}
-
-[slot="contenu"] ul:last-child {
-    margin-bottom: 0;
-}
-
-[slot="contenu"] ul li {
-    margin-bottom: 16px;
-}
-
-[slot="contenu"] ul li:last-of-type {
-    margin-bottom: 0;
 }
 
 /*====================================================================================================
@@ -892,6 +858,14 @@ input.utd-form-control.sm {
     background-image: url(/images/utd-sprite-v1.2.0.svg#ico-clipboard);
 }
 
+.utd-icone-svg.plus {
+    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-plus);
+}
+
+.utd-icone-svg.moins {
+    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-moins);
+}
+
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
@@ -936,6 +910,35 @@ input.utd-form-control.sm {
     background-image: url(/images/utd-sprite-v1.2.0.svg#ico-moins);
 }
 /*! utd-webcomponents */
+
+/*====================================================================================================
+  -10- Slots
+====================================================================================================*/
+
+[slot="contenu"] ul {
+  padding-left: 16px;
+}
+
+[slot="contenu"] ul:last-child {
+  margin-bottom: 0;
+}
+
+[slot="contenu"] ul li {
+  margin-bottom: 16px;
+}
+
+[slot="contenu"] ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+[slot="contenu"] p:first-of-type, .contenu p:first-of-type {
+  margin-top: 0;
+}
+
+[slot="contenu"] p:last-of-type, .contenu p:last-of-type {
+  margin-bottom: 0;
+}
+
 
 
 /*====================================================================================================*/
@@ -1010,11 +1013,66 @@ input.utd-form-control.sm {
       margin-bottom: 0;
   }
 
+/*====================================================================================================
+  -40- utd-accordeon
+====================================================================================================*/
+
+.utd-accordeon .entete button {
+  font-family: 'OpenSans';
+  font-size: 16px;
+  color: var(--couleur-texte-base);
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+.utd-accordeon .entete button:hover, .utd-accordeon .entete button:focus {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+
+.utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
+  border: 1px solid #c4c8ce;
+}
+
+.utd-accordeon .contenu {
+  margin-left: 16px;
+  /*  transform:scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;*/
+}
+
+.utd-accordeon.ouvert .contenu {
+  margin: 0;
+  border-top: 1px solid transparent!important;
+  padding: 24px 16px;
+  /*transform:scaleY(1);*/
+}
+.utd-accordeon .entete button:focus {
+  outline: 2px solid #89bce5;
+  border: 2px solid #5b6476;
+  padding: 14px 18px 14px 15px;
+  margin-left: -1px;
+  margin-bottom: 2px;
+}
+
+
 
 /* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
 
 /*====================================================================================================
-  -40- utd-infobulle
+  -50- utd-infobulle
 ====================================================================================================*/
 
 .utd-infobulle .texte-lie:hover,
@@ -1206,14 +1264,8 @@ input.utd-form-control.sm {
     transition: all 0.35s;
 }
 
-/* Slots */
-utd-infobulle [slot="contenu"] p:first-of-type {
-  margin-top: 0;
-}
-
-
 /*====================================================================================================
-  -50- utd-dialog
+  -60- utd-dialog
 ====================================================================================================*/
 
 .utd-dialog {
@@ -1317,10 +1369,6 @@ utd-infobulle [slot="contenu"] p:first-of-type {
  
 
 /* Slots */
-utd-dialog [slot="contenu"] p:first-of-type {
-  margin-top: 0;
-}
-
 utd-dialog [slot="pied"] > button {
   margin-right: 32px;
 }

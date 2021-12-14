@@ -153,7 +153,7 @@
     return Function.toString.call(fn).indexOf("[native code]") !== -1;
   }
 
-  function _isNativeReflectConstruct$4() {
+  function _isNativeReflectConstruct$5() {
     if (typeof Reflect === "undefined" || !Reflect.construct) return false;
     if (Reflect.construct.sham) return false;
     if (typeof Proxy === "function") return true;
@@ -167,7 +167,7 @@
   }
 
   function _construct(Parent, args, Class) {
-    if (_isNativeReflectConstruct$4()) {
+    if (_isNativeReflectConstruct$5()) {
       _construct = Reflect.construct;
     } else {
       _construct = function _construct(Parent, args, Class) {
@@ -233,9 +233,9 @@
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread();
   }
 
-  function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
   function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -875,6 +875,129 @@
     };
   }
 
+  function create_bidirectional_transition(node, fn, params, intro) {
+    var config = fn(node, params);
+    var t = intro ? 0 : 1;
+    var running_program = null;
+    var pending_program = null;
+    var animation_name = null;
+
+    function clear_animation() {
+      if (animation_name) delete_rule(node, animation_name);
+    }
+
+    function init(program, duration) {
+      var d = program.b - t;
+      duration *= Math.abs(d);
+      return {
+        a: t,
+        b: program.b,
+        d: d,
+        duration: duration,
+        start: program.start,
+        end: program.start + duration,
+        group: program.group
+      };
+    }
+
+    function go(b) {
+      var _ref3 = config || null_transition,
+          _ref3$delay = _ref3.delay,
+          delay = _ref3$delay === void 0 ? 0 : _ref3$delay,
+          _ref3$duration = _ref3.duration,
+          duration = _ref3$duration === void 0 ? 300 : _ref3$duration,
+          _ref3$easing = _ref3.easing,
+          easing = _ref3$easing === void 0 ? identity : _ref3$easing,
+          _ref3$tick = _ref3.tick,
+          tick = _ref3$tick === void 0 ? noop : _ref3$tick,
+          css = _ref3.css;
+
+      var program = {
+        start: now() + delay,
+        b: b
+      };
+
+      if (!b) {
+        // @ts-ignore todo: improve typings
+        program.group = outros;
+        outros.r += 1;
+      }
+
+      if (running_program || pending_program) {
+        pending_program = program;
+      } else {
+        // if this is an intro, and there's a delay, we need to do
+        // an initial tick and/or apply CSS animation immediately
+        if (css) {
+          clear_animation();
+          animation_name = create_rule(node, t, b, duration, delay, easing, css);
+        }
+
+        if (b) tick(0, 1);
+        running_program = init(program, duration);
+        add_render_callback(function () {
+          return dispatch(node, b, 'start');
+        });
+        loop(function (now) {
+          if (pending_program && now > pending_program.start) {
+            running_program = init(pending_program, duration);
+            pending_program = null;
+            dispatch(node, running_program.b, 'start');
+
+            if (css) {
+              clear_animation();
+              animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+            }
+          }
+
+          if (running_program) {
+            if (now >= running_program.end) {
+              tick(t = running_program.b, 1 - t);
+              dispatch(node, running_program.b, 'end');
+
+              if (!pending_program) {
+                // we're done
+                if (running_program.b) {
+                  // intro — we can tidy up immediately
+                  clear_animation();
+                } else {
+                  // outro — needs to be coordinated
+                  if (! --running_program.group.r) run_all(running_program.group.c);
+                }
+              }
+
+              running_program = null;
+            } else if (now >= running_program.start) {
+              var p = now - running_program.start;
+              t = running_program.a + running_program.d * easing(p / running_program.duration);
+              tick(t, 1 - t);
+            }
+          }
+
+          return !!(running_program || pending_program);
+        });
+      }
+    }
+
+    return {
+      run: function run(b) {
+        if (is_function(config)) {
+          wait().then(function () {
+            // @ts-ignore
+            config = config();
+            go(b);
+          });
+        } else {
+          go(b);
+        }
+      },
+      end: function end() {
+        clear_animation();
+        running_program = pending_program = null;
+      }
+    };
+  }
+
   function mount_component(component, target, anchor, customElement) {
     var _component$$$ = component.$$,
         fragment = _component$$$.fragment,
@@ -994,7 +1117,7 @@
     SvelteElement = /*#__PURE__*/function (_HTMLElement) {
       _inherits(SvelteElement, _HTMLElement);
 
-      var _super2 = _createSuper$3(SvelteElement);
+      var _super2 = _createSuper$4(SvelteElement);
 
       function SvelteElement() {
         var _this3;
@@ -1146,6 +1269,764 @@
       }
     }
   }
+
+  function cubicOut(t) {
+    var f = t - 1.0;
+    return f * f * f + 1.0;
+  }
+
+  function fly(node) {
+    var _ref3 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref3$delay = _ref3.delay,
+        delay = _ref3$delay === void 0 ? 0 : _ref3$delay,
+        _ref3$duration = _ref3.duration,
+        duration = _ref3$duration === void 0 ? 400 : _ref3$duration,
+        _ref3$easing = _ref3.easing,
+        easing = _ref3$easing === void 0 ? cubicOut : _ref3$easing,
+        _ref3$x = _ref3.x,
+        x = _ref3$x === void 0 ? 0 : _ref3$x,
+        _ref3$y = _ref3.y,
+        y = _ref3$y === void 0 ? 0 : _ref3$y,
+        _ref3$opacity = _ref3.opacity,
+        opacity = _ref3$opacity === void 0 ? 0 : _ref3$opacity;
+
+    var style = getComputedStyle(node);
+    var target_opacity = +style.opacity;
+    var transform = style.transform === 'none' ? '' : style.transform;
+    var od = target_opacity * (1 - opacity);
+    return {
+      delay: delay,
+      duration: duration,
+      easing: easing,
+      css: function css(t, u) {
+        return "\n\t\t\ttransform: ".concat(transform, " translate(").concat((1 - t) * x, "px, ").concat((1 - t) * y, "px);\n\t\t\topacity: ").concat(target_opacity - od * u);
+      }
+    };
+  }
+
+  function slide(node) {
+    var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref4$delay = _ref4.delay,
+        delay = _ref4$delay === void 0 ? 0 : _ref4$delay,
+        _ref4$duration = _ref4.duration,
+        duration = _ref4$duration === void 0 ? 400 : _ref4$duration,
+        _ref4$easing = _ref4.easing,
+        easing = _ref4$easing === void 0 ? cubicOut : _ref4$easing;
+
+    var style = getComputedStyle(node);
+    var opacity = +style.opacity;
+    var height = parseFloat(style.height);
+    var padding_top = parseFloat(style.paddingTop);
+    var padding_bottom = parseFloat(style.paddingBottom);
+    var margin_top = parseFloat(style.marginTop);
+    var margin_bottom = parseFloat(style.marginBottom);
+    var border_top_width = parseFloat(style.borderTopWidth);
+    var border_bottom_width = parseFloat(style.borderBottomWidth);
+    return {
+      delay: delay,
+      duration: duration,
+      easing: easing,
+      css: function css(t) {
+        return 'overflow: hidden;' + "opacity: ".concat(Math.min(t * 20, 1) * opacity, ";") + "height: ".concat(t * height, "px;") + "padding-top: ".concat(t * padding_top, "px;") + "padding-bottom: ".concat(t * padding_bottom, "px;") + "margin-top: ".concat(t * margin_top, "px;") + "margin-bottom: ".concat(t * margin_bottom, "px;") + "border-top-width: ".concat(t * border_top_width, "px;") + "border-bottom-width: ".concat(t * border_bottom_width, "px;");
+      }
+    };
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  var Utils = /*#__PURE__*/function () {
+    function Utils() {
+      _classCallCheck(this, Utils);
+    }
+
+    _createClass(Utils, null, [{
+      key: "conserverFocusElement",
+      value: function conserverFocusElement(componentShadow, componentRoot) {
+        var elementsFocusablesShadow = Array.from(this.obtenirElementsFocusables(componentShadow));
+        var elementsFocusablesRoot = Array.from(this.obtenirElementsFocusables(componentRoot));
+        var elementsFocusables = elementsFocusablesShadow.concat(elementsFocusablesRoot);
+        var premierElementFocusable = elementsFocusables[0];
+        var dernierElementFocusable = elementsFocusables[elementsFocusables.length - 1];
+        var KEYCODE_TAB = 9;
+        componentShadow.addEventListener('keydown', function (e) {
+          var estToucheTab = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
+
+          if (!estToucheTab) {
+            return;
+          }
+
+          var elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement;
+
+          if (e.shiftKey)
+            /* shift + tab */
+            {
+              if (elementActif === premierElementFocusable) {
+                dernierElementFocusable.focus();
+                e.preventDefault();
+              }
+            } else
+            /* tab */
+            {
+              if (elementsFocusables.length === 1 || elementActif === dernierElementFocusable) {
+                premierElementFocusable.focus();
+                e.preventDefault();
+              }
+            }
+        });
+      }
+    }, {
+      key: "obtenirElementsFocusables",
+      value: function obtenirElementsFocusables(element) {
+        return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+      }
+      /**
+       * Génère un id unique.
+       * @returns L'id unique généré.
+       */
+
+    }, {
+      key: "genererId",
+      value: function genererId() {
+        return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
+      }
+      /**
+       * Créé un événement custom pour un webComponent.
+       * @param {*} component Objet associé à notre composant (objet DOM).
+       * @param {*} nomEvenement Nom de l'événement. 
+       * @param {*} detailsEvenement Détails de l'événement.
+       */
+
+    }, {
+      key: "estMobile",
+      value: function estMobile() {
+        return navigator.maxTouchPoints || 'ontouchstart' in document.documentElement;
+      }
+    }, {
+      key: "ajusterInterfaceAvantAffichageModale",
+      value: function ajusterInterfaceAvantAffichageModale(html, body) {
+        if (!this.estMobile()) {
+          var largeurScrollbarHtml = window.innerWidth - html.offsetWidth;
+
+          if (largeurScrollbarHtml > 0) {
+            html.style['padding-right'] = largeurScrollbarHtml + 'px';
+          } else {
+            var largeurScrollbarBody = window.innerWidth - body.offsetWidth;
+
+            if (largeurScrollbarBody > 0) {
+              body.style['padding-right'] = largeurScrollbarBody + 'px';
+            }
+          }
+        }
+
+        html.classList.add("modale-ouverte");
+      }
+    }, {
+      key: "ajusterInterfacePendantAffichageModale",
+      value: function ajusterInterfacePendantAffichageModale(body, modale) {
+        if (!this.estMobile()) {
+          var largeurScrollbarModale = window.innerWidth - modale.offsetWidth;
+
+          if (largeurScrollbarModale > 0) {
+            body.style['padding-right'] = largeurScrollbarModale + 'px';
+          }
+        }
+      }
+    }, {
+      key: "ajusterInterfaceApresFermetureModale",
+      value: function ajusterInterfaceApresFermetureModale(html, body) {
+        html.style.removeProperty('padding-right');
+        body.style.removeProperty('padding-right');
+        html.classList.remove("modale-ouverte");
+      }
+    }, {
+      key: "slotExiste",
+      value: function slotExiste(slots, nomSlot) {
+        return slots.some(function (s) {
+          return s.slot === nomSlot;
+        });
+      }
+    }]);
+
+    return Utils;
+  }();
+
+  _defineProperty(Utils, "dispatchWcEvent", function (component, nomEvenement, detailsEvenement) {
+    component.dispatchEvent(new CustomEvent(nomEvenement, {
+      detail: detailsEvenement,
+      composed: true // propage l'événement à travers le shadow DOM (Remonte au document)
+
+    }));
+  });
+
+  function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$3 = "src\\librairie\\components\\accordeon.svelte"; // (45:8) {#if titre}
+
+  function create_if_block_2$1(ctx) {
+    var t;
+    var block = {
+      c: function create() {
+        t = text(
+        /*titre*/
+        ctx[1]);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, t, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*titre*/
+        2) set_data_dev(t,
+        /*titre*/
+        ctx[1]);
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(t);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_2$1.name,
+      type: "if",
+      source: "(45:8) {#if titre}",
+      ctx: ctx
+    });
+    return block;
+  } // (55:6) {#if afficher}
+
+
+  function create_if_block$3(ctx) {
+    var div;
+    var t;
+    var slot;
+    var div_transition;
+    var current;
+    var if_block =
+    /*contenu*/
+    ctx[2] && create_if_block_1$2(ctx);
+    var block = {
+      c: function create() {
+        div = element("div");
+        if (if_block) if_block.c();
+        t = space();
+        slot = element("slot");
+        attr_dev(slot, "name", "contenu");
+        add_location(slot, file$3, 59, 8, 1628);
+        add_location(div, file$3, 55, 6, 1512);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, div, anchor);
+        if (if_block) if_block.m(div, null);
+        append_dev(div, t);
+        append_dev(div, slot);
+        current = true;
+      },
+      p: function update(ctx, dirty) {
+        if (
+        /*contenu*/
+        ctx[2]) {
+          if (if_block) {
+            if_block.p(ctx, dirty);
+          } else {
+            if_block = create_if_block_1$2(ctx);
+            if_block.c();
+            if_block.m(div, t);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      i: function intro(local) {
+        if (current) return;
+        add_render_callback(function () {
+          if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {
+            duration: 250
+          }, true);
+          div_transition.run(1);
+        });
+        current = true;
+      },
+      o: function outro(local) {
+        if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {
+          duration: 250
+        }, false);
+        div_transition.run(0);
+        current = false;
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(div);
+        if (if_block) if_block.d();
+        if (detaching && div_transition) div_transition.end();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block$3.name,
+      type: "if",
+      source: "(55:6) {#if afficher}",
+      ctx: ctx
+    });
+    return block;
+  } // (57:8) {#if contenu}
+
+
+  function create_if_block_1$2(ctx) {
+    var html_tag;
+    var html_anchor;
+    var block = {
+      c: function create() {
+        html_tag = new HtmlTag();
+        html_anchor = empty();
+        html_tag.a = html_anchor;
+      },
+      m: function mount(target, anchor) {
+        html_tag.m(
+        /*contenu*/
+        ctx[2], target, anchor);
+        insert_dev(target, html_anchor, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*contenu*/
+        4) html_tag.p(
+        /*contenu*/
+        ctx[2]);
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(html_anchor);
+        if (detaching) html_tag.d();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_1$2.name,
+      type: "if",
+      source: "(57:8) {#if contenu}",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function create_fragment$3(ctx) {
+    var div2;
+    var div0;
+    var button;
+    var span0;
+    var t0;
+    var slot;
+    var t1;
+    var span1;
+    var span1_class_value;
+    var t2;
+    var div1;
+    var div2_class_value;
+    var t3;
+    var link;
+    var current;
+    var mounted;
+    var dispose;
+    var if_block0 =
+    /*titre*/
+    ctx[1] && create_if_block_2$1(ctx);
+    var if_block1 =
+    /*afficher*/
+    ctx[0] && create_if_block$3(ctx);
+    var block = {
+      c: function create() {
+        div2 = element("div");
+        div0 = element("div");
+        button = element("button");
+        span0 = element("span");
+        if (if_block0) if_block0.c();
+        t0 = space();
+        slot = element("slot");
+        t1 = space();
+        span1 = element("span");
+        t2 = space();
+        div1 = element("div");
+        if (if_block1) if_block1.c();
+        t3 = space();
+        link = element("link");
+        this.c = noop;
+        attr_dev(slot, "name", "titre");
+        add_location(slot, file$3, 47, 8, 1292);
+        attr_dev(span0, "class", "titre");
+        add_location(span0, file$3, 43, 6, 1207);
+        attr_dev(span1, "class", span1_class_value = "utd-icone-svg " + (
+        /*afficher*/
+        ctx[0] ? 'moins' : 'plus') + " md");
+        add_location(span1, file$3, 49, 6, 1342);
+        attr_dev(button, "class", "");
+        attr_dev(button, "aria-controls",
+        /*idContenu*/
+        ctx[3]);
+        attr_dev(button, "aria-expanded",
+        /*afficher*/
+        ctx[0]);
+        add_location(button, file$3, 42, 4, 1093);
+        attr_dev(div0, "class", "entete");
+        add_location(div0, file$3, 41, 2, 1067);
+        attr_dev(div1, "id",
+        /*idContenu*/
+        ctx[3]);
+        attr_dev(div1, "class", "contenu");
+        add_location(div1, file$3, 53, 4, 1443);
+        attr_dev(div2, "class", div2_class_value = "utd-accordeon " + (
+        /*afficher*/
+        ctx[0] ? 'ouvert' : ''));
+        add_location(div2, file$3, 40, 0, 1008);
+        attr_dev(link, "rel", "stylesheet");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        add_location(link, file$3, 66, 0, 1704);
+      },
+      l: function claim(nodes) {
+        throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, div2, anchor);
+        append_dev(div2, div0);
+        append_dev(div0, button);
+        append_dev(button, span0);
+        if (if_block0) if_block0.m(span0, null);
+        append_dev(span0, t0);
+        append_dev(span0, slot);
+        append_dev(button, t1);
+        append_dev(button, span1);
+        append_dev(div2, t2);
+        append_dev(div2, div1);
+        if (if_block1) if_block1.m(div1, null);
+        insert_dev(target, t3, anchor);
+        insert_dev(target, link, anchor);
+        current = true;
+
+        if (!mounted) {
+          dispose = listen_dev(button, "click",
+          /*toggleAffichageContenu*/
+          ctx[4], false, false, false);
+          mounted = true;
+        }
+      },
+      p: function update(ctx, _ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            dirty = _ref2[0];
+
+        if (
+        /*titre*/
+        ctx[1]) {
+          if (if_block0) {
+            if_block0.p(ctx, dirty);
+          } else {
+            if_block0 = create_if_block_2$1(ctx);
+            if_block0.c();
+            if_block0.m(span0, t0);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+
+        if (!current || dirty &
+        /*afficher*/
+        1 && span1_class_value !== (span1_class_value = "utd-icone-svg " + (
+        /*afficher*/
+        ctx[0] ? 'moins' : 'plus') + " md")) {
+          attr_dev(span1, "class", span1_class_value);
+        }
+
+        if (!current || dirty &
+        /*afficher*/
+        1) {
+          attr_dev(button, "aria-expanded",
+          /*afficher*/
+          ctx[0]);
+        }
+
+        if (
+        /*afficher*/
+        ctx[0]) {
+          if (if_block1) {
+            if_block1.p(ctx, dirty);
+
+            if (dirty &
+            /*afficher*/
+            1) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block$3(ctx);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(div1, null);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, function () {
+            if_block1 = null;
+          });
+          check_outros();
+        }
+
+        if (!current || dirty &
+        /*afficher*/
+        1 && div2_class_value !== (div2_class_value = "utd-accordeon " + (
+        /*afficher*/
+        ctx[0] ? 'ouvert' : ''))) {
+          attr_dev(div2, "class", div2_class_value);
+        }
+      },
+      i: function intro(local) {
+        if (current) return;
+        transition_in(if_block1);
+        current = true;
+      },
+      o: function outro(local) {
+        transition_out(if_block1);
+        current = false;
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(div2);
+        if (if_block0) if_block0.d();
+        if (if_block1) if_block1.d();
+        if (detaching) detach_dev(t3);
+        if (detaching) detach_dev(link);
+        mounted = false;
+        dispose();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_fragment$3.name,
+      type: "component",
+      source: "",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function instance$3($$self, $$props, $$invalidate) {
+    var _$$props$$$slots = $$props.$$slots,
+        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
+        $$props.$$scope;
+    validate_slots('utd-accordeon', slots, []);
+    var _$$props$afficher = $$props.afficher,
+        afficher = _$$props$afficher === void 0 ? false : _$$props$afficher;
+    var _$$props$titre = $$props.titre,
+        titre = _$$props$titre === void 0 ? "" : _$$props$titre;
+    var _$$props$lang = $$props.lang,
+        lang = _$$props$lang === void 0 ? "fr" : _$$props$lang;
+    var _$$props$srtitre = $$props.srtitre,
+        srtitre = _$$props$srtitre === void 0 ? "" : _$$props$srtitre;
+    var _$$props$srboutonouvr = $$props.srboutonouvrir,
+        srboutonouvrir = _$$props$srboutonouvr === void 0 ? "" : _$$props$srboutonouvr;
+    var _$$props$srboutonferm = $$props.srboutonfermer,
+        srboutonfermer = _$$props$srboutonferm === void 0 ? "" : _$$props$srboutonferm;
+    var _$$props$contenu = $$props.contenu,
+        contenu = _$$props$contenu === void 0 ? "" : _$$props$contenu;
+    var idEntete = Utils.genererId();
+    var idContenu = 'corps' + idEntete;
+    var srTexteTitre = srtitre ? srtitre : lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;";
+    var srTexteBoutonOuvrir = srboutonouvrir ? srboutonouvrir : lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about";
+    var srTexteBoutonFermer = srboutonfermer ? srboutonfermer : lang === "fr" ? "Fermer" : "Close";
+
+    function toggleAffichageContenu() {
+      $$invalidate(0, afficher = !afficher);
+    }
+
+    var writable_props = ['afficher', 'titre', 'lang', 'srtitre', 'srboutonouvrir', 'srboutonfermer', 'contenu'];
+    Object.keys($$props).forEach(function (key) {
+      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-accordeon> was created with unknown prop '".concat(key, "'"));
+    });
+
+    $$self.$$set = function ($$props) {
+      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
+      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(5, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(6, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(7, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(8, srboutonfermer = $$props.srboutonfermer);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+    };
+
+    $$self.$capture_state = function () {
+      return {
+        slide: slide,
+        Utils: Utils,
+        afficher: afficher,
+        titre: titre,
+        lang: lang,
+        srtitre: srtitre,
+        srboutonouvrir: srboutonouvrir,
+        srboutonfermer: srboutonfermer,
+        contenu: contenu,
+        idEntete: idEntete,
+        idContenu: idContenu,
+        srTexteTitre: srTexteTitre,
+        srTexteBoutonOuvrir: srTexteBoutonOuvrir,
+        srTexteBoutonFermer: srTexteBoutonFermer,
+        toggleAffichageContenu: toggleAffichageContenu
+      };
+    };
+
+    $$self.$inject_state = function ($$props) {
+      if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
+      if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(5, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(6, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(7, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(8, srboutonfermer = $$props.srboutonfermer);
+      if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
+    };
+
+    if ($$props && "$$inject" in $$props) {
+      $$self.$inject_state($$props.$$inject);
+    }
+
+    return [afficher, titre, contenu, idContenu, toggleAffichageContenu, lang, srtitre, srboutonouvrir, srboutonfermer];
+  }
+
+  var Accordeon = /*#__PURE__*/function (_SvelteElement) {
+    _inherits(Accordeon, _SvelteElement);
+
+    var _super = _createSuper$3(Accordeon);
+
+    function Accordeon(options) {
+      var _this;
+
+      _classCallCheck(this, Accordeon);
+
+      _this = _super.call(this);
+      init(_assertThisInitialized(_this), {
+        target: _this.shadowRoot,
+        props: attribute_to_object(_this.attributes),
+        customElement: true
+      }, instance$3, create_fragment$3, safe_not_equal, {
+        afficher: 0,
+        titre: 1,
+        lang: 5,
+        srtitre: 6,
+        srboutonouvrir: 7,
+        srboutonfermer: 8,
+        contenu: 2
+      }, null);
+
+      if (options) {
+        if (options.target) {
+          insert_dev(options.target, _assertThisInitialized(_this), options.anchor);
+        }
+
+        if (options.props) {
+          _this.$set(options.props);
+
+          flush();
+        }
+      }
+
+      return _this;
+    }
+
+    _createClass(Accordeon, [{
+      key: "afficher",
+      get: function get() {
+        return this.$$.ctx[0];
+      },
+      set: function set(afficher) {
+        this.$$set({
+          afficher: afficher
+        });
+        flush();
+      }
+    }, {
+      key: "titre",
+      get: function get() {
+        return this.$$.ctx[1];
+      },
+      set: function set(titre) {
+        this.$$set({
+          titre: titre
+        });
+        flush();
+      }
+    }, {
+      key: "lang",
+      get: function get() {
+        return this.$$.ctx[5];
+      },
+      set: function set(lang) {
+        this.$$set({
+          lang: lang
+        });
+        flush();
+      }
+    }, {
+      key: "srtitre",
+      get: function get() {
+        return this.$$.ctx[6];
+      },
+      set: function set(srtitre) {
+        this.$$set({
+          srtitre: srtitre
+        });
+        flush();
+      }
+    }, {
+      key: "srboutonouvrir",
+      get: function get() {
+        return this.$$.ctx[7];
+      },
+      set: function set(srboutonouvrir) {
+        this.$$set({
+          srboutonouvrir: srboutonouvrir
+        });
+        flush();
+      }
+    }, {
+      key: "srboutonfermer",
+      get: function get() {
+        return this.$$.ctx[8];
+      },
+      set: function set(srboutonfermer) {
+        this.$$set({
+          srboutonfermer: srboutonfermer
+        });
+        flush();
+      }
+    }, {
+      key: "contenu",
+      get: function get() {
+        return this.$$.ctx[2];
+      },
+      set: function set(contenu) {
+        this.$$set({
+          contenu: contenu
+        });
+        flush();
+      }
+    }], [{
+      key: "observedAttributes",
+      get: function get() {
+        return ["afficher", "titre", "lang", "srtitre", "srboutonouvrir", "srboutonfermer", "contenu"];
+      }
+    }]);
+
+    return Accordeon;
+  }(SvelteElement);
+
+  customElements.define("utd-accordeon", Accordeon);
 
   function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -1457,179 +2338,6 @@
   }(SvelteElement);
 
   customElements.define("utd-avis", Avis);
-
-  function cubicOut(t) {
-    var f = t - 1.0;
-    return f * f * f + 1.0;
-  }
-
-  function fly(node) {
-    var _ref3 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref3$delay = _ref3.delay,
-        delay = _ref3$delay === void 0 ? 0 : _ref3$delay,
-        _ref3$duration = _ref3.duration,
-        duration = _ref3$duration === void 0 ? 400 : _ref3$duration,
-        _ref3$easing = _ref3.easing,
-        easing = _ref3$easing === void 0 ? cubicOut : _ref3$easing,
-        _ref3$x = _ref3.x,
-        x = _ref3$x === void 0 ? 0 : _ref3$x,
-        _ref3$y = _ref3.y,
-        y = _ref3$y === void 0 ? 0 : _ref3$y,
-        _ref3$opacity = _ref3.opacity,
-        opacity = _ref3$opacity === void 0 ? 0 : _ref3$opacity;
-
-    var style = getComputedStyle(node);
-    var target_opacity = +style.opacity;
-    var transform = style.transform === 'none' ? '' : style.transform;
-    var od = target_opacity * (1 - opacity);
-    return {
-      delay: delay,
-      duration: duration,
-      easing: easing,
-      css: function css(t, u) {
-        return "\n\t\t\ttransform: ".concat(transform, " translate(").concat((1 - t) * x, "px, ").concat((1 - t) * y, "px);\n\t\t\topacity: ").concat(target_opacity - od * u);
-      }
-    };
-  }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  var Utils = /*#__PURE__*/function () {
-    function Utils() {
-      _classCallCheck(this, Utils);
-    }
-
-    _createClass(Utils, null, [{
-      key: "conserverFocusElement",
-      value: function conserverFocusElement(componentShadow, componentRoot) {
-        var elementsFocusablesShadow = Array.from(this.obtenirElementsFocusables(componentShadow));
-        var elementsFocusablesRoot = Array.from(this.obtenirElementsFocusables(componentRoot));
-        var elementsFocusables = elementsFocusablesShadow.concat(elementsFocusablesRoot);
-        var premierElementFocusable = elementsFocusables[0];
-        var dernierElementFocusable = elementsFocusables[elementsFocusables.length - 1];
-        var KEYCODE_TAB = 9;
-        componentShadow.addEventListener('keydown', function (e) {
-          var estToucheTab = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
-
-          if (!estToucheTab) {
-            return;
-          }
-
-          var elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement;
-
-          if (e.shiftKey)
-            /* shift + tab */
-            {
-              if (elementActif === premierElementFocusable) {
-                dernierElementFocusable.focus();
-                e.preventDefault();
-              }
-            } else
-            /* tab */
-            {
-              if (elementsFocusables.length === 1 || elementActif === dernierElementFocusable) {
-                premierElementFocusable.focus();
-                e.preventDefault();
-              }
-            }
-        });
-      }
-    }, {
-      key: "obtenirElementsFocusables",
-      value: function obtenirElementsFocusables(element) {
-        return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-      }
-      /**
-       * Génère un id unique.
-       * @returns L'id unique généré.
-       */
-
-    }, {
-      key: "genererId",
-      value: function genererId() {
-        return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
-      }
-      /**
-       * Créé un événement custom pour un webComponent.
-       * @param {*} component Objet associé à notre composant (objet DOM).
-       * @param {*} nomEvenement Nom de l'événement. 
-       * @param {*} detailsEvenement Détails de l'événement.
-       */
-
-    }, {
-      key: "estMobile",
-      value: function estMobile() {
-        return navigator.maxTouchPoints || 'ontouchstart' in document.documentElement;
-      }
-    }, {
-      key: "ajusterInterfaceAvantAffichageModale",
-      value: function ajusterInterfaceAvantAffichageModale(html, body) {
-        if (!this.estMobile()) {
-          var largeurScrollbarHtml = window.innerWidth - html.offsetWidth;
-
-          if (largeurScrollbarHtml > 0) {
-            html.style['padding-right'] = largeurScrollbarHtml + 'px';
-          } else {
-            var largeurScrollbarBody = window.innerWidth - body.offsetWidth;
-
-            if (largeurScrollbarBody > 0) {
-              body.style['padding-right'] = largeurScrollbarBody + 'px';
-            }
-          }
-        }
-
-        html.classList.add("modale-ouverte");
-      }
-    }, {
-      key: "ajusterInterfacePendantAffichageModale",
-      value: function ajusterInterfacePendantAffichageModale(body, modale) {
-        if (!this.estMobile()) {
-          var largeurScrollbarModale = window.innerWidth - modale.offsetWidth;
-
-          if (largeurScrollbarModale > 0) {
-            body.style['padding-right'] = largeurScrollbarModale + 'px';
-          }
-        }
-      }
-    }, {
-      key: "ajusterInterfaceApresFermetureModale",
-      value: function ajusterInterfaceApresFermetureModale(html, body) {
-        html.style.removeProperty('padding-right');
-        body.style.removeProperty('padding-right');
-        html.classList.remove("modale-ouverte");
-      }
-    }, {
-      key: "slotExiste",
-      value: function slotExiste(slots, nomSlot) {
-        return slots.some(function (s) {
-          return s.slot === nomSlot;
-        });
-      }
-    }]);
-
-    return Utils;
-  }();
-
-  _defineProperty(Utils, "dispatchWcEvent", function (component, nomEvenement, detailsEvenement) {
-    component.dispatchEvent(new CustomEvent(nomEvenement, {
-      detail: detailsEvenement,
-      composed: true // propage l'événement à travers le shadow DOM (Remonte au document)
-
-    }));
-  });
 
   function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 

@@ -2,6 +2,7 @@
     import {Route} from 'tinro'; 
     import {active} from 'tinro';
     import Accueil from './pages/Accueil.svelte'; 
+    import Accordeon from './pages/Accordeon.svelte'; 
     import AideContextuelle from './pages/AideContextuelle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
@@ -78,6 +79,7 @@
                     <div slot="contenu">
                         <ul>
                             <li><a href="/">Accueil</a></li>
+                            <li><a on:click|preventDefault={() => window.location.href = '/accordeon'} href="/accordeon" use:active exact>Accordeon</a></li>
                             <li><a on:click|preventDefault={() => window.location.href = '/avis'} href="/avis" use:active exact>Avis</a></li>
                             <li><a on:click|preventDefault={() => window.location.href = '/boutons'} href="/boutons" use:active exact>Boutons</a></li>
                             <li><a on:click|preventDefault={() => window.location.href = '/aidecontextuelle'} href="/aidecontextuelle" use:active exact>Infobulle</a></li>
@@ -90,6 +92,7 @@
             <div id="colonneDroite">
                 <main id="main">
                     <Route path="/"><Accueil /></Route>
+                    <Route path="/accordeon"><Accordeon /></Route>
                     <Route path="/avis"><Avis /></Route>
                     <Route path="/boutons"><Boutons /></Route>
                     <Route path="/aidecontextuelle"><AideContextuelle /></Route>

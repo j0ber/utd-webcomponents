@@ -6,6 +6,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   import { onMount } from "svelte"
+  import { fly } from "svelte/transition"
   import {HighlightJS} from "highlight.js"
   import {html_beautify} from "js-beautify"
   import { Utils } from '../../librairie/components/utils.js'
@@ -16,7 +17,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   let controleCodeSource = null
   let codeSource = ""
-  
+  let estSuccesCopie = false
   const idConteneurCode = Utils.genererId()
   const idBoutonCopier = 'copier' + idConteneurCode
   const estCopieSupportee = ClipboardJS.isSupported()
@@ -35,6 +36,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
         clipboard.on('success', function(e) {
           e.clearSelection()
+          estSuccesCopie = true
+          setTimeout(() => {
+            estSuccesCopie = false
+          }, 3000);
         })
 
         clipboard.on('error', function(e) {
@@ -84,10 +89,15 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     </code>
   </pre>
   {#if estCopieSupportee}
-    <button type="button" class="utd-btn secondaire compact avec-icone-droite copier" id="{idBoutonCopier}" data-clipboard-target="#{idConteneurCode}">
-      <span class="texte">Copier le code</span>
-      <span class="utd-icone-svg clipboard md copier" aria-hidden="true"></span>
-    </button>
+    <div class="zone-copie">
+      <button type="button" class="utd-btn secondaire compact avec-icone-droite copier" id="{idBoutonCopier}" data-clipboard-target="#{idConteneurCode}">
+        <span class="texte">Copier le code</span>
+        <span class="utd-icone-svg clipboard md copier" aria-hidden="true"></span>
+      </button>
+      {#if estSuccesCopie}
+        <span class="message-copie" transition:fly>Copié!</span>
+      {/if}
+    </div>
   {/if}
 
 </div>

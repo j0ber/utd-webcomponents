@@ -10,9 +10,12 @@
 <h2>Avis information</h2>
 <h3>Exemple d'utilisation avec attribut "contenu"</h3>
 <utd-avis titre="Nouvelle règlementation" contenu="Les nouveaux règlements de pêche seront en vigeur à partir du 12 mai." id="exempleInformation1"></utd-avis>
-<CodeSource idElementCodeSource="exempleInformation1">
-</CodeSource>
-
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleInformation1">
+        </CodeSource>   
+    </span>
+</utd-accordeon>
 
 <h3>Exemple d'utilisation avec slot "contenu"</h3>
 <utd-avis titre="L’aide financière qui peut être accordée tient compte de votre situation familiale." id="exempleInformation2">
@@ -25,16 +28,24 @@
         </ul>
     </div>
 </utd-avis>
-<CodeSource idElementCodeSource="exempleInformation2">
-</CodeSource>
-
-
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleInformation2">
+        </CodeSource>    
+    </span>
+</utd-accordeon>
 
 <h2>Avis avertissement</h2>
 <h3>Exemple d'utilisation avec attribut "contenu"</h3>
 <utd-avis type="avertissement" titre="Migration des contenus" contenu="Les contenus seront transférés dans Québec.ca à partir du 16 février et le site sera fermé le 20 avril." id="exempleAvertissement1"></utd-avis>
-<CodeSource idElementCodeSource="exempleAvertissement1">
-</CodeSource>
+
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleAvertissement1">
+        </CodeSource>
+    </span>
+</utd-accordeon>
+
 
 
 <h3>Exemple d'utilisation avec slot "contenu"</h3>
@@ -48,15 +59,25 @@
         </ul>
     </div>
 </utd-avis>
-<CodeSource idElementCodeSource="exempleAvertissement2">
-</CodeSource>
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleAvertissement2">
+        </CodeSource>
+    </span>
+</utd-accordeon>
+
 
 
 <h2>Avis succès</h2>
 <h3>Exemple d'utilisation avec attribut "contenu"</h3>
 <utd-avis type="succes" titre="Votre demande d'inscription a été reçue." contenu="Votre code de confirmation sera envoyé par courriel." id="exempleSucces1"></utd-avis>
-<CodeSource idElementCodeSource="exempleSucces1">
-</CodeSource>
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleSucces1">
+        </CodeSource>
+    </span>
+</utd-accordeon>
+
 
 <h3>Exemple d'utilisation avec slot "contenu"</h3>
 <utd-avis type="succes" titre="Chuck Norris a été élu être humain le plus extraordinaire de tous les temps." id="exempleSucces2">
@@ -69,15 +90,23 @@
         </ul>
     </div>
 </utd-avis>
-<CodeSource idElementCodeSource="exempleSucces2">
-</CodeSource>
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleSucces2">
+        </CodeSource>
+    </span>
+</utd-accordeon>
+
 
 <h2>Avis erreur</h2>
 <h3>Exemple d'utilisation avec attribut "contenu"</h3>
 <utd-avis type="erreur" titre="Votre demande d'inscription a été reçue." contenu="Votre code de confirmation sera envoyé par courriel." id="exempleErreur1"></utd-avis>
-<CodeSource idElementCodeSource="exempleErreur1">
-</CodeSource>
-
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleErreur1">
+        </CodeSource>
+    </span>
+</utd-accordeon>
 
 <h3>Exemple d'utilisation avec slot "contenu"</h3>
 <utd-avis type="erreur" titre="Des erreurs sont présentes dans le formulaire." id="exempleErreur2">
@@ -95,8 +124,13 @@
         </ul>
     </div>
 </utd-avis>
-<CodeSource idElementCodeSource="exempleErreur2">
-</CodeSource>
+<utd-accordeon titre="Code source">
+    <span slot="contenu">
+        <CodeSource idElementCodeSource="exempleErreur2">
+        </CodeSource>
+    </span>
+</utd-accordeon>
+
 
 
 
