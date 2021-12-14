@@ -5,33 +5,42 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 
 <script>
-  import { onMount } from "svelte";
-  import {HighlightJS} from "highlight.js";
-  import {html_beautify} from "js-beautify";
+  import { onMount } from "svelte"
+  import {HighlightJS} from "highlight.js"
+  import {html_beautify} from "js-beautify"
   import { Utils } from '../../librairie/components/utils.js'
   
   export let lang = "fr"
-  export let srLabelMenu = ""
   export let idElementCodeSource = ""
 
 
   let controleCodeSource = null
   let codeSource = ""
-  let afficher = false
-
+  
   const idConteneurCode = Utils.genererId()
-  const srTexteLabelMenu = srLabelMenu  
-    ? srLabelMenu
-    : lang === "fr"
-    ? "Menu principal"
-    : "Secondary menu"
+  const idBoutonCopier = 'copier' + idConteneurCode
+  const estCopieSupportee = ClipboardJS.isSupported()
+
+  let clipboard = null
 
   onMount(() => {
     controleCodeSource = document.getElementById(idElementCodeSource)
     codeSource = obtenirCodeSource(controleCodeSource)
+    
     setTimeout(function(){ 
       const conteneurCode = document.getElementById(idConteneurCode)
-      HighlightJS.highlightElement(conteneurCode);
+      HighlightJS.highlightElement(conteneurCode)
+      if(estCopieSupportee){
+        clipboard = new ClipboardJS('#' + idBoutonCopier)
+
+        clipboard.on('success', function(e) {
+          e.clearSelection()
+        })
+
+        clipboard.on('error', function(e) {
+          console.log('Erreur le de la copie dans le presse-papier.')
+        })
+      }
     }, 100);
     
   })
@@ -64,6 +73,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 
+  
+
 </script>
 
 <div class="code-source">
@@ -72,6 +83,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       {@html codeSource}
     </code>
   </pre>
+  {#if estCopieSupportee}
+    <button type="button" class="utd-btn secondaire compact avec-icone-droite copier" id="{idBoutonCopier}" data-clipboard-target="#{idConteneurCode}">
+      <span class="texte">Copier le code</span>
+      <span class="utd-icone-svg clipboard md copier" aria-hidden="true"></span>
+    </button>
+  {/if}
+
 </div>
 
 

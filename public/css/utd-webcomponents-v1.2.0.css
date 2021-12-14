@@ -496,6 +496,13 @@ p:last-child {
     border-radius: 4px;
 }
 
+.utd-btn.avec-icone-droite, .utd-btn.avec-icone-gauche {
+    display: flex;
+    align-items: center;
+}
+.utd-btn.avec-icone-droite > *:nth-child(2), .utd-btn.avec-icone-gauche > *:nth-child(2){
+    margin-left: 4px;
+}
 /* ==================== Bouton primaire ==================== */
 .utd-btn.primaire {
     color: #fff;
@@ -552,6 +559,42 @@ p:last-child {
     border-color: #9ca5b2;
     background-color: transparent;
 }
+
+/* ==================== Boutons secondaires couleurs inversées ==================== */
+.utd-btn.secondaire.inverse1 {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.utd-btn.secondaire.inverse2 {
+    background-color: transparent;
+    color: #89bce5;
+    border-color: #89bce5;
+}
+
+.utd-btn.secondaire.inverse1:not([disabled]):hover, 
+.utd-btn.secondaire.inverse2:not([disabled]):hover {
+    background-color: rgba(218, 230, 240, 0.08);
+}
+.utd-btn.secondaire.inverse1:not([disabled]):focus,
+.utd-btn.secondaire.inverse2:not([disabled]):focus {
+    border-color: #223654;
+    background-color: rgba(218, 230, 240, 0.08);
+    box-shadow: 0 0 0 2px #4a98d9;
+}
+.utd-btn.secondaire.inverse1:active,
+.utd-btn.secondaire.inverse2:active {
+    background-color: rgba(218, 230, 240, 0.16);
+}
+.utd-btn.secondaire.inverse1[disabled],
+.utd-btn.secondaire.inverse2[disabled] {
+    pointer-events: none;
+    color: #9ca5b2;
+    border-color: #9ca5b2;
+    background-color: transparent;
+}
+
 
 
 /* ==================== Bouton tertiaire ==================== */
@@ -844,6 +887,10 @@ input.utd-form-control.sm {
     height: 40px;
 }
 
+
+.utd-icone-svg.clipboard {
+    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-clipboard);
+}
 
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
