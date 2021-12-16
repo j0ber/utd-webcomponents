@@ -73,6 +73,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     let codeSource = element.outerHTML
     codeSource = codeSource.replace(/<span/g, "\r\n<span")
+    codeSource = codeSource.replace(/<button/g, "\r\n<button")
 
     codeSource = html_beautify(codeSource, options) 
     return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
