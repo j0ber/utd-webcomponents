@@ -173,19 +173,72 @@
 
 
 
-.conteneur-menu-identification {
-    background-color: var(--couleur-texte-base);
-    color: #fff;
-    min-height: 94px;
-}
-
-.zone-menu-identification {
-    justify-content: flex-end !important;
-}
-
 header {
     margin-bottom: var(--tc-48-40-val);
 }
+
+
+/*====================================================================================================*/
+/*  -15- Menu principal (desktop)
+/*====================================================================================================*/
+
+.conteneur-menu-identification {
+    background-color: var(--couleur-texte-base);
+    color: #fff;
+}
+
+
+.zone-menu-identification {
+    display: flex;
+    min-height: 72px;
+}
+
+.menu-principal {
+    display: flex;
+    align-items: flex-end;
+}
+
+.menu-principal ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-principal ul li {
+    margin-right: 32px;
+}
+
+.menu-principal ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'OpenSans', sans-serif;
+    font-size: var(--tc-18-16-val);
+    border-bottom: 4px solid var(--couleur-texte-base);
+    padding: 8px 8px 4px 8px;
+}
+
+
+.menu-principal ul li:last-of-type {
+    margin-right: 0;
+}
+
+
+
+.menu-principal ul li a:hover,
+.menu-principal ul li a:focus {
+    border-bottom: 4px solid #909aa9;
+}
+
+.menu-principal ul li a.active {
+    border-bottom: 4px solid #909aa9 !important;
+    font-family: OpenSans-Bold, sans-serif;
+}
+
+
+
+
 
 /*====================================================================================================
   -05- Menu secondaire

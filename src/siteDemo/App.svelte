@@ -1,13 +1,16 @@
 <script>
     import {Route} from 'tinro'; 
     import {active} from 'tinro';
-    import Accueil from './pages/Accueil.svelte'; 
+    import Principe from './pages/Principe.svelte'; 
+    import Utilisation from './pages/Utilisation.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import AideContextuelle from './pages/AideContextuelle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
     import Modal from './pages/Modal.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
+    import {router} from 'tinro';
+//    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
 </script>
 
 <div class="conteneur-principal">
@@ -23,7 +26,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img src="/images/sprite.svg?v=L6YVXIAKuVAsazZbNMnpYAUcadqD1WYnTZ7ucs4AHPA#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="/images/utd-sprite-v1.2.0.svg#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -61,10 +64,19 @@
         </div>
 
         
-        <div class="conteneur-menu-identification d-none">
-            <div class="container zone-menu-identification d-flex">
-                    <div class="zone-identification d-flex ml-auto">
-                    </div>
+        <div class="conteneur-menu-identification">
+            <div class="utd-container zone-menu-identification">
+                <h2 id="titreMenuPrincipal" class="sr-only">Menu principal de navigation</h2>
+                <nav class="menu-principal" aria-labelledby="titreMenuPrincipal">
+                    <ul>
+                        <li>
+                            <a href="/base" use:active>Base</a>
+                        </li>
+                        <li>
+                            <a href="/composants" use:active>Composants</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
             <div class="container zone-menu-principal d-flex d-md-none">
             </div>
@@ -74,16 +86,20 @@
 
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="contenu-principal-droite">
-            <div id="colonneGauche">
-                <MenuSecondaire titre="Liste des composants">
+            <div id="colonneGauche">                
+                <MenuSecondaire titre="Menu de navigation secondaire">
                     <div slot="contenu">
                         <ul>
-                            <li><a href="/">Accueil</a></li>
-                            <li><a on:click|preventDefault={() => window.location.href = '/accordeon'} href="/accordeon" use:active exact>Accordeon</a></li>
-                            <li><a on:click|preventDefault={() => window.location.href = '/avis'} href="/avis" use:active exact>Avis</a></li>
-                            <li><a on:click|preventDefault={() => window.location.href = '/boutons'} href="/boutons" use:active exact>Boutons</a></li>
-                            <li><a on:click|preventDefault={() => window.location.href = '/aidecontextuelle'} href="/aidecontextuelle" use:active exact>Infobulle</a></li>
-                            <li><a on:click|preventDefault={() => window.location.href = '/modal'} href="/modal" use:active exact>Modal</a></li>
+                            {#if $router.path.indexOf('/composants') >= 0}                                
+                                <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
+                                <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
+                                <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
+                                <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
+                                <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
+                            {:else}                                    
+                                <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
+                                <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
+                            {/if}
                         </ul>
                     </div>          
                 </MenuSecondaire> 
@@ -91,12 +107,16 @@
         
             <div id="colonneDroite">
                 <main id="main">
-                    <Route path="/"><Accueil /></Route>
-                    <Route path="/accordeon"><Accordeon /></Route>
-                    <Route path="/avis"><Avis /></Route>
-                    <Route path="/boutons"><Boutons /></Route>
-                    <Route path="/aidecontextuelle"><AideContextuelle /></Route>
-                    <Route path="modal"><Modal /></Route>
+                    <Route path="/" redirect="/base/principe" ></Route>
+                    <Route path="/base" ><Principe /></Route>
+                    <Route path="/base/principe" ><Principe /></Route>
+                    <Route path="/base/utilisation" ><Utilisation /></Route>
+                    <Route path="/composants" ><Accordeon /></Route>
+                    <Route path="/composants/accordeon" ><Accordeon /></Route>
+                    <Route path="/composants/avis" ><Avis /></Route>
+                    <Route path="/composants/boutons" ><Boutons /></Route>
+                    <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
+                    <Route path="/composants/modal" ><Modal /></Route>
                 </main>        
             </div>
         </div>
