@@ -87,7 +87,7 @@
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="contenu-principal-droite">
             <div id="colonneGauche">                
-                <MenuSecondaire titre="Menu de navigation secondaire">
+                <MenuSecondaire titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
                     <div slot="contenu">
                         <ul>
                             {#if $router.path.indexOf('/composants') >= 0}                                
