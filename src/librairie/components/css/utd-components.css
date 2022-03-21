@@ -225,7 +225,7 @@
 }
 
 .utd-infobulle button.tooltip-toggle .utd-icone-svg {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-question");
+    background-image: url("/images/utd-sprite-v1.3.0.svg#ico-question");
     width: 10px;
     height: 10px;
     min-width: 10px;
@@ -293,7 +293,7 @@
   }
 
   .utd-infobulle .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.3.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
@@ -428,7 +428,7 @@
 }
 
 .utd-dialog .utd-icone-svg.x-fermer-bleu {
-  background-image: url("/images/utd-sprite-v1.2.0.svg#ico-xfermer-bleu");
+  background-image: url("/images/utd-sprite-v1.3.0.svg#ico-xfermer-bleu");
   width: 16px;
   height: 16px;
   min-width: 16px;

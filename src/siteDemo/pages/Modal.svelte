@@ -28,6 +28,9 @@
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Tester</button>
 <utd-dialog id="exempleDialogue1" titre="Éditer l'image" idfocus="btnTest1">
     <div slot="contenu">
+        <input type="text"/>
+        <input type="text"/>
+        <input type="text"/>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.
         </p>

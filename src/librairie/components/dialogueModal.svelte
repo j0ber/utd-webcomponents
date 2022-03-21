@@ -95,8 +95,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function donnerfocusPremierElementFocusable(modale){
     const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
     const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
-    const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)    
+    const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
+    console.log(elementsFocusables)    
     const premierElementFocusable = elementsFocusables[0]
+    console.log(elementsFocusables[0])    
     premierElementFocusable.focus()
 
   }
@@ -150,6 +152,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>  
 {/if}
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>
 <style>
 </style>

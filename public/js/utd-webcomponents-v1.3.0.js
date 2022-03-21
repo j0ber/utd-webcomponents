@@ -998,6 +998,8 @@
     };
   }
 
+  var globals = typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : global;
+
   function mount_component(component, target, anchor, customElement) {
     var _component$$$ = component.$$,
         fragment = _component$$$.fragment,
@@ -1691,7 +1693,7 @@
         ctx[0] ? 'ouvert' : ''));
         add_location(div2, file$3, 40, 0, 1008);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
         add_location(link, file$3, 66, 0, 1704);
       },
       l: function claim(nodes) {
@@ -2131,7 +2133,7 @@
         ctx[3]);
         add_location(div4, file$2, 16, 0, 367);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
         add_location(link, file$2, 33, 0, 789);
       },
       l: function claim(nodes) {
@@ -2342,7 +2344,8 @@
   function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
   function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$1 = "src\\librairie\\components\\dialogueModal.svelte"; // (105:0) {#if estModaleAffichee}
+  var console_1 = globals.console;
+  var file$1 = "src\\librairie\\components\\dialogueModal.svelte"; // (107:0) {#if estModaleAffichee}
 
   function create_if_block$1(ctx) {
     var div0;
@@ -2390,32 +2393,32 @@
         t4 = space();
         if (if_block) if_block.c();
         attr_dev(div0, "class", "utd-backdrop");
-        add_location(div0, file$1, 105, 2, 3267);
+        add_location(div0, file$1, 107, 2, 3348);
         attr_dev(span, "aria-hidden", "true");
         attr_dev(span, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span, file$1, 128, 8, 3928);
+        add_location(span, file$1, 130, 8, 4009);
         attr_dev(button, "type", "button");
         attr_dev(button, "class", "close");
         attr_dev(button, "aria-label",
         /*srTexteBoutonFermer*/
         ctx[5]);
-        add_location(button, file$1, 122, 8, 3758);
+        add_location(button, file$1, 124, 8, 3839);
         attr_dev(h1, "id",
         /*idEntete*/
         ctx[4]);
         attr_dev(h1, "class", "titre-dialog");
         attr_dev(h1, "tabindex", "-1");
-        add_location(h1, file$1, 135, 10, 4112);
+        add_location(h1, file$1, 137, 10, 4193);
         attr_dev(div1, "class", "entete");
-        add_location(div1, file$1, 134, 8, 4080);
+        add_location(div1, file$1, 136, 8, 4161);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$1, 140, 10, 4260);
+        add_location(slot, file$1, 142, 10, 4341);
         attr_dev(div2, "class", "corps");
-        add_location(div2, file$1, 139, 8, 4229);
+        add_location(div2, file$1, 141, 8, 4310);
         attr_dev(div3, "class", "principal");
-        add_location(div3, file$1, 133, 6, 4047);
+        add_location(div3, file$1, 135, 6, 4128);
         attr_dev(div4, "class", "conteneur");
-        add_location(div4, file$1, 121, 4, 3725);
+        add_location(div4, file$1, 123, 4, 3806);
         attr_dev(div5, "tabindex", "-1");
         attr_dev(div5, "aria-labelledby",
         /*idEntete*/
@@ -2426,7 +2429,7 @@
         ctx[3]);
         attr_dev(div5, "aria-modal", "true");
         attr_dev(div5, "role", "dialog");
-        add_location(div5, file$1, 106, 2, 3347);
+        add_location(div5, file$1, 108, 2, 3428);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div0, anchor);
@@ -2521,11 +2524,11 @@
       block: block,
       id: create_if_block$1.name,
       type: "if",
-      source: "(105:0) {#if estModaleAffichee}",
+      source: "(107:0) {#if estModaleAffichee}",
       ctx: ctx
     });
     return block;
-  } // (143:8) {#if Utils.slotExiste(slots, 'pied')}
+  } // (145:8) {#if Utils.slotExiste(slots, 'pied')}
 
 
   function create_if_block_1$1(ctx) {
@@ -2536,9 +2539,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file$1, 144, 12, 4390);
+        add_location(slot, file$1, 146, 12, 4471);
         attr_dev(div, "class", "pied");
-        add_location(div, file$1, 143, 10, 4358);
+        add_location(div, file$1, 145, 10, 4439);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2552,7 +2555,7 @@
       block: block,
       id: create_if_block_1$1.name,
       type: "if",
-      source: "(143:8) {#if Utils.slotExiste(slots, 'pied')}",
+      source: "(145:8) {#if Utils.slotExiste(slots, 'pied')}",
       ctx: ctx
     });
     return block;
@@ -2572,8 +2575,8 @@
         link = element("link");
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$1, 152, 0, 4500);
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file$1, 154, 0, 4581);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2727,13 +2730,15 @@
       var elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale));
       var elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent));
       var elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow);
+      console.log(elementsFocusables);
       var premierElementFocusable = elementsFocusables[0];
+      console.log(elementsFocusables[0]);
       premierElementFocusable.focus();
     }
 
     var writable_props = ['afficher', 'titre', 'lang', 'srboutonfermer', 'idfocus'];
     Object.keys($$props).forEach(function (key) {
-      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-dialog> was created with unknown prop '".concat(key, "'"));
+      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn("<utd-dialog> was created with unknown prop '".concat(key, "'"));
     });
 
     var click_handler = function click_handler() {
@@ -3301,7 +3306,7 @@
         attr_dev(span4, "class", "utd-infobulle");
         add_location(span4, file, 74, 0, 1955);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
         add_location(link, file, 139, 0, 3817);
       },
       l: function claim(nodes) {
