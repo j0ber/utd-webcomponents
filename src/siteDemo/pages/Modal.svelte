@@ -28,9 +28,9 @@
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Tester</button>
 <utd-dialog id="exempleDialogue1" titre="Éditer l'image" idfocus="btnTest1">
     <div slot="contenu">
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
+        <input type="text" class="utd-form-group utd-form-control"/>
+        <input type="text" class="utd-form-group utd-form-control"/>
+        <input type="text" class="utd-form-group utd-form-control"/>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.
         </p>
@@ -42,8 +42,8 @@
         </p>
     </div>
     <div slot="pied">
-        <button id="btnAnnuler1" type="button" class="utd-btn secondaire">Annuler</button>        
-        <button id="btnConfirmer1" type="button" class="utd-btn primaire">Confirmer</button>        
+        <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
+        <button id="btnConfirmer1" type="button" class="utd-btn primaire compact">Confirmer</button>        
     </div>
 </utd-dialog>
 <utd-accordeon titre="Code source">

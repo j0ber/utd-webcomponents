@@ -548,7 +548,6 @@ h6 {
 .utd-btn.secondaire[disabled] {
     color: #9ca5b2;
     border-color: #9ca5b2;
-    background-color: transparent;
 }
 
 /* ==================== Boutons secondaires couleurs inversées ==================== */

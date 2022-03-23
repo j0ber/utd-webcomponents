@@ -366,7 +366,7 @@
 .utd-dialog .conteneur {
   display: flex;
   flex-direction: column;
-  max-width: 536px; /* (600 - padding de côté) */
+  max-width: 600px;
   position: relative;
   width: auto;
   padding: 0 32px;
