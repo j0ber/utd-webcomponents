@@ -6,6 +6,8 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import css2 from 'rollup-plugin-css-porter';
 import babel from 'rollup-plugin-babel';
+import pkg from './package.json';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -36,9 +38,13 @@ export default [{
         sourcemap: false,
         format: 'iife',
         name: 'app',
-        file: 'public/js/utd-webcomponents-v1.3.0.js'
+        file: `public/js/utd-webcomponents-v${pkg.version}.js`
     },
     plugins: [
+        replace({            
+            _versionUtd_ : `v${pkg.version}`,
+            delimiters: ['', '']
+        }),
         svelte({
             compilerOptions: {
                 // enable run-time checks when not in production
@@ -49,7 +55,7 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: 'public/css/utd-webcomponents-v1.3.0.css' }),
+        css2({ dest: `public/css/utd-webcomponents-v${pkg.version}.css` }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
@@ -92,6 +98,56 @@ export default [{
         // If we're building for production (npm run build
         // instead of npm run dev), minify
         production && terser()
+    ],
+    watch: {
+        clearScreen: false
+    }
+},
+{
+    input: 'src/librairie/components/js/base.js',
+    output: {
+        sourcemap: false,
+        format: 'iife',
+        name: 'utd',
+        file: `public/js/utd-utilitaires-v${pkg.version}.js`
+    },
+    plugins: [
+        // compile to IE11 compatible ES5
+        babel({
+            runtimeHelpers: true,
+            extensions: [ '.js', '.mjs', '.html'],
+            exclude: [ 'node_modules/@babel/**', 'node_modules/core-js/**' ],
+            presets: [
+                [
+                    '@babel/preset-env',
+                    {
+                        targets: {
+                        ie: '11'
+                        },
+                        useBuiltIns: 'usage',
+                        corejs: 3
+                    }
+                ]
+            ],
+            plugins: [
+                '@babel/plugin-syntax-dynamic-import',
+                [
+                '@babel/plugin-transform-runtime',
+                    {
+                        useESModules: true
+                    }
+                ]
+            ]
+        }),
+        resolve({
+            browser: true
+        }),
+        commonjs(),
+
+        // If we're building for production (npm run build
+        // instead of npm run dev), minify
+        production && terser(), 
+
     ],
     watch: {
         clearScreen: false
