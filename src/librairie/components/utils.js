@@ -14,7 +14,7 @@ export class Utils {
             if (!estToucheTab) {
                 return
             }
-
+    
             const elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement
             if (e.shiftKey) /* shift + tab */ {
                 if (elementActif === premierElementFocusable) {
@@ -26,7 +26,7 @@ export class Utils {
                     premierElementFocusable.focus()
                     e.preventDefault()
                 }
-            }
+            }    
         })
     }
     static obtenirElementsFocusables(element) {

@@ -37,15 +37,40 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   let html
   let body
+  let slots = []
+  let htmlSlotContenu
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     body = thisComponent.getRootNode().getElementsByTagName("body")[0]
+    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+    assignerHtmlSlotContenu()
 
     if(Utils.estMobile()){
       html.classList.add("est-mobile")      
     }
   })
+
+  /**
+   * Permet de pallier à un problème de perte de focus à l'intérieur de la modale. En effet, si on clique dans le contenu de la slot "contenu" et qu'on fait TAB, le focus
+   * tombe dans la page en dessous car le keydown est sur le body de la page (probablement car nous sommes dans une slot).
+   * Nous cachons donc le contenu de la slot, récupérons son html et l'assignons nous-même au contrôle. De cette façon nous allons nous réglons le problème et en bonus
+   * nous nous assurons d'une conformité visuelle, puisque c'est le css de notre composant qui va s'appliquer et non celui de l'application.
+   * NOTE. Le problème ne semble pas se produire avec le composant utd-dialog. On dirait que le fait que d'autres contrôles focusables sont présents empêche le problème. Je ne comprends pas vraiment.
+   */
+  function assignerHtmlSlotContenu() {
+    if(slots.length){
+      const slotContenu = thisComponent.querySelector("[slot=contenu]")
+      
+      if(slotContenu){
+        const contenuHtml = thisComponent.querySelector("[slot=contenu]").innerHTML
+        
+        if(contenuHtml){
+          htmlSlotContenu = contenuHtml
+        }
+      }     
+    }
+  }
 
   function afficherModale(e) {
     Utils.ajusterInterfaceAvantAffichageModale(html, body)
@@ -126,12 +151,18 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       </span>
       <span class="utd-container conteneur-corps">
         <span class="corps">
-          {#if contenu}
-            {@html contenu}
-          {/if}
-          <slot name="contenu" />
+          {#if Utils.slotExiste(slots, 'contenu')}
+            <slot name="contenu" class="utd-d-none"/>
+            <span>
+              {@html htmlSlotContenu}              
+            </span>
+          {:else}
+            {#if contenu}
+              {@html contenu}
+            {/if}
+          {/if}              
           <p class="utd-d-none" />
-        </span>
+          </span>
       </span>
     </span>
   {/if}

@@ -9,6 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { get_current_component } from "svelte/internal"
   import { Utils } from './utils'
   export let afficher = 'false'
+  export let raisonfermeture = ''
   export let titre = ""
   export let lang = "fr"
   export let srboutonfermer = ""
@@ -38,23 +39,27 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   // Watch sur la prop afficher
   $: toggleAfficher(afficher) 
 
-  function masquerModale(raisonFermeture) {    
+  function masquerModale(raisonFermetureModale) {    
     estModaleAffichee = false
     afficher = 'false'
-    
+
+    //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonfermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
+    const raison = raisonFermetureModale || raisonfermeture
+
     //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
     const controleFocus = thisComponent.getRootNode().getElementById(idfocus)
     if(controleFocus){
       controleFocus.focus()
     }
 
-    Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raisonFermeture})
+    Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raison})
   }
   
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
     if(mounted){
       if(afficher === 'true'){
+        raisonfermeture = ''
         Utils.ajusterInterfaceAvantAffichageModale(html, body)
         estModaleAffichee = true       
       } else {
@@ -96,11 +101,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
     const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
     const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
-    console.log(elementsFocusables)    
     const premierElementFocusable = elementsFocusables[0]
-    console.log(elementsFocusables[0])    
     premierElementFocusable.focus()
-
   }
 </script>
 
