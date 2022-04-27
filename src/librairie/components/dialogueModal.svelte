@@ -111,7 +111,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   <div
     tabindex="-1"
     aria-labelledby={idEntete}
-    class="utd-dialog"
+    class="utd-component utd-dialog"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}

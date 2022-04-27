@@ -20,7 +20,7 @@
 <h2>Essai à l'extérieur d'un paragraphe sans mot lié (ici on utilise la slot "contenu")</h2>
 <label for="test2">Votre nom officiel
 </label>
-<utd-infobulle titre="Type de demande 2" lang="en">
+<utd-infobulle titre="Type de demande 2">
     <div slot="contenu">
         <p>Banana Boat2!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.</p>
@@ -31,8 +31,7 @@
 <h2>Essai à l'extérieur d'un paragraphe sans mot lié (ici on utilise l'attribut "contenu")</h2>
 <label for="test2">Votre nom officiel
 </label>
-<utd-infobulle titre="Type de demande 2" contenu="<p>Banana Boat!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.</p><p>Banana Boat!</p>"
-    lang="en">
+<utd-infobulle titre="Type de demande 2" contenu="<p>Banana Boat!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.</p><p>Banana Boat!</p>">
 </utd-infobulle>
 <input type="text" id="test2" class="utd-form-control utd-form-group" />
 

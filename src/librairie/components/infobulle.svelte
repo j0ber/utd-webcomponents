@@ -97,7 +97,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 </script>
 
-<span class="utd-infobulle">
+<span class="utd-component utd-infobulle">
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}

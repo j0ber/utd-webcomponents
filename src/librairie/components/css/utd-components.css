@@ -1,30 +1,30 @@
 /*! utd-webcomponents */
 
 /*====================================================================================================
-  -10- Slots
+  -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
 
-[slot="contenu"] ul {
-  padding-left: 16px;
+[slot="contenu"] ul, .utd-component ul {
+  padding-left: 20px;
 }
 
-[slot="contenu"] ul:last-child {
+[slot="contenu"] ul:last-child, .utd-component ul:last-child {
   margin-bottom: 0;
 }
 
-[slot="contenu"] ul li {
+[slot="contenu"] ul li, .utd-component ul li {
   margin-bottom: 16px;
 }
 
-[slot="contenu"] ul li:last-of-type {
+[slot="contenu"] ul li:last-of-type, .utd-component ul li:last-of-type {
   margin-bottom: 0;
 }
 
-[slot="contenu"] p:first-of-type, .contenu p:first-of-type {
+[slot="contenu"] p:first-of-type, .utd-component p:first-of-type, .contenu p:first-of-type {
   margin-top: 0;
 }
 
-[slot="contenu"] p:last-of-type, .contenu p:last-of-type {
+[slot="contenu"] p:last-of-type, .utd-component p:last-of-type, .contenu p:last-of-type {
   margin-bottom: 0;
 }
 
@@ -268,7 +268,7 @@
     letter-spacing: 0;
     max-width: 58.75rem;
     margin: 0;
-    line-height: 2rem;
+    line-height: inherit;
   }
 
   .utd-infobulle .entete h1:focus {
