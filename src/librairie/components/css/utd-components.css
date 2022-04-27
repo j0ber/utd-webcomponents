@@ -264,10 +264,11 @@
 
   .utd-infobulle .entete h1 {
     font-family: "Roboto-Bold", sans-serif;
-    font-size: var(--text-lg-val);
+    font-size: var(--tc-20-18-val);
     letter-spacing: 0;
     max-width: 58.75rem;
     margin: 0;
+    line-height: 2rem;
   }
 
   .utd-infobulle .entete h1:focus {
@@ -314,6 +315,24 @@
     max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
     overflow-y: auto;
     font-size: 1rem;
+  }
+
+  .utd-infobulle .corps h2, .utd-infobulle .corps h3, .utd-infobulle .corps h4, .utd-infobulle .corps h5, .utd-infobulle .corps h6 {
+    font-size: 1rem;
+  }
+
+  .utd-infobulle .corps :is(h2, h3, h4, h5, h6) {
+    font-size: 1rem;
+    line-height: inherit;
+    margin-top: 2rem;
+  }
+
+  .utd-infobulle .corps h2 {
+    font-size: var(--tc-18-16-val);
+  }
+
+  .utd-infobulle .corps :is(h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
   }
 
   .utd-infobulle .corps p:first-of-type {
