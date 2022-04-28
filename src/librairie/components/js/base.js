@@ -12,7 +12,6 @@
  * @param {Object} parametres.forcerBoutons Forcer l'utilisateur à utiliser le bouton primaire ou secondaire pour fermer la fenêtre de message. Défaut false.
  * @param {Object} parametres.afficherBoutonFermer Afficher le bouton pour fermer la fenêtre de message. Défaut true.
  * @param {Object} parametres.idControleFocusFermeture Id du contrôle auquel on redonne le focus à la fermeture de la fenêtre de message.
- * @param {Object} parametres.afficherBoutonSecondaire Afficher le bouton secondaire. Défaut true.
  * @returns {Object} Une promesse jQuery qui contiendra éventuellement un objet contenant la raison de fermeture. (ex. objet.primaire ou objet.secondaire)
  * @example afficherMessage(parametres)
             .done(function (resultat) {
@@ -31,40 +30,38 @@
 export function afficherMessage(parametres) {
 
     const valeursDefaut = {
-        type: "avertissement",
+        type: "",
         titre: "",
         corps: "",
         texteBoutonPrimaire: "",
         texteBoutonSecondaire: "",
-        texteBoutonFermer: obtenirTexteEdite("boutonCommunFermer"),
+        texteBoutonFermer: "Fermer", //TODO détecter langue sur balise html et mettre Close si eng
         forcerBoutons: false,
         afficherBoutonFermer: false,
-        idControleFocusFermeture: null,
-        afficherBoutonSecondaire: parametres.type && parametres.type !== "information" && parametres.type !== "erreur"
+        idControleFocusFermeture: null
     };
 
     parametres = extend(valeursDefaut, parametres);
 
     parametres.idControleFocusFermeture = afficherMessage_obtenirIdControleFocusFermeture(parametres);
 
-    const conteneurFenetreMessage = afficherMessage_ajouterControle(parametres)
+    const conteneurFenetreMessage = afficherMessage_ajouterControle(parametres);
+    const fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog');  
 
     const boutons = conteneurFenetreMessage.querySelectorAll('[slot="pied"] > button')    
-    boutons.addEventListener("click", function(){ alert("Hello World!"); });
-
-    //TODO assigner la raison de fermeture à la modale
-    //Affecter la raison de fermeture de la fenêtre modale au click d'un bouton
-/*    fenetreMessage.find(".modal-footer, .pied").find("button").on("click", function () {
-        fenetreMessage.data("raison-fermeture", $(this).data("raison-fermeture"));
+    boutons.forEach(btn => {
+        btn.addEventListener("click", function() {
+            const raison = this.getAttribute('raison-fermeture');
+            fenetreMessage.setAttribute('raisonfermeture', raison);
+            fenetreMessage.setAttribute('afficher', 'false');
+        });    
     });
-*/
+    
     //Définir une promesse qui sera résolue à la fermeture de la fenêtre.
-    const promesse = new Promise()
-
-    const fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog')    
-    afficherMessage_definirEvenementFermeture(fenetreMessage, promesse)
-
-    return promesse
+    return new Promise((resolve) => {        
+        afficherMessage_definirEvenementFermeture(fenetreMessage, resolve)      
+        fenetreMessage.setAttribute('afficher', 'true');    
+    });
 }
 
 
@@ -78,19 +75,18 @@ export function afficherMessage(parametres) {
 function afficherMessage_obtenirIdControleFocusFermeture(parametres) {
     if (!parametres.idControleFocusFermeture) {
         if (document.activeElement) {
-            let id = document.activeElement.id
+            let id = document.activeElement.id;
 
             if (!id) {
-                id = genererId()
-                document.activeElement.id = id
+                id = genererId();
+                document.activeElement.id = id;
             }
 
-            parametres.idControleFocusFermeture = id
-
-            return id
+            parametres.idControleFocusFermeture = id;
+            return id;
         }
     }
-    return parametres.idControleFocusFermeture
+    return parametres.idControleFocusFermeture;
 }
 
 /**
@@ -102,55 +98,55 @@ function afficherMessage_obtenirIdControleFocusFermeture(parametres) {
 function afficherMessage_ajouterControle(parametres) {
 //    var classeIcone = afficherMessage_obtenirClasseIcone(parametres.type);
 
-    const html = `
-    <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" >
+    let html = `
+    <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" type="${parametres.type}" >
         <div slot="contenu">
             ${parametres.corps}
         </div>
-        <div slot="pied">` +
-            parametres.texteBoutonSecondaire ? `<button type="button" class="utd-btn secondaire" data-raison-fermeture="secondaire" data-ga-action="${parametres.titre}">${parametres.texteBoutonSecondaire}</button>` : '' +
-            `<button type="button" class="utd-btn primaire" data-raison-fermeture="primaire" data-ga-action="${parametres.titre}">${parametres.texteBoutonPrimaire}</button>
+        <div slot="pied">`;   
+    
+    const htmlBoutonPrimaire = `<button type="button" class="utd-btn primaire compact" raison-fermeture="primaire" data-ga-action="${parametres.titre}">${parametres.texteBoutonPrimaire}</button>`;
+    const htmlBoutonSecondaire = parametres.texteBoutonSecondaire ? `<button type="button" class="utd-btn secondaire compact" raison-fermeture="secondaire" data-ga-action="${parametres.titre}">${parametres.texteBoutonSecondaire}</button>` : '';
+            
+    html += `
+            ${htmlBoutonSecondaire}${htmlBoutonPrimaire}                        
         </div>
     </utd-dialog>`
 
-    const id = genererId()
-    const conteneurFenetreMessage = document.createElement('div')
-    conteneurFenetreMessage.id = id
-    conteneurFenetreMessage.innerHTML = html
+    const id = genererId();
+    const conteneurFenetreMessage = document.createElement('div');
+    conteneurFenetreMessage.id = id;
+    conteneurFenetreMessage.innerHTML = html;
 
-    document.body.appendChild(conteneurFenetreMessage)
+    document.body.appendChild(conteneurFenetreMessage);
 
-    return conteneurFenetreMessage
+    return conteneurFenetreMessage;
 }
 
 /*TODO à implémenter*/
 function afficherMessage_obtenirClasseIcone(type) {
     switch (type) {
         case "erreur":
-            return "erreur"
+            return "erreur";
         case "avertissement":
-            return "averti"
+            return "averti";
         case "succes":
-            return "succes"
+            return "succes";
         default:
-            return "inform"
+            return "inform";
     }
 }
 
 /**
  * Compléter la promesse indiquant de quelle façon la fenêtre s'est fermée et supprimer l'élément du DOM une fois qu'il n'est plus affiché.
  * @param {Object} fenetreMessage Objet correspondant à la fenêtre de message.
- * @param {Promise} promesse Promesse à résoudre.
+ * @param {Promise} resolve Résolution de promesse.
  */
-function afficherMessage_definirEvenementFermeture(fenetreMessage, promesse) {
-
-    fenetreMessage.addEventListener("fermeture", e => {
-        promesse.resolve(e.detail.raisonFermeture)
-        console.log(`Événement de fermeture modale`)
-      })
-  
-        //TODO Destruction de la fenêtre modale
-//        $(this).remove()
+function afficherMessage_definirEvenementFermeture(fenetreMessage, resolve) {
+    fenetreMessage.addEventListener("fermeture", e => {        
+        resolve(e.detail.raisonFermeture);
+        fenetreMessage.parentElement.remove();
+    });
 }
 
 /* ============================================================= */

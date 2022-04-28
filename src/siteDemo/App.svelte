@@ -7,6 +7,7 @@
     import AideContextuelle from './pages/AideContextuelle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
+    import Messages from './pages/Messages.svelte'; 
     import Modal from './pages/Modal.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
     import {router} from 'tinro';
@@ -96,6 +97,7 @@
                                 <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
                                 <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
                                 <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
+                                <li><a href="/composants/messages" tinro-ignore use:active exact>Messages</a></li>
                             {:else}                                    
                                 <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
                                 <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
@@ -117,6 +119,7 @@
                     <Route path="/composants/boutons" ><Boutons /></Route>
                     <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
                     <Route path="/composants/modal" ><Modal /></Route>
+                    <Route path="/composants/messages" ><Messages /></Route>
                 </main>        
             </div>
         </div>

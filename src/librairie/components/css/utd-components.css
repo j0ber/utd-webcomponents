@@ -396,20 +396,26 @@
 }
 
 .utd-dialog .principal {
-  padding: 0 16px 32px 0;
+  padding: 0 0 32px 0;
   width: 100%;
 }
 
 .utd-dialog .entete {
   position: relative;
+  display: flex;
+  align-items: center;
   max-width: var(--largeur-max-zone-texte);
   margin-bottom: 24px;
 }
 
+.utd-dialog .entete .utd-icone-svg {
+  margin-right: 16px;
+}
+
 .utd-dialog .entete h1 {
   font-family: "Roboto-Bold", sans-serif;
-  font-size: var(--tc-24-20);
-  line-height: var(--tc-36-28);
+  font-size: var(--tc-24-20-val);
+  line-height: 1.2;
   margin: 0;
 }
 

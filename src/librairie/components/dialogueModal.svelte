@@ -9,14 +9,17 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { get_current_component } from "svelte/internal"
   import { Utils } from './utils'
   export let afficher = 'false'
+  export let type = ''
+  export let estfenetremessage = 'false'
   export let raisonfermeture = ''
-  export let titre = ""
-  export let lang = "fr"
-  export let srboutonfermer = ""
-  export let idfocus = ""
+  export let titre = ''
+  export let lang = 'fr'
+  export let srboutonfermer = ''
+  export let idfocus = ''
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
+  const idCorps = Utils.genererId()
   const srTexteBoutonFermer = srboutonfermer  
     ? srboutonfermer
     : lang === "fr"
@@ -98,10 +101,18 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function donnerfocusPremierElementFocusable(modale){
-    const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
-    const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
-    const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
-    const premierElementFocusable = elementsFocusables[0]
+    let premierElementFocusable = null
+    if(estfenetremessage){
+      premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire')
+    } 
+    
+    if(!premierElementFocusable) {
+      const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
+      const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
+      const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
+      premierElementFocusable = elementsFocusables[0]
+    }
+
     premierElementFocusable.focus()
   }
 </script>
@@ -111,6 +122,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   <div
     tabindex="-1"
     aria-labelledby={idEntete}
+    aria-describedby={estfenetremessage === 'true' ? idCorps : null}
     class="utd-component utd-dialog"
     id={idModale}
     on:click={clickModale}
@@ -137,11 +149,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       </button>
       <div class="principal">
         <div class="entete">
-          <h1 id={idEntete} class="titre-dialog" tabindex="-1">
+          {#if type}
+            <span class="utd-icone-svg {type}" aria-hidden="true"></span>
+          {/if}   
+          <h1 id={idEntete} class="titre-dialog">
             {titre}
           </h1>
         </div>
-        <div class="corps">
+        <div class="corps" id={idCorps}>
           <slot name="contenu" />
         </div>
         {#if Utils.slotExiste(slots, 'pied')}
