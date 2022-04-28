@@ -419,14 +419,8 @@
   margin: 0;
 }
 
-.utd-dialog .entete h1::after {
-  content: "";
-  display: block;
-  margin: 0;
-  width: 3rem;
-  border-bottom: 4px solid;
-  border-bottom-style: solid;
-  border-bottom-color: var(--couleur-saumon);
+.utd-dialog .entete.avec-type h1::after {
+  content: none!important;
 }
 
 .utd-dialog .entete h1:focus {

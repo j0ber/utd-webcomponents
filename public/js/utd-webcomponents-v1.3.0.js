@@ -2357,6 +2357,7 @@
     var t2;
     var h1;
     var t3;
+    var div1_class_value;
     var t4;
     var div2;
     var slot;
@@ -2411,16 +2412,18 @@
         /*idEntete*/
         ctx[6]);
         attr_dev(h1, "class", "titre-dialog");
-        add_location(h1, file$1, 154, 10, 4992);
-        attr_dev(div1, "class", "entete");
+        add_location(h1, file$1, 154, 10, 5018);
+        attr_dev(div1, "class", div1_class_value = "entete " + (
+        /*type*/
+        ctx[0] ? 'avec-type' : ''));
         add_location(div1, file$1, 150, 8, 4843);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$1, 159, 10, 5139);
+        add_location(slot, file$1, 159, 10, 5165);
         attr_dev(div2, "class", "corps");
         attr_dev(div2, "id",
         /*idCorps*/
         ctx[7]);
-        add_location(div2, file$1, 158, 8, 5095);
+        add_location(div2, file$1, 158, 8, 5121);
         attr_dev(div3, "class", "principal");
         add_location(div3, file$1, 149, 6, 4810);
         attr_dev(div4, "class", "conteneur");
@@ -2501,6 +2504,15 @@
         4) set_data_dev(t3,
         /*titre*/
         ctx[2]);
+
+        if (!current || dirty &
+        /*type*/
+        1 && div1_class_value !== (div1_class_value = "entete " + (
+        /*type*/
+        ctx[0] ? 'avec-type' : ''))) {
+          attr_dev(div1, "class", div1_class_value);
+        }
+
         if (dirty &
         /*slots*/
         16) show_if = Utils.slotExiste(
@@ -2534,7 +2546,7 @@
           if (div5_outro) div5_outro.end(1);
           div5_intro = create_in_transition(div5, fly, {
             y: 200,
-            duration: 750
+            duration: 500
           });
           div5_intro.start();
         });
@@ -2544,7 +2556,7 @@
         if (div5_intro) div5_intro.invalidate();
         div5_outro = create_out_transition(div5, fly, {
           y: 200,
-          duration: 500
+          duration: 250
         });
         current = false;
       },
@@ -2580,7 +2592,7 @@
         /*type*/
         ctx[0]);
         attr_dev(span, "aria-hidden", "true");
-        add_location(span, file$1, 152, 12, 4899);
+        add_location(span, file$1, 152, 12, 4925);
       },
       m: function mount(target, anchor) {
         insert_dev(target, span, anchor);
@@ -2617,9 +2629,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file$1, 163, 12, 5269);
+        add_location(slot, file$1, 163, 12, 5295);
         attr_dev(div, "class", "pied");
-        add_location(div, file$1, 162, 10, 5237);
+        add_location(div, file$1, 162, 10, 5263);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2654,7 +2666,7 @@
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
         attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
-        add_location(link, file$1, 171, 0, 5379);
+        add_location(link, file$1, 171, 0, 5405);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3287,7 +3299,7 @@
           if (span6_outro) span6_outro.end(1);
           span6_intro = create_in_transition(span6, fly, {
             y: 200,
-            duration: 750
+            duration: 500
           });
           span6_intro.start();
         });
@@ -3297,7 +3309,7 @@
         if (span6_intro) span6_intro.invalidate();
         span6_outro = create_out_transition(span6, fly, {
           y: 200,
-          duration: 500
+          duration: 250
         });
         current = false;
       },
