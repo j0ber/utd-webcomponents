@@ -102,7 +102,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function donnerfocusPremierElementFocusable(modale){
     let premierElementFocusable = null
-    if(estfenetremessage){
+    if(estfenetremessage === 'true'){
       premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire')
     } 
     
@@ -123,7 +123,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}

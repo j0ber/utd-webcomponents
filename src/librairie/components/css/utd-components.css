@@ -454,9 +454,12 @@
 }
 
 .utd-dialog .corps {
-  line-height: 1.5rem;
 /*    overflow-y: auto;*/
   font-size: 1rem;
+}
+
+.utd-dialog.fenetre-message .corps {
+  line-height: 1.5rem;
 }
 
 .utd-dialog .pied {
