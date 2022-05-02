@@ -16,6 +16,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let lang = 'fr'
   export let srboutonfermer = ''
   export let idfocus = ''
+  export let estboutonstextelong = 'false'
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
@@ -123,7 +124,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''}"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}

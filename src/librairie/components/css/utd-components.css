@@ -469,11 +469,16 @@
 
 @media (max-width: 425px) {
   .utd-dialog .pied {
-        flex-direction: column;
-    }
-  } 
+      flex-direction: column;
+  }
+} 
   
- 
+@media (max-width: 525px) {
+  .utd-dialog.boutons-texte-long .pied {
+    flex-direction: column;
+  }
+} 
+   
 
 /* Slots */
 utd-dialog [slot="pied"] > button {
@@ -493,6 +498,20 @@ utd-dialog [slot="pied"] > button:last-child {
   }
 
   utd-dialog [slot="pied"] button:last-of-type {
+      margin-bottom: 0;
+  }
+}
+
+/*Particularité pour les boutons avec un texte long (permet de les afficher plus tôt 525px en colonne au lieu de 425px)*/
+@media (max-width: 525px) {
+
+  utd-dialog[estboutonstextelong="true"] [slot="pied"] button {
+      margin-bottom: 24px;
+      margin-right: 0;
+      width: 100%;
+  }
+
+  utd-dialog[estboutonstextelong="true"] [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }

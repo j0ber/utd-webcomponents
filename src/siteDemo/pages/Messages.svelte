@@ -7,6 +7,7 @@
   let resultat3 = ''
   let resultat4 = ''
   let resultat5 = ''
+  let resultat6 = ''
 
   onMount(() => {
 
@@ -79,6 +80,21 @@
             })
     })
 
+    document.getElementById('btnTest6').addEventListener('click', () => {
+        const params =             
+            {titre: "Continuum espace temps en péril",
+             corps: "<p>Vos dernières actions ont provoqué de graves perturbations du continuum espace temps.</p><p>Désirez-vous poursuivre avec la destruction potentielle de l'univers ou corriger le tout?</p>",
+             texteBoutonPrimaire: "Corriger et demander pardon",
+             texteBoutonSecondaire: "Détruire",
+             estBoutonsTexteLong: true
+            }
+
+        utd.afficherMessage(params)
+            .then((retour) => {
+                resultat6 = retour
+            })
+    })
+
 
 })
 
@@ -105,6 +121,9 @@
 <button type="button" id="btnTest5" class="utd-btn secondaire mb-32">Test 5</button>
 <div>{resultat5 ? `Raison fermeture = ${resultat5}` : ''}</div>
 
+<h2>Message sans type avec 2 boutons et texte long</h2>
+<button type="button" id="btnTest6" class="utd-btn secondaire mb-32">Test 6</button>
+<div>{resultat6 ? `Raison fermeture = ${resultat6}` : ''}</div>
 
 <style>
 </style>

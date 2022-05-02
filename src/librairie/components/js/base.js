@@ -36,6 +36,7 @@ export function afficherMessage(parametres) {
         texteBoutonSecondaire: "",
         texteBoutonFermer: "Fermer", //TODO détecter langue sur balise html et mettre Close si eng
         afficherBoutonFermer: false,
+        estBoutonsTexteLong: false,
         idControleFocusFermeture: null
     };
 
@@ -97,7 +98,7 @@ function afficherMessage_ajouterControle(parametres) {
 //    var classeIcone = afficherMessage_obtenirClasseIcone(parametres.type);
 
     let html = `
-    <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" type="${parametres.type}" >
+    <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" estboutonstextelong="${parametres.estBoutonsTexteLong}" type="${parametres.type}" >
         <div slot="contenu">
             ${parametres.corps}
         </div>
@@ -146,6 +147,9 @@ function afficherMessage_definirEvenementFermeture(fenetreMessage, resolve) {
         fenetreMessage.parentElement.remove();
     });
 }
+
+
+
 
 /* ============================================================= */
 /* ======================== UTILITAIRES ======================== */
