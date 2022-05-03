@@ -172,7 +172,9 @@ export const traitementEnCours = (function () {
                 const overlay = document.createElement("div")
                 overlay.classList.add('utd-overlay')
                 document.body.appendChild(overlay)
-            }
+            } 
+
+            element.setAttribute('overlay', avecOverlay ? 'true' : 'false')
 
             if (element.tagName.toLowerCase() === 'button' || (element.tagName.toLowerCase() === 'input' && element.type.toLowerCase() === 'submit')) {
 
@@ -193,33 +195,39 @@ export const traitementEnCours = (function () {
                 //TODO éventuellement implanter traitement pour autres éléments que des boutons?
             }
 
+            notifierTraitementEnCoursLecteurEcran(element)
         } else {
             //TODO éventuellement implanter un traitement en cours global?
         }
 
-        notifierTraitementEnCoursLecteurEcran()
+
     }
 
     elementsPublics.terminer = function(element) {
 
         if(element) {
-            const spinner = element.querySelector('.utd-spinner')
-            if(spinner.length){
+            const spinner = element.querySelector('.utd-spinner');
+            if(spinner){
                 spinner.remove();
             }               
 
-            element.classList.remove("utd-traitement-en-cours")
-            element.disabled = false
+            element.classList.remove("utd-traitement-en-cours");
+            element.disabled = false;
    
-            //Retrait du overlay de soumission (qui bloque toute possibilité de clic pendant la soumisssion).
-            const overlayTraitementEnCours = document.getElementsByClassName('utd-overlay')
-    
-            if (overlayTraitementEnCours.length > 0) {
-                //On enlève 1 overlay, s'il y en a d'autres ils seront fermés éventuellement.
-                overlayTraitementEnCours[0].remove()
+            //Si le traitement en cours sur l'élément avait un overlay on le retire.
+            const avecOverlay = element.getAttribute('overlay');
+            if(avecOverlay === 'true'){
+                //Retrait du overlay de soumission (qui bloque toute possibilité de clic pendant la soumisssion).
+                const overlayTraitementEnCours = document.getElementsByClassName('utd-overlay');
+        
+                if (overlayTraitementEnCours.length > 0) {
+                    //On enlève 1 overlay, s'il y en a d'autres ils seront fermés éventuellement.
+                    overlayTraitementEnCours[0].remove();
+                }
             }
-    
-            notifierTraitementEnCoursLecteurEcran(element, true)    
+
+            element.removeAttribute('overlay');
+            notifierTraitementEnCoursLecteurEcran(element, true);
         }
     }
 
@@ -233,8 +241,8 @@ export const traitementEnCours = (function () {
         const idZoneNotification = `zoneNotification_${element.id}`;
 
         //Ajouter la zone de notification hors écran si elle n'existe pas déjà.
-        let zoneNotificationsLecteurEcran = document.getElementById('idZoneNotification');
-        if(zoneNotificationsLecteurEcran.length){
+        let zoneNotificationsLecteurEcran = document.getElementById(idZoneNotification);
+        if(!zoneNotificationsLecteurEcran){
             zoneNotificationsLecteurEcran = document.createElement("div");
             zoneNotificationsLecteurEcran.id = idZoneNotification;
             zoneNotificationsLecteurEcran.classList.add('sr-only');
@@ -244,6 +252,8 @@ export const traitementEnCours = (function () {
         //TODO multilingue via paramètre
         zoneNotificationsLecteurEcran.innerHTML = estTraitementTermine ? "Traitement terminé." : "Traitement en cours."
     }
+
+    return elementsPublics;
 })();
 
 

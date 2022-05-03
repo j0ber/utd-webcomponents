@@ -12,7 +12,6 @@
   onMount(() => {
 
     document.getElementById('btnTest1').addEventListener('click', () => {
-        utd.traitementEnCours.test('BananaBoat!!!!');
         const params =             
             {type: "avertissement",
              titre: "Continuum espace temps en péril",

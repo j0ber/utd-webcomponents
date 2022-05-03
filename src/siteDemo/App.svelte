@@ -122,6 +122,7 @@
                     <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
                     <Route path="/composants/modal" ><Modal /></Route>
                     <Route path="/composants/messages" ><Messages /></Route>
+                    <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
                 </main>        
             </div>
         </div>

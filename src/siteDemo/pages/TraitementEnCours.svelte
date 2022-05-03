@@ -9,31 +9,59 @@
         utd.traitementEnCours.debuter(this);
 
         setTimeout((that) => {
-            utd.terminer(that);
-        }, 5000), this;
+            utd.traitementEnCours.terminer(that);
+        }, 5000, this);
     })
 
     document.getElementById('btnTest2').addEventListener('click', function() {
 
-        utd.traitementEnCours.debuter(this);
+        utd.traitementEnCours.debuter(this, false);
 
         setTimeout((that) => {
-            utd.terminer(that);
+            utd.traitementEnCours.terminer(that);
         },5000, this);
     })
+
+    document.getElementById('btnTest3').addEventListener('click', function() {
+        const bouton1 = document.getElementById('btnTest1');
+        const bouton2 = document.getElementById('btnTest2');
+        utd.traitementEnCours.debuter(bouton1);
+        utd.traitementEnCours.debuter(bouton2, false);
+        utd.traitementEnCours.debuter(this);
+
+        setTimeout(() => {
+            utd.traitementEnCours.terminer(bouton1);
+        },5000);
+
+        setTimeout(() => {
+            utd.traitementEnCours.terminer(bouton2);
+        },10000);
+
+        setTimeout((that) => {
+            utd.traitementEnCours.terminer(that);
+        },15000, this);
+
+    })
+
 })
 
 </script>
 
 <h1>Traitement en cours</h1>
+
 <h2>Sur un bouton (avec overlay)</h2>
 <p>Simule un traitement de 5 secondes.</p>
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Test 1</button>
 
 
 <h2>Sur un bouton (sans overlay)</h2>
-<button type="button" id="btnTest2" class="utd-btn secondaire mb-32">Test 2</button>
 <p>Simule un traitement de 5 secondes.</p>
+<button type="button" id="btnTest2" class="utd-btn primaire mb-32">Test 2</button>
+
+
+<h2>Sur un bouton (avec overlay)</h2>
+<p>Simule un traitement simultané de 5 secondes sur le bouton 1, 10 secondes sur le bouton 2 et 15 secondes sur le bouton 3.</p>
+<button type="button" id="btnTest3" class="utd-btn primaire compact mb-32">Test 3</button>
 
 <style>
 </style>
