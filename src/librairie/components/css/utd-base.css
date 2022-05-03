@@ -24,7 +24,7 @@
     --tc-16-8-ecart: 8;
     /*min 8px max 16px*/
     --tc-16-8-ecart-px: calc(var(--tc-16-8-ecart) * 1px);
-
+    --utd-text-sm: 14;
     /*max 16px min 14px*/
     --tc-16-14: 1rem;/*16px*/    
     --tc-16-14-ecart: 2;
@@ -40,6 +40,11 @@
     --tc-18-16-ecart: 2;
     --tc-18-16-ecart-px: calc(var(--tc-18-16-ecart) * 1px);
 
+    /*max 18px min 17px*/
+    --tc-18-17: 1.125rem;/*18px*/    
+    --tc-18-17-ecart: 1;
+    --tc-18-17-ecart-px: calc(var(--tc-18-17-ecart) * 1px);
+    
     /*max 20px min 16px*/
     --tc-20-16: 1.25rem;/*20px*/    
     --tc-20-16-ecart: 4;
@@ -49,6 +54,11 @@
     --tc-20-18: 1.25rem;/*20px*/    
     --tc-20-18-ecart: 2;
     --tc-20-18-ecart-px: calc(var(--tc-20-18-ecart) * 1px);
+
+    /*max 21px min 18px*/
+    --tc-21-18: 1.313rem;/*21px*/    
+    --tc-21-18-ecart: 3;
+    --tc-21-18-ecart-px: calc(var(--tc-21-18-ecart) * 1px);
     
     /*max 24px min 12px*/
     --tc-24-12: 1.5rem;/*24px*/    
@@ -85,6 +95,11 @@
     --tc-32-16-ecart: 16;
     --tc-32-16-ecart-px: calc(var(--tc-32-16-ecart) * 1px);
 
+    /*max 32px min 22px*/
+    --tc-32-22: 2rem; /*32px*/
+    --tc-32-22-ecart: 10;
+    --tc-32-22-ecart-px: calc(var(--tc-32-22-ecart) * 1px);
+    
     /*max 32px min 24px*/
     --tc-32-24: 2rem; /*32px*/
     --tc-32-24-ecart: 8;
@@ -131,17 +146,25 @@
     --tc-16-4-val: var(--tc-16-4);
     --tc-16-8-val: var(--tc-16-8);
     --tc-16-14-val: var(--tc-16-14);
+    --utd-text-base: var(--tc-16-14);
     --tc-18-14-val: var(--tc-18-14);
     --tc-18-16-val: var(--tc-18-16);
+    --tc-18-17-val: var(--tc-18-17);
+    --utd-text-lg: var(--tc-18-17);
     --tc-20-16-val: var(--tc-20-16);
     --tc-20-18-val: var(--tc-20-18);
+    --tc-21-18-val: var(--tc-21-18);
+    --utd-text-xl: var(--tc-21-18);
     --tc-24-12-val: var(--tc-24-12);
     --tc-24-16-val: var(--tc-24-16);
     --tc-24-20-val: var(--tc-24-20);
+    --utd-text-xxl: var(--tc-24-20);    
     --tc-24-21-val: var(--tc-24-21);
     --tc-28-24-val: var(--tc-28-24);
     --tc-30-24-val: var(--tc-30-24);
     --tc-32-16-val: var(--tc-32-16);
+    --tc-32-22-val: var(--tc-32-22);
+    --utd-text-xxxl: var(--tc-32-22);    
     --tc-32-24-val: var(--tc-32-24);
     --tc-32-28-val: var(--tc-32-28);
     --tc-36-28-val: var(--tc-36-28);
@@ -364,8 +387,10 @@ p:last-child {
         --tc-16-14-val: calc(var(--tc-16-14) - var(--tc-16-14-ecart-px));
         --tc-18-14-val: calc(var(--tc-18-14) - var(--tc-18-14-ecart-px));
         --tc-18-16-val: calc(var(--tc-18-16) - var(--tc-18-16-ecart-px));
+        --tc-18-17-val: calc(var(--tc-18-17) - var(--tc-18-17-ecart-px));
         --tc-20-16-val: calc(var(--tc-20-16) - var(--tc-20-16-ecart-px));
         --tc-20-18-val: calc(var(--tc-20-18) - var(--tc-20-18-ecart-px));
+        --tc-21-18-val: calc(var(--tc-21-18) - var(--tc-21-18-ecart-px));        
         --tc-24-12-val: calc(var(--tc-24-12) - var(--tc-24-12-ecart-px));
         --tc-24-16-val: calc(var(--tc-24-16) - var(--tc-24-16-ecart-px));
         --tc-24-20-val: calc(var(--tc-24-20) - var(--tc-24-20-ecart-px));
@@ -373,6 +398,7 @@ p:last-child {
         --tc-28-24-val: calc(var(--tc-28-24) - var(--tc-28-24-ecart-px));
         --tc-30-24-val: calc(var(--tc-30-24) - var(--tc-30-24-ecart-px));
         --tc-32-16-val: calc(var(--tc-32-16) - var(--tc-32-16-ecart-px));
+        --tc-32-22-val: calc(var(--tc-32-22) - var(--tc-32-22-ecart-px));
         --tc-32-24-val: calc(var(--tc-32-24) - var(--tc-32-24-ecart-px));
         --tc-32-28-val: calc(var(--tc-32-28) - var(--tc-32-28-ecart-px));
         --tc-36-28-val: calc(var(--tc-36-28) - var(--tc-36-28-ecart-px));
@@ -396,8 +422,10 @@ p:last-child {
         --tc-16-14-val: calc(var(--tc-16-14) + (var(--ratio-vw) * var(--tc-16-14-ecart)) - var(--tc-16-14-ecart-px));
         --tc-18-14-val: calc(var(--tc-18-14) + (var(--ratio-vw) * var(--tc-18-14-ecart)) - var(--tc-18-14-ecart-px));
         --tc-18-16-val: calc(var(--tc-18-16) + (var(--ratio-vw) * var(--tc-18-16-ecart)) - var(--tc-18-16-ecart-px));
+        --tc-18-17-val: calc(var(--tc-18-17) + (var(--ratio-vw) * var(--tc-18-17-ecart)) - var(--tc-18-17-ecart-px));
         --tc-20-16-val: calc(var(--tc-20-16) + (var(--ratio-vw) * var(--tc-20-16-ecart)) - var(--tc-20-16-ecart-px));
         --tc-20-18-val: calc(var(--tc-20-18) + (var(--ratio-vw) * var(--tc-20-18-ecart)) - var(--tc-20-18-ecart-px));
+        --tc-21-18-val: calc(var(--tc-21-18) + (var(--ratio-vw) * var(--tc-21-18-ecart)) - var(--tc-21-18-ecart-px));
         --tc-24-12-val: calc(var(--tc-24-12) + (var(--ratio-vw) * var(--tc-24-12-ecart)) - var(--tc-24-12-ecart-px));
         --tc-24-16-val: calc(var(--tc-24-16) + (var(--ratio-vw) * var(--tc-24-16-ecart)) - var(--tc-24-16-ecart-px));
         --tc-24-20-val: calc(var(--tc-24-20) + (var(--ratio-vw) * var(--tc-24-20-ecart)) - var(--tc-24-20-ecart-px));
@@ -405,6 +433,7 @@ p:last-child {
         --tc-28-24-val: calc(var(--tc-28-24) + (var(--ratio-vw) * var(--tc-28-24-ecart)) - var(--tc-28-24-ecart-px));
         --tc-30-24-val: calc(var(--tc-30-24) + (var(--ratio-vw) * var(--tc-30-24-ecart)) - var(--tc-30-24-ecart-px));
         --tc-32-16-val: calc(var(--tc-32-16) + (var(--ratio-vw) * var(--tc-32-16-ecart)) - var(--tc-32-16-ecart-px));
+        --tc-32-22-val: calc(var(--tc-32-22) + (var(--ratio-vw) * var(--tc-32-22-ecart)) - var(--tc-32-22-ecart-px));
         --tc-32-24-val: calc(var(--tc-32-24) + (var(--ratio-vw) * var(--tc-32-24-ecart)) - var(--tc-32-24-ecart-px));
         --tc-32-28-val: calc(var(--tc-32-28) + (var(--ratio-vw) * var(--tc-32-28-ecart)) - var(--tc-32-28-ecart-px));
         --tc-36-28-val: calc(var(--tc-36-28) + (var(--ratio-vw) * var(--tc-36-28-ecart)) - var(--tc-36-28-ecart-px));
@@ -445,19 +474,19 @@ p:last-child {
 }
 
 .utd-text-lg {
-    font-size: var(--tc-20-18-val);
+    font-size: var(--tc-18-17-val);
 }
 
 .utd-text-xl {
-    font-size: var(--tc-24-21-val);
+    font-size: var(--tc-21-18-val);
 }
 
 .utd-text-xxl {
-    font-size: var(--tc-28-24-val);
+    font-size: var(--tc-24-20-val);
 }
 
 .utd-text-xxxl {
-    font-size: var(--tc-32-28-val);
+    font-size: var(--tc-32-22-val);
 }
 
 /*====================================================================================================
@@ -468,14 +497,15 @@ p:last-child {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto-Bold', sans-serif;
     font-style: normal;
+    font-weight: normal;
     color: var(--couleur-texte-base);
+    line-height: 1.2;
 }
 
 h1 {
     margin-bottom: 2rem;
     margin-top: 0;
-    font-size: var(--tc-48-36-val);
-    line-height: var(--tc-48-36-val);
+    font-size: var(--utd-text-xxxl);
 }
 
 /* Bordure sous les H1 TODO éventuellement retirer modal-title, est conservé car utilisé dans FRW et ECS à enlever lorsqu'ils auront passé à UTD */
@@ -492,34 +522,30 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 h2 {
     margin-top: 2.5rem;
     margin-bottom: 0.7rem;
-    font-size: var(--tc-36-28-val);
-    line-height: var(--tc-44-32-val);
+    font-size: var(--utd-text-xxl);
 }
 
 
 h3 {
     font-family: 'Roboto-Medium';
     margin-top: 2.7rem;
-    font-size: var(--tc-32-24-val);
-    line-height: var(--tc-36-28-val);
+    font-size: var(--utd-text-xl);
 }
 
 h4 {
-    font-size: var(--tc-24-20-val);
-    line-height: var(--tc-36-28-val);
+    font-size: var(--utd-text-lg);
 }
 
 h5 {
-    font-size: var(--tc-20-16-val);
-    line-height: var(--tc-30-24-val);
+    font-size: 1rem;
 }
 
 h6 {
+    font-family: 'Roboto-Medium';
     font-size: 1rem;
-    line-height: 24px;
 }
 
-/* TODO ajouter headers applicatifs */
+/* TODO ajouter headers informationnels (un jour) */
 
 /*====================================================================================================
   -12- Boutons
