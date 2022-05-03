@@ -163,39 +163,44 @@ export const traitementEnCours = (function () {
 
     elementsPublics.debuter = function(element, avecOverlay) {
 
-        avecOverlay = avecOverlay !== undefined ? avecOverlay : true
+        avecOverlay = avecOverlay !== undefined ? avecOverlay : true;
 
         if (element) {
 
             //Ajouter un overlay global pendant le traitement en cours s'il y a lieu (défaut oui)  
             if (avecOverlay) {
-                const overlay = document.createElement("div")
-                overlay.classList.add('utd-overlay')
-                document.body.appendChild(overlay)
+                const overlay = document.createElement("div");
+
+                //Si un overlay est déjà présent, on ajoute le nouveau mais on le masque (il sera peut-être éventuellement réaffiché dans le traitement terminer du traitement en cours)
+                if (document.getElementsByClassName('utd-overlay').length > 0) {
+                    overlay.classList.add('utd-d-none');
+                }
+
+                overlay.classList.add('utd-overlay');
+                document.body.appendChild(overlay);
             } 
 
-            element.setAttribute('overlay', avecOverlay ? 'true' : 'false')
+            element.setAttribute('overlay', avecOverlay ? 'true' : 'false');
 
             if (element.tagName.toLowerCase() === 'button' || (element.tagName.toLowerCase() === 'input' && element.type.toLowerCase() === 'submit')) {
 
-                element.classList.add("utd-traitement-en-cours")
-
-                const htmlTraitementEnCours = '<div class="utd-spinner"></div>'
+                element.classList.add("utd-traitement-en-cours");
+                const htmlTraitementEnCours = '<div class="utd-spinner"></div>';
 
                 if (element.getElementsByClassName('utd-spinner').length === 0) {
-                    element.innerHTML += htmlTraitementEnCours
+                    element.innerHTML += htmlTraitementEnCours;
                 }
 
                 //Si aucun overlay on désactive le bouton
                 if (!avecOverlay) {
-                    element.disabled = true
+                    element.disabled = true;
                 }
             }
             else {
                 //TODO éventuellement implanter traitement pour autres éléments que des boutons?
             }
 
-            notifierTraitementEnCoursLecteurEcran(element)
+            notifierTraitementEnCoursLecteurEcran(element);
         } else {
             //TODO éventuellement implanter un traitement en cours global?
         }
@@ -214,23 +219,36 @@ export const traitementEnCours = (function () {
             element.classList.remove("utd-traitement-en-cours");
             element.disabled = false;
    
-            //Si le traitement en cours sur l'élément avait un overlay on le retire.
-            const avecOverlay = element.getAttribute('overlay');
-            if(avecOverlay === 'true'){
-                //Retrait du overlay de soumission (qui bloque toute possibilité de clic pendant la soumisssion).
-                const overlayTraitementEnCours = document.getElementsByClassName('utd-overlay');
-        
-                if (overlayTraitementEnCours.length > 0) {
-                    //On enlève 1 overlay, s'il y en a d'autres ils seront fermés éventuellement.
-                    overlayTraitementEnCours[0].remove();
-                }
-            }
+            supprimerOverlay(element);
 
             element.removeAttribute('overlay');
             notifierTraitementEnCoursLecteurEcran(element, true);
         }
     }
 
+    function supprimerOverlay(element) {
+        //Si le traitement en cours sur l'élément avait un overlay on le retire.
+        const avecOverlay = element.getAttribute('overlay');
+        if(avecOverlay === 'true'){
+            
+            //Retrait du overlay 
+            const overlayTraitementEnCours = document.getElementsByClassName('utd-overlay');
+
+            if (overlayTraitementEnCours.length > 1) {
+                
+                //On enlève 1 overlay, si un masqué existe c'est lui qu'on enlève. S'il y en a d'autres ils seront fermés éventuellement.
+                const overlayInvisibles = document.getElementsByClassName('utd-overlay utd-d-none');
+                if(overlayInvisibles.length > 0){
+                    overlayInvisibles[0].remove();    
+                } else {
+                    //Si aucun overlay invisible, on enlève le 1er trouvé.
+                    overlayTraitementEnCours[0].remove();
+                }
+            } else if(overlayTraitementEnCours.length === 1){
+                overlayTraitementEnCours[0].remove();
+            }
+        }
+    }
     function notifierTraitementEnCoursLecteurEcran(element, estTraitementTermine){
 
         //Générer un id à l'élément qui va contenir le spinner de traitement en cours
