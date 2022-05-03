@@ -12,6 +12,7 @@
   onMount(() => {
 
     document.getElementById('btnTest1').addEventListener('click', () => {
+        utd.traitementEnCours.test('BananaBoat!!!!');
         const params =             
             {type: "avertissement",
              titre: "Continuum espace temps en péril",
@@ -19,7 +20,7 @@
              texteBoutonPrimaire: "Corriger",
              texteBoutonSecondaire: "Détruire"};
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat1 = retour
             })
@@ -33,7 +34,7 @@
              texteBoutonPrimaire: "Je m'excuse"
             }
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat2 = retour
             })
@@ -47,21 +48,21 @@
              texteBoutonPrimaire: "Merci!"
             }
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat3 = retour
             })
     })
 
     document.getElementById('btnTest4').addEventListener('click', () => {
-        const params =             
-            {type: "erreur",
-             titre: "Continuum espace temps brisé",
-             corps: "<p>Une erreur est survenu lors de vos tentatives de réparation des perturbations du continuum espace temps.</p><p>Il n'y a rien à faire.</p>",
-             texteBoutonPrimaire: "D'accord"
-            }
+        const params = {
+            type: "erreur",
+            titre: "Continuum espace temps brisé",
+            corps: "<p>Une erreur est survenu lors de vos tentatives de réparation des perturbations du continuum espace temps.</p><p>Il n'y a rien à faire.</p>",
+            texteBoutonPrimaire: "D'accord"
+        }
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat4 = retour
             })
@@ -74,7 +75,7 @@
              texteBoutonPrimaire: "Corriger",
              texteBoutonSecondaire: "Détruire"};
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat5 = retour
             })
@@ -89,7 +90,7 @@
              estBoutonsTexteLong: true
             }
 
-        utd.afficherMessage(params)
+        utd.message.afficher(params)
             .then((retour) => {
                 resultat6 = retour
             })

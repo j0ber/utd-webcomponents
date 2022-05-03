@@ -10,6 +10,7 @@
     import Messages from './pages/Messages.svelte'; 
     import Modal from './pages/Modal.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
+    import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
 //    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
 </script>
@@ -98,6 +99,7 @@
                                 <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
                                 <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
                                 <li><a href="/composants/messages" tinro-ignore use:active exact>Messages</a></li>
+                                <li><a href="/composants/traitementencours" tinro-ignore use:active exact>Traitement en cours</a></li>
                             {:else}                                    
                                 <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
                                 <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
