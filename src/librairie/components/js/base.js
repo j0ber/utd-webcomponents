@@ -253,7 +253,7 @@ export const traitementEnCours = (function () {
 
         //Générer un id à l'élément qui va contenir le spinner de traitement en cours
         if(!element.id){
-            element.id = `zoneNotification_${genererId()}`;            
+            element.id = genererId();            
         }
 
         const idZoneNotification = `zoneNotification_${element.id}`;
