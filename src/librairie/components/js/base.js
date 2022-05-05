@@ -332,6 +332,8 @@ export const notification = (function () {
             zoneNotifications = document.createElement('div');
             zoneNotifications.id = 'utdZoneNotifications';
             zoneNotifications.classList.add('utd-notifications')
+            zoneNotifications.setAttribute('role', 'alert');
+            zoneNotifications.setAttribute('aria-atomic', 'true');
             document.body.appendChild(zoneNotifications);    
         }
 
@@ -347,7 +349,7 @@ export const notification = (function () {
     function ajouterNotification(zoneNotifications, parametres) {
 
         const notification = document.createElement('div');
-        notification.classList.add("notification", parametres.type);
+        notification.classList.add("notification", parametres.type);        
 
         const possedeTitre = !!parametres.titre
         if(!possedeTitre){

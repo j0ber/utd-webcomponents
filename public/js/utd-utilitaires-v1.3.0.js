@@ -287,6 +287,8 @@ var utd = (function (exports) {
          zoneNotifications = document.createElement('div');
          zoneNotifications.id = 'utdZoneNotifications';
          zoneNotifications.classList.add('utd-notifications');
+         zoneNotifications.setAttribute('role', 'alert');
+         zoneNotifications.setAttribute('aria-atomic', 'true');
          document.body.appendChild(zoneNotifications);
        }
 
