@@ -1,6 +1,10 @@
 var utd = (function (exports) {
    'use strict';
 
+   //TODO ajouter possibilité que utd reçoive les textes de langue requis. De quelle façon?
+   //A- En paramètre des méthodes qui en ont besoin
+   //B- Globalement via une initialisation de texte UTD qui serait faite une fois.
+
    /*======================================================================================================================*/
 
    /* -10- FENÊTRES DE MESSAGE
@@ -31,7 +35,6 @@ var utd = (function (exports) {
      * @references https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/alertdialog.html
      * @notes Le titre et les boutons sont lus 2 fois dans NVDA... ça semble faire partie du pattern (voir lien ci-dessus). 
      */
-     //TODO remplacer texteEdite et texte auto selon html lang
 
      elementsPublics.afficher = function (parametres) {
        var valeursDefaut = {
@@ -40,15 +43,14 @@ var utd = (function (exports) {
          corps: "",
          texteBoutonPrimaire: "",
          texteBoutonSecondaire: "",
-         texteBoutonFermer: "Fermer",
-         //TODO détecter langue sur balise html et mettre Close si eng
+         texteBoutonFermer: obtenirLanguePage() === 'fr' ? "Fermer" : "Close",
          afficherBoutonFermer: false,
          estBoutonsTexteLong: false,
          idControleFocusFermeture: null
        };
        parametres = extend(valeursDefaut, parametres);
-       parametres.idControleFocusFermeture = afficherMessage_obtenirIdControleFocusFermeture(parametres);
-       var conteneurFenetreMessage = afficherMessage_ajouterControle(parametres);
+       parametres.idControleFocusFermeture = obtenirIdControleFocusFermeture(parametres);
+       var conteneurFenetreMessage = ajouterControle(parametres);
        var fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog');
        var boutons = conteneurFenetreMessage.querySelectorAll('[slot="pied"] > button');
        boutons.forEach(function (btn) {
@@ -60,7 +62,7 @@ var utd = (function (exports) {
        }); //Définir une promesse qui sera résolue à la fermeture de la fenêtre.
 
        return new Promise(function (resolve) {
-         afficherMessage_definirEvenementFermeture(fenetreMessage, resolve);
+         definirEvenementFermeture(fenetreMessage, resolve);
          fenetreMessage.setAttribute('afficher', 'true');
        });
      };
@@ -72,7 +74,7 @@ var utd = (function (exports) {
       */
 
 
-     function afficherMessage_obtenirIdControleFocusFermeture(parametres) {
+     function obtenirIdControleFocusFermeture(parametres) {
        if (!parametres.idControleFocusFermeture) {
          if (document.activeElement) {
            var id = document.activeElement.id;
@@ -97,8 +99,8 @@ var utd = (function (exports) {
       */
 
 
-     function afficherMessage_ajouterControle(parametres) {
-       //    var classeIcone = afficherMessage_obtenirClasseIcone(parametres.type);
+     function ajouterControle(parametres) {
+       //    var classeIcone = obtenirClasseIcone(parametres.type);
        var html = "\n        <utd-dialog titre=\"".concat(parametres.titre, "\" idfocus=\"").concat(parametres.idControleFocusFermeture, "\" estfenetremessage=\"true\" estboutonstextelong=\"").concat(parametres.estBoutonsTexteLong, "\" type=\"").concat(parametres.type, "\" >\n            <div slot=\"contenu\">\n                ").concat(parametres.corps, "\n            </div>\n            <div slot=\"pied\">");
        var htmlBoutonPrimaire = "<button type=\"button\" class=\"utd-btn primaire compact\" raison-fermeture=\"primaire\" data-ga-action=\"".concat(parametres.titre, "\">").concat(parametres.texteBoutonPrimaire, "</button>");
        var htmlBoutonSecondaire = parametres.texteBoutonSecondaire ? "<button type=\"button\" class=\"utd-btn secondaire compact\" raison-fermeture=\"secondaire\" data-ga-action=\"".concat(parametres.titre, "\">").concat(parametres.texteBoutonSecondaire, "</button>") : '';
@@ -118,7 +120,7 @@ var utd = (function (exports) {
       */
 
 
-     function afficherMessage_definirEvenementFermeture(fenetreMessage, resolve) {
+     function definirEvenementFermeture(fenetreMessage, resolve) {
        fenetreMessage.addEventListener("fermeture", function (e) {
          resolve(e.detail.raisonFermeture);
          fenetreMessage.parentElement.remove();
@@ -226,10 +228,179 @@ var utd = (function (exports) {
          zoneNotificationsLecteurEcran.id = idZoneNotification;
          zoneNotificationsLecteurEcran.classList.add('sr-only');
          document.body.appendChild(zoneNotificationsLecteurEcran);
-       } //TODO multilingue via paramètre
+       }
+
+       var texte = "";
+
+       if (estTraitementTermine) {
+         texte = obtenirLanguePage() === 'fr' ? "Traitement terminé." : "Processing complete.";
+       } else {
+         texte = obtenirLanguePage() === 'fr' ? "Traitement en cours." : "Processing...";
+       }
+
+       zoneNotificationsLecteurEcran.innerHTML = texte;
+     }
+
+     return elementsPublics;
+   }();
+   /*======================================================================================================================*/
+
+   /* -30- NOTIFICATIONS
+   /*======================================================================================================================*/
+
+   var notification = function () {
+     var elementsPublics = {};
+     /**
+      * Affiche une notification (toast).
+      * @param {Object} parametres Paramètres.
+      * @param {Object} parametres.type Type de notification (positif, negatif ou neutre). Défaut "positif".
+      * @param {Object} parametres.titre Titre de la notification (ex. Succès) Défaut "Succès" ou "Échec".
+      * @param {Object} parametres.message Message de la notification (ex. Enregistrement effectué avec succès.) Défaut "".
+      * @param {Object} parametres.texteBoutonFermer Texte du bouton de fermeture de la notification. Défaut "Fermer".
+      * @param {Object} parametres.delaiFermeture Délai (en ms) de fermeture automatique de la notification. Défaut 5000.
+      */
+
+     elementsPublics.emettre = function (parametres) {
+       var valeursDefaut = {
+         type: "positif",
+         titre: "",
+         //parametres.type == "echec" ? "Échec" : "Succès",
+         message: "",
+         texteBoutonFermer: obtenirLanguePage() === 'fr' ? "Fermer" : "Close",
+         delaiFermeture: 55000
+       };
+       parametres = extend(valeursDefaut, parametres);
+       var zoneNotifications = obtenirZoneNotifications();
+       var notification = ajouterNotification(zoneNotifications, parametres);
+       retirerNotificationApresDelai(notification, parametres);
+     };
+     /**
+      * Obtient la node correspondant à la zone de notifications utd.
+      * @returns {object} La zone de notifications utd.
+      */
 
 
-       zoneNotificationsLecteurEcran.innerHTML = estTraitementTermine ? "Traitement terminé." : "Traitement en cours.";
+     function obtenirZoneNotifications() {
+       var zoneNotifications = document.getElementById('utdZoneNotifications');
+
+       if (!zoneNotifications) {
+         zoneNotifications = document.createElement('div');
+         zoneNotifications.id = 'utdZoneNotifications';
+         zoneNotifications.classList.add('utd-notifications');
+         document.body.appendChild(zoneNotifications);
+       }
+
+       return zoneNotifications;
+     }
+     /**
+      * (Privée)
+      * Ajoute une notification dans la zone des notifications.
+      * @param {Object} zoneNotifications Node correspondant à la zone de notifications.
+      * @param {Object} parametres Paramètres de la méthode emettre (qui permet d'émettre une notification).
+      * @returns {Object} Node correspondant à la notification ajoutée.
+      */
+
+
+     function ajouterNotification(zoneNotifications, parametres) {
+       var notification = document.createElement('div');
+       notification.classList.add("notification", parametres.type);
+       var possedeTitre = !!parametres.titre;
+
+       if (!possedeTitre) {
+         notification.classList.add("sans-titre");
+       }
+
+       notification.innerHTML = obtenirHtmlNotification(parametres, possedeTitre);
+       definirEvenementClick(notification);
+       zoneNotifications.appendChild(notification);
+       afficherNotification(notification);
+       return notification;
+     }
+     /**
+      * 
+      * @param {Object} parametres Paramètres de la méthode emettre (qui permet d'émettre une notification).
+      * @param {Boolean} possedeTitre Indique si la notification possède un titre ou non.
+      * @returns 
+      */
+
+
+     function obtenirHtmlNotification(parametres, possedeTitre) {
+       var html = "\n            <button type=\"button\">\n                <span class=\"sr-only\">".concat(parametres.texteBoutonFermer, "</span>\n                <span class=\"utd-icone-svg x-fermer-blanc\" aria-hidden=\"true\"></span>\n            </button>");
+
+       if (possedeTitre) {
+         var classeIcone = obtenirClasseIcone(parametres.type);
+         html += "\n                <div class=\"titre\">\n                    <span class=\"utd-icone-svg ".concat(classeIcone, " md\" aria-hidden=\"true\"></span>\n                    <span class=\"texte\">").concat(parametres.titre, "</span>\n                </div>            \n            ");
+       }
+
+       html += "\n            <div class=\"message\">\n                ".concat(parametres.message, "\n            </div>");
+       return html;
+     }
+     /**
+      * Obtient la classe de l'icône de titre.
+      * @param {string} type Type de notification
+      * @returns {string} Classe de l'icône de titre pour le type spécifié.
+      */
+
+
+     function obtenirClasseIcone(type) {
+       switch (type) {
+         case "negatif":
+           return "erreur";
+
+         case "neutre":
+           return "information";
+
+         default:
+           return "succes";
+       }
+     }
+     /**
+      * Affiche la notification en effectuant un fade in.
+      * @param {Object} notification Node notification à afficher.
+      */
+
+
+     function afficherNotification(notification) {
+       setTimeout(function () {
+         notification.classList.add('visible');
+       }, 10);
+     }
+     /**
+      * Retire la notification après le délai prévu.
+      * @param {Object} notification Node correspondant à la notification à retirer.
+      * @param {Object} parametres Paramètres de la méthode emettre (qui permet d'émettre une notification).
+      */
+
+
+     function retirerNotificationApresDelai(notification, parametres) {
+       setTimeout(function () {
+         retirerNotification(notification);
+       }, parametres.delaiFermeture);
+     }
+     /**
+      * Retire la notification du dom et en effectuant un fade out.
+      * @param {Object} notification Node correspondant à la notification à retirer.
+      */
+
+
+     function retirerNotification(notification) {
+       var dureeAnimationMs = 500;
+       notification.classList.remove('visible');
+       setTimeout(function () {
+         notification.remove();
+       }, dureeAnimationMs);
+     }
+     /**
+      * (Privéee)
+      * Définit le traitement à effectuer sur le click d'une notification.
+      * @param {Object} notification Node de notification sur laquelle on doit appliquer l'événement.
+      */
+
+
+     function definirEvenementClick(notification) {
+       notification.addEventListener("click", function (e) {
+         retirerNotification(notification);
+       });
      }
 
      return elementsPublics;
@@ -269,10 +440,20 @@ var utd = (function (exports) {
    function genererId() {
      return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
    }
+   /**
+    * Obtient la langue de la page courante.
+    * @returns {string} Code de langue de la page courante (fr/en).
+    */
+
+   function obtenirLanguePage() {
+     return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
+   }
 
    exports.extend = extend;
    exports.genererId = genererId;
    exports.message = message;
+   exports.notification = notification;
+   exports.obtenirLanguePage = obtenirLanguePage;
    exports.traitementEnCours = traitementEnCours;
 
    Object.defineProperty(exports, '__esModule', { value: true });

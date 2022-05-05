@@ -947,26 +947,7 @@ input.utd-form-control.sm {
     padding-left: 16px;
     padding-right: 16px;
 }
-
-@media (max-width: 425px) {
-    .utd-container {
-        max-width: 100%;
-        padding-right: 8px;
-        padding-left: 8px;
-    }
-}
-
-@media (min-width: 576px) {
-    .utd-container {
-        max-width: 100%;
-    }
-}
-
-@media (min-width: 768px) {
-    .utd-container {
-        max-width: 100%;
-    }
-}
+/* Breakpoints de max-width 425, 576 et 768 identiques */
 
 @media (min-width: 992px) {
     .utd-container {
@@ -1080,11 +1061,6 @@ input.utd-form-control.sm {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-moins");
 }
 
-.utd-icone-svg.x-fermer-bleu {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-}
 .utd-icone-svg.information {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-information");
 }
@@ -1101,7 +1077,17 @@ input.utd-form-control.sm {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-erreur");
 }
 
+.utd-icone-svg.x-fermer-blanc {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-xfermer-blanc");
+}
+
 .utd-icone-svg.x-fermer-bleu {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-xfermer-bleu");
 }
 
