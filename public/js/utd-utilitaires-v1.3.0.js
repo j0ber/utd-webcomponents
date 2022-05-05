@@ -267,7 +267,7 @@ var utd = (function (exports) {
          //parametres.type == "echec" ? "Échec" : "Succès",
          message: "",
          texteBoutonFermer: obtenirLanguePage() === 'fr' ? "Fermer" : "Close",
-         delaiFermeture: 55000
+         delaiFermeture: 4000
        };
        parametres = extend(valeursDefaut, parametres);
        var zoneNotifications = obtenirZoneNotifications();

@@ -310,7 +310,7 @@ export const notification = (function () {
             titre: "", //parametres.type == "echec" ? "Échec" : "Succès",
             message: "",
             texteBoutonFermer: obtenirLanguePage() === 'fr' ? "Fermer" : "Close", 
-            delaiFermeture: 55000
+            delaiFermeture: 4000
         };
 
         parametres = extend(valeursDefaut, parametres);       
