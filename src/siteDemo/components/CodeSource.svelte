@@ -32,8 +32,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       codeSource = obtenirCodeSourceFormate2(codeSource)
     }
 
-    console.log(codeSource)
-
     setTimeout(function(){ 
       const conteneurCode = document.getElementById(idConteneurCode)
       HighlightJS.highlightElement(conteneurCode)
