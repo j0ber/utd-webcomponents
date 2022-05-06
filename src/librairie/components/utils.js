@@ -94,4 +94,12 @@ export class Utils {
     static slotExiste(slots, nomSlot) {
         return slots.some(s => s.slot === nomSlot)
     }
+
+    /**
+     * Obtient la langue de la page courante.
+     * @returns {string} Code de langue de la page courante (fr/en).
+     */
+    static obtenirLanguePage() {
+        return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
+    }
 }

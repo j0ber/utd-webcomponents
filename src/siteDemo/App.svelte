@@ -7,6 +7,7 @@
     import AideContextuelle from './pages/AideContextuelle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
+    import HautPage from './pages/HautPage.svelte'; 
     import Messages from './pages/Messages.svelte'; 
     import Modal from './pages/Modal.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
@@ -98,6 +99,7 @@
                                 <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
                                 <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
                                 <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
+                                <li><a href="/composants/hautpage" tinro-ignore use:active exact>Haut de page</a></li>
                                 <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
                                 <li><a href="/composants/messages" tinro-ignore use:active exact>Messages</a></li>
                                 <li><a href="/composants/notifications" tinro-ignore use:active exact>Notifications</a></li>
@@ -122,6 +124,7 @@
                     <Route path="/composants/avis" ><Avis /></Route>
                     <Route path="/composants/boutons" ><Boutons /></Route>
                     <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
+                    <Route path="/composants/hautpage" ><HautPage /></Route>
                     <Route path="/composants/modal" ><Modal /></Route>
                     <Route path="/composants/messages" ><Messages /></Route>
                     <Route path="/composants/notifications" ><Notifications /></Route>
@@ -147,3 +150,4 @@
         </span>
     </div>
 </footer>
+<utd-hautpage></utd-hautpage>

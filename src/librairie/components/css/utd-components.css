@@ -500,13 +500,32 @@ utd-dialog [slot="pied"] > button:last-child {
   font-family: 'OpenSans-Regular';
   font-size: 14px;
   position: fixed;
-  bottom: 16px;
+  bottom: 32px;
   right: 0;
-  padding: 0 16px;
+  padding: 0 32px;
   z-index: 1111;  
   width: 100%;
-  max-width: 376px;
+  max-width: 408px;
 }
+
+html[retourhautpagevisible="true"] .utd-notifications {
+  bottom: 162px;
+}
+
+@media (max-width: 768px) {
+  html[retourhautpagevisible="true"] .utd-notifications {
+    bottom: 146px;
+  }
+}
+
+@media (max-width: 768px) {
+  .utd-notifications {
+    bottom: 16px;
+    padding: 0 16px;
+    max-width: 376px;
+  }
+} 
+
 
 .utd-notifications .notification {
   position: relative;
@@ -590,3 +609,48 @@ utd-dialog [slot="pied"] > button:last-child {
 }
 
 
+/*====================================================================================================
+  -80- utd-hautpage
+====================================================================================================*/
+.utd-hautpage {
+  -webkit-transition: opacity .5s linear;
+  -moz-transition: opacity .5s linear;
+  -ms-transition: opacity .5s linear;
+  -o-transition: opacity .5s linear;
+  transition: opacity .5s linear;
+  opacity: 0;
+}
+
+.utd-hautpage.visible {
+  opacity: 1;
+}
+
+.utd-hautpage button {
+/*  display: none;*/
+  position: fixed;
+  bottom: 90px;
+  right: 32px;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+  min-width: inherit;
+  padding: 0px;
+}
+
+@media (max-width: 768px) {
+  .utd-hautpage button {
+      right: 16px;
+  }
+} 
+
+.utd-hautpage .utd-icone-svg {
+  min-width: 25px;
+  width: 25px;
+  height: 21px;
+}
+
+.utd-hautpage .contenu {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
