@@ -1,49 +1,58 @@
 <script>
-  import { onMount } from 'svelte';
-  import CodeSource from '../components/CodeSource.svelte'; 
+    import { onMount } from 'svelte';
+    import CodeSource from '../components/CodeSource.svelte'; 
 
-  onMount(() => {
+    let mounted = false;
 
-    document.getElementById('btnTest1').addEventListener('click', function() {
-
-        utd.traitementEnCours.debuter(this);
-
-        setTimeout((that) => {
-            utd.traitementEnCours.terminer(that);
-        }, 5000, this);
+    onMount(() => {
+        test1();
+        test2();
+        test3();
+        mounted = true;
     })
 
-    document.getElementById('btnTest2').addEventListener('click', function() {
+    function test1() {
+        document.getElementById('btnTest1').addEventListener('click', function() {
 
-        utd.traitementEnCours.debuter(this, false);
+            utd.traitementEnCours.debuter(this);
+            
+            setTimeout((that) => {
+                utd.traitementEnCours.terminer(that);
+            }, 5000, this);
+        })
+    }
 
-        setTimeout((that) => {
-            utd.traitementEnCours.terminer(that);
-        },5000, this);
-    })
+    function test2() {
+        document.getElementById('btnTest2').addEventListener('click', function() {
+            utd.traitementEnCours.debuter(this, false);
 
-    document.getElementById('btnTest3').addEventListener('click', function() {
-        const bouton1 = document.getElementById('btnTest1');
-        const bouton2 = document.getElementById('btnTest2');
-        utd.traitementEnCours.debuter(bouton1);
-        utd.traitementEnCours.debuter(bouton2, false);
-        utd.traitementEnCours.debuter(this);
+            setTimeout((that) => {
+                utd.traitementEnCours.terminer(that);
+            },5000, this);
+        })
+    }
 
-        setTimeout(() => {
-            utd.traitementEnCours.terminer(bouton1);
-        },5000);
+    function test3() {
+        document.getElementById('btnTest3').addEventListener('click', function() {
+            const bouton1 = document.getElementById('btnTest1');
+            const bouton2 = document.getElementById('btnTest2');
+            utd.traitementEnCours.debuter(bouton1);
+            utd.traitementEnCours.debuter(bouton2, false);
+            utd.traitementEnCours.debuter(this);
 
-        setTimeout(() => {
-            utd.traitementEnCours.terminer(bouton2);
-        },10000);
+            setTimeout(() => {
+                utd.traitementEnCours.terminer(bouton1);
+            },5000);
 
-        setTimeout((that) => {
-            utd.traitementEnCours.terminer(that);
-        },15000, this);
+            setTimeout(() => {
+                utd.traitementEnCours.terminer(bouton2);
+            },10000);
 
-    })
-
-})
+            setTimeout((that) => {
+                utd.traitementEnCours.terminer(that);
+            },15000, this);
+        })
+    }
 
 </script>
 
@@ -52,6 +61,15 @@
 <h2>Sur un bouton (avec overlay)</h2>
 <p>Simule un traitement de 5 secondes.</p>
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Test 1</button>
+{#if mounted}
+    <utd-accordeon titre="Code source">
+        <span slot="contenu">
+            <CodeSource codeSource="{test1.toString()}" language="language-javascript">
+            </CodeSource>   
+        </span>
+    </utd-accordeon>
+{/if}   
+
 
 
 <h2>Sur un bouton (sans overlay)</h2>

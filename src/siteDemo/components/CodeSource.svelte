@@ -9,14 +9,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { fly } from "svelte/transition"
   import {HighlightJS} from "highlight.js"
   import {html_beautify} from "js-beautify"
+  import {js_beautify} from "js-beautify"
   import { Utils } from '../../librairie/components/utils.js'
   
-  export let lang = "fr"
   export let idElementCodeSource = ""
+  export let codeSource = ""
+  export let language = "language-html"
 
-
-  let controleCodeSource = null
-  let codeSource = ""
+  let controleCodeSource = null  
   let estSuccesCopie = false
   const idConteneurCode = Utils.genererId()
   const idBoutonCopier = 'copier' + idConteneurCode
@@ -25,9 +25,15 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let clipboard = null
 
   onMount(() => {
-    controleCodeSource = document.getElementById(idElementCodeSource)
-    codeSource = obtenirCodeSource(controleCodeSource)
-    
+    if(!codeSource){
+      controleCodeSource = document.getElementById(idElementCodeSource)
+      codeSource = obtenirCodeSourceFormate(controleCodeSource.outerHTML)
+    } else {
+      codeSource = obtenirCodeSourceFormate2(codeSource)
+    }
+
+    console.log(codeSource)
+
     setTimeout(function(){ 
       const conteneurCode = document.getElementById(idConteneurCode)
       HighlightJS.highlightElement(conteneurCode)
@@ -50,7 +56,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     
   })
 
-  function obtenirCodeSource(element) {
+  function obtenirCodeSourceFormate(code) {
 
     const options = {
       "indent":"auto",
@@ -71,7 +77,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       "new-blocklevel-tags": "utd-avis"
     }
 
-    let codeSource = element.outerHTML
+    let codeSource = code
     codeSource = codeSource.replace(/<span/g, "\r\n<span")
     codeSource = codeSource.replace(/<button/g, "\r\n<button")
 
@@ -79,13 +85,38 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 
-  
+  function obtenirCodeSourceFormate2(code) {
+
+    const options = {
+      "indent":"auto",
+      "indent-spaces":4,
+      "wrap":300,
+      "markup":true,
+      "output-xml":true,
+      "numeric-entities":true,
+      "quote-marks":true,
+      "quote-nbsp":false,
+      "show-body-only":false,
+      "quote-ampersand":false,
+      "break-before-br":true,
+      "uppercase-tags":false,
+      "uppercase-attributes":false,
+      "drop-font-tags":true,
+      "tidy-mark":false
+    }
+
+    let codeSource = code
+
+    return js_beautify(codeSource) 
+
+  }
+
 
 </script>
 
 <div class="code-source">
   <pre>
-    <code class="language-html" id={idConteneurCode}>
+    <code class="{language}" id={idConteneurCode}>
       {@html codeSource}
     </code>
   </pre>
