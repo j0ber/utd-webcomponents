@@ -550,6 +550,9 @@ utd-dialog [slot="pied"] > button:last-child {
   position: absolute;
   right: 0;
   top: 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
   line-height: 0;
   padding: 18px 16px 16px 16px;
   font-size: 1rem;
@@ -562,6 +565,7 @@ utd-dialog [slot="pied"] > button:last-child {
   font-family: 'OpenSans-Bold';
   margin-right: 24px;
   display: flex;
+  align-items: center;
   margin-bottom: 8px;
 }
 
@@ -573,7 +577,16 @@ utd-dialog [slot="pied"] > button:last-child {
   filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
 }
 
+.utd-notifications .notification .message p:first-child {
+  margin-top: 0;
+}
+
+.utd-notifications .notification .message p:last-child {
+  margin-bottom: 0;
+}
+
 .utd-notifications .notification.sans-titre .message {
   margin-right: 24px;
 }
+
 
