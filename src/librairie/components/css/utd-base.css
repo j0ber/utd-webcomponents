@@ -819,8 +819,8 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
-html.modale-ouverte,
-html.modale-ouverte body {
+html.utd-modale-ouverte,
+html.utd-modale-ouverte body {
     overflow: hidden;
 }
 

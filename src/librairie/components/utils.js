@@ -72,7 +72,7 @@ export class Utils {
             }
         }      
 
-        html.classList.add("modale-ouverte")      
+        html.classList.add("utd-modale-ouverte")      
     }
 
     static ajusterInterfacePendantAffichageModale(body, modale) {
@@ -88,7 +88,7 @@ export class Utils {
     static ajusterInterfaceApresFermetureModale(html, body) {        
         html.style.removeProperty('padding-right')
         body.style.removeProperty('padding-right')
-        html.classList.remove("modale-ouverte")
+        html.classList.remove("utd-modale-ouverte")
     }
 
     static slotExiste(slots, nomSlot) {

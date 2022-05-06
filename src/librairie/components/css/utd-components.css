@@ -612,6 +612,12 @@ html[retourhautpagevisible="true"] .utd-notifications {
 /*====================================================================================================
   -80- utd-hautpage
 ====================================================================================================*/
+utd-hautpage {
+  position: fixed;
+  bottom: 90px;
+  right: 32px;
+}
+
 .utd-hautpage {
   -webkit-transition: opacity .5s linear;
   -moz-transition: opacity .5s linear;
@@ -627,9 +633,6 @@ html[retourhautpagevisible="true"] .utd-notifications {
 
 .utd-hautpage button {
 /*  display: none;*/
-  position: fixed;
-  bottom: 90px;
-  right: 32px;
   z-index: 99;
   width: 40px;
   height: 40px;
@@ -637,9 +640,18 @@ html[retourhautpagevisible="true"] .utd-notifications {
   padding: 0px;
 }
 
+html.utd-modale-ouverte utd-hautpage {
+  right: 49px;
+}
+
+
 @media (max-width: 768px) {
-  .utd-hautpage button {
+  utd-hautpage {
       right: 16px;
+  }
+
+  html.utd-modale-ouverte utd-hautpage {
+    right: 33px;
   }
 } 
 

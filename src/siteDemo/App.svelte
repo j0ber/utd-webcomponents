@@ -135,6 +135,7 @@
         
     </div>
 </div>
+<utd-hautpage></utd-hautpage>
 <footer class="piv-bas-page">
     <h2 id="titreMenuPiedPage" class="sr-only">Menu pied de page</h2>
     <div class="utd-container conteneur-signature-mo">
@@ -150,4 +151,3 @@
         </span>
     </div>
 </footer>
-<utd-hautpage></utd-hautpage>
