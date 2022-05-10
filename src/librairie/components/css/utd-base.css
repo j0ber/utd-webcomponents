@@ -732,6 +732,16 @@ h6 {
     background-color: transparent;
 }
 
+/* Boutons tertiaires comme liens */
+.utd-btn.tertiaire.comme-lien {
+    padding: 0;
+    border: 0;
+}
+
+.utd-btn.tertiaire.comme-lien:hover, .utd-btn.tertiaire.comme-lien:focus {
+    background-color: transparent;
+}
+
 
 /* ==================== Bouton avertissement ==================== */
 .utd-btn.avertissement {
@@ -802,11 +812,10 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 }
 
 /* Spinner bouton secondaire TODO pe éventuellement modifier la couleur du spinner d'un bouton secondaire */
-.utd-btn.secondaire .utd-spinner {
-/*    border: 4px solid rgba(134, 141, 149, .5);
-    border-top-color: rgba(134, 141, 149, 1)*/
-}
-
+/*.utd-btn.secondaire .utd-spinner {
+    border: 4px solid rgba(134, 141, 149, .5);
+    border-top-color: rgba(134, 141, 149, 1)
+}*/
 
 .utd-btn.secondaire.utd-traitement-en-cours[disabled] {
     opacity: 1;
@@ -814,7 +823,16 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
     border-color: rgba(134, 141, 149, 1);
 }
 
+button.btn[disabled] .icone-svg {
+    opacity: .5
+}
 
+/*====================================================================================================
+  -12B- Boutons désactivés
+====================================================================================================*/
+.utd-btn[disabled] .utd-icone-svg {
+    opacity: .5;
+}
 
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
