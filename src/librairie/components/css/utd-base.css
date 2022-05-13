@@ -202,6 +202,7 @@
     --couleur-avertissement: #ffcc00;
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
+    --couleur-bordure-tables: #dee2e6;
 }
 
 /*====================================================================================================
@@ -940,6 +941,55 @@ input.utd-form-control.sm {
     }
 }
 
+/*====================================================================================================
+  -50- Tables
+====================================================================================================*/
+table.utd-table{
+    margin-bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.utd-table>thead {
+    background-color: var(--couleur-texte-base);
+    color: #fff;
+    border: 1px solid var(--couleur-texte-base);
+}
+
+table.utd-table>thead th {
+    font-family: OpenSans-Bold;
+    font-weight: normal;
+}
+
+table.utd-table thead th, table.utd-table tbody th, table.utd-table tbody td {
+    vertical-align: middle;
+    text-align: left;
+    padding: 12px;    
+}
+
+/* ----- Tables avec bordures de lignes ----- */
+table.utd-table.bordures-lignes tbody th, table.utd-table.bordures-lignes tbody td {
+    border-top: 1px solid var(--couleur-bordure-tables);    
+}
+
+table.utd-table.bordures-lignes>tbody, table.utd-table.bordures-lignes>tfoot {
+    border: 1px solid var(--couleur-bordure-tables);    
+}
+
+/* ----- Tables avec bordures de cellule ----- */
+table.utd-table.bordures-cellules tbody th, table.utd-table.bordures-cellules tbody td {
+    border-top: 1px solid var(--couleur-bordure-tables);    
+    border-left: 1px solid var(--couleur-bordure-tables);
+}
+
+table.utd-table.bordures-cellules tbody th:last-child, table.utd-table.bordures-cellules tbody td:last-child {
+    border-right: 1px solid var(--couleur-bordure-tables);
+}
+
+table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot {
+    border: 1px solid var(--couleur-bordure-tables);    
+}
 
 /*====================================================================================================
   -60- Layout
