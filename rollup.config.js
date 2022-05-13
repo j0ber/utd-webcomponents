@@ -187,14 +187,14 @@ export default [{
         // the bundle has been generated
         // ICI on fait exprès de faire un serve suivi d'un terser pour simuler le code de prod (histoire de tester notre module code source et s'assurer que ce n'est pas compressé ou mal formaté)
         !production && serve(),
-        !production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true}}),
+        !production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true, comments: 'all'}}),
         // Watch the `public` directory and refresh the
         // browser on changes when not in production
         !production && livereload('public'),
 
         // If we're building for production (npm run build
         // instead of npm run dev), minify
-        production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true}})
+        production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true, comments: 'all'}})
         //production && terser()
     ],
     watch: {

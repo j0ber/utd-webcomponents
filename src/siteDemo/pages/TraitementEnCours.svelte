@@ -37,7 +37,7 @@
             const bouton1 = document.getElementById('btnTest1');
             const bouton2 = document.getElementById('btnTest2');
             
-            /*! On débute le traitement en cours sur les 3 boutons */
+            //On débute le traitement en cours sur les 3 boutons
             utd.traitementEnCours.debuter(bouton1);
             utd.traitementEnCours.debuter(bouton2, false);
             utd.traitementEnCours.debuter(this);
@@ -51,7 +51,7 @@
             },10000);
 
             setTimeout((that) => {
-                /*! Terminer le traitement en cours sur le bouton 3 */
+                //Terminer le traitement en cours sur le bouton 3
                 utd.traitementEnCours.terminer(that);
             },15000, this);
         })
@@ -63,7 +63,7 @@
 
 <h2>Sur un bouton (avec overlay)</h2>
 <p>Simule un traitement de 5 secondes.</p>
-<button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Test 1</button>
+<button type="button" id="btnTest1" class="utd-btn secondaire mb-16">Test 1</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
         <span slot="contenu">
@@ -77,7 +77,7 @@
 
 <h2>Sur un bouton (sans overlay)</h2>
 <p>Simule un traitement de 5 secondes.</p>
-<button type="button" id="btnTest2" class="utd-btn primaire mb-32">Test 2</button>
+<button type="button" id="btnTest2" class="utd-btn primaire mb-16">Test 2</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
         <span slot="contenu">
@@ -88,9 +88,9 @@
 {/if}   
 
 
-<h2>Sur un bouton (avec overlay)</h2>
+<h2>Sur un bouton compact (avec overlay)</h2>
 <p>Simule un traitement simultané de 5 secondes sur le bouton 1, 10 secondes sur le bouton 2 et 15 secondes sur le bouton 3.</p>
-<button type="button" id="btnTest3" class="utd-btn primaire compact mb-32">Test 3</button>
+<button type="button" id="btnTest3" class="utd-btn primaire compact mb-16">Test 3</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
         <span slot="contenu">
