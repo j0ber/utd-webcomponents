@@ -27,7 +27,8 @@
     function notification2() {
         document.getElementById('test2').addEventListener('click', () => {
             const params = {
-                message: "Tu as réussi à enregistrer comme un grand."
+                message: "Tu as réussi à enregistrer comme un grand.",
+                delaiFermeture: 10000
                 };
 
             utd.notification.emettre(params);
@@ -82,7 +83,9 @@
 </script>
 
 <h1>Notifications</h1>
-<h2>Notification de type "positif" avec titre</h2>
+<h2>Paramètres</h2>
+<h2>Exemples</h2>
+<h3>Notification de type "positif" avec titre</h3>
 <button type="button" id="test1" class="utd-btn secondaire mb-16">Test 1</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
@@ -93,7 +96,7 @@
     </utd-accordeon>
 {/if}   
 
-<h2>Notification de type "positif" sans titre</h2>
+<h3>Notification de type "positif" sans titre et délai de fermeture plus long spécifié (10 secondes)</h3>
 <button type="button" id="test2" class="utd-btn secondaire mb-16">Test 2</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
@@ -104,7 +107,7 @@
     </utd-accordeon>
 {/if}   
 
-<h2>Notification de type "negatif" avec titre</h2>
+<h3>Notification de type "negatif" avec titre</h3>
 <button type="button" id="test3" class="utd-btn secondaire mb-16">Test 3</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
@@ -116,7 +119,7 @@
 {/if}   
 
 
-<h2>Notification de type "negatif" sans titre</h2>
+<h3>Notification de type "negatif" sans titre</h3>
 <button type="button" id="test4" class="utd-btn secondaire mb-16">Test 4</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
@@ -128,7 +131,7 @@
 {/if}   
 
 
-<h2>Notification de type "neutre" avec titre</h2>
+<h3>Notification de type "neutre" avec titre</h3>
 <button type="button" id="test5" class="utd-btn secondaire mb-16">Test 5</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
@@ -140,7 +143,7 @@
 {/if}   
 
 
-<h2>Notification de type "neutre" sans titre</h2>
+<h3>Notification de type "neutre" sans titre</h3>
 <button type="button" id="test6" class="utd-btn secondaire mb-16">Test 6</button>
 {#if mounted}
     <utd-accordeon titre="Code source">
