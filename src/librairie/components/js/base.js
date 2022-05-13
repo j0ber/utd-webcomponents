@@ -404,11 +404,11 @@ export const notification = (function () {
     function obtenirClasseIcone(type) {
         switch (type) {
             case "negatif":
-                return "erreur";
+                return "erreur-blanc";
             case "neutre":
-                return "information";
+                return "information-blanc";
             default:
-                return "succes";
+                return "succes-blanc";
         }
     }
     /**

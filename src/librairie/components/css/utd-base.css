@@ -1066,8 +1066,16 @@ input.utd-form-control.sm {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-erreur");
 }
 
+.utd-icone-svg.erreur-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-erreur-blanc");
+}
+
 .utd-icone-svg.information {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-information");
+}
+
+.utd-icone-svg.information-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
@@ -1086,6 +1094,10 @@ input.utd-form-control.sm {
 .utd-icone-svg.succes {
     background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-succes");
 }
+.utd-icone-svg.succes-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-succes-blanc");
+}
+
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;

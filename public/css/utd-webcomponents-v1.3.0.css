@@ -1066,8 +1066,16 @@ input.utd-form-control.sm {
     background-image: url("/images/utd-sprite-v1.3.0.svg#ico-erreur");
 }
 
+.utd-icone-svg.erreur-blanc {
+    background-image: url("/images/utd-sprite-v1.3.0.svg#ico-erreur-blanc");
+}
+
 .utd-icone-svg.information {
     background-image: url("/images/utd-sprite-v1.3.0.svg#ico-information");
+}
+
+.utd-icone-svg.information-blanc {
+    background-image: url("/images/utd-sprite-v1.3.0.svg#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
@@ -1086,6 +1094,10 @@ input.utd-form-control.sm {
 .utd-icone-svg.succes {
     background-image: url("/images/utd-sprite-v1.3.0.svg#ico-succes");
 }
+.utd-icone-svg.succes-blanc {
+    background-image: url("/images/utd-sprite-v1.3.0.svg#ico-succes-blanc");
+}
+
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
@@ -1701,9 +1713,9 @@ html[retourhautpagevisible="true"] .utd-notifications {
   margin-right:8px;
 }
 
-.utd-notifications .notification .utd-icone-svg {
+/*.utd-notifications .notification .utd-icone-svg {
   filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
-}
+}*/
 
 .utd-notifications .notification .message p:first-child {
   margin-top: 0;
