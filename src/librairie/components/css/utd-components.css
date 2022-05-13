@@ -241,6 +241,7 @@
     z-index: 10000;
     padding-top: var(--tc-24-16-val);
     padding-bottom: var(--tc-24-16-val);
+    white-space: normal;
   }
 
   .utd-infobulle .entete {
@@ -617,6 +618,7 @@ utd-hautpage {
   position: fixed;
   bottom: 90px;
   right: 32px;
+  z-index: 9999;
 }
 
 .utd-hautpage {
