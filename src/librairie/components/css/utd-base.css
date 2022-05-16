@@ -1209,6 +1209,8 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
   -999- Divers
 ====================================================================================================*/
 .utd-emphase{
-    background-color: var(--couleur-bleu-pale);
+    background-color: var(--couleur-bleu);
     padding: 2px 4px;
+    border-radius: 4px;
+    color: #fff;
 }
