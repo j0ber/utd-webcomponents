@@ -76,13 +76,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function keydown(e) {
     if (e.key === "Escape") {
-      masquerModale('Escape')
+      masquerModale('escape')
     }
   }
 
   function clickModale(e) {
     if(e.target === e.currentTarget){
-      masquerModale('ClickBackdrop')
+      masquerModale('clickBackdrop')
     }
   }
 
@@ -119,7 +119,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="utd-backdrop" on:click={() => masquerModale('ClickBackdrop')} />
+  <div class="utd-backdrop" on:click={() => masquerModale('clickBackdrop')} />
   <div
     tabindex="-1"
     aria-labelledby={idEntete}
@@ -140,7 +140,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         <button
         type="button"
         class="close"
-        on:click={() => masquerModale('BoutonFermer')}
+        on:click={() => masquerModale('boutonFermer')}
         aria-label={srTexteBoutonFermer}
       >
         <span

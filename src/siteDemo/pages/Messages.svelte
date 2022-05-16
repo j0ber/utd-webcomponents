@@ -146,9 +146,9 @@
 <ul>
     <li>"primaire", si le bouton primaire a été cliqué.</li>
     <li>"secondaire", si le bouton secondaire a été cliqué.</li>
-    <li>"ClickBackdrop", si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
-    <li>"BoutonFermer", si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
-    <li>"Escape", si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
+    <li>"clickBackdrop", si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
+    <li>"boutonFermer", si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
+    <li>"escape", si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
 </ul>
 
 <h2>Exemples</h2>
