@@ -8,7 +8,7 @@
 
 </script>
 
-<table class="utd-table bordures-lignes">
+<table class="utd-table bordures-lignes rayee">
   <thead>
       <tr>
           <th style="width: 100px;">Nom</th>
@@ -21,7 +21,7 @@
         <tr>
             <th><span>{p.nom}</span></th>
             <td>{p.type}</td> 
-            <td>{p.description}</td>
+            <td> {@html p.description}</td>
         </tr>
       {/each}        
   </tbody>

@@ -48,7 +48,12 @@ var utd = (function (exports) {
          estBoutonsTexteLong: false,
          idControleFocusFermeture: null
        };
-       parametres = extend(valeursDefaut, parametres);
+       parametres = extend(valeursDefaut, parametres); //Si un message est déjà affiché on ne fait rien, à moins que l'affichage soit forcé.
+
+       if (estMessageDejaAffiche) {
+         return;
+       }
+
        parametres.idControleFocusFermeture = obtenirIdControleFocusFermeture(parametres);
        var conteneurFenetreMessage = ajouterControle(parametres);
        var fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog');

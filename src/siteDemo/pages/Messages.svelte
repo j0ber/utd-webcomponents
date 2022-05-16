@@ -19,7 +19,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Type de message. Valeurs possibles : "" (Défaut, aucun type), "avertissement", "succes", "erreur".`},
+            {nom: "type", type: "String (Optionnel)", description: `Valeurs possibles : <span class="utd-emphase">avertissement</span>, <span class="utd-emphase">succes</span>, <span class="utd-emphase">erreur</span>.`},
             {nom: "titre", type: "String", description: `Titre du message.`},
             {nom: "corps", type: "String", description: `Corps du message.`},
             {nom: "texteBoutonPrimaire", type: "String", description: `Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.`},

@@ -2352,7 +2352,7 @@
   function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
   function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$2 = "src\\librairie\\components\\dialogueModal.svelte"; // (121:0) {#if estModaleAffichee}
+  var file$2 = "src\\librairie\\components\\dialogueModal.svelte"; // (123:0) {#if estModaleAffichee}
 
   function create_if_block$1(ctx) {
     var div0;
@@ -2409,36 +2409,36 @@
         t5 = space();
         if (if_block1) if_block1.c();
         attr_dev(div0, "class", "utd-backdrop");
-        add_location(div0, file$2, 121, 2, 4001);
+        add_location(div0, file$2, 123, 2, 4068);
         attr_dev(span, "aria-hidden", "true");
         attr_dev(span, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span, file$2, 145, 8, 4863);
+        add_location(span, file$2, 148, 8, 4975);
         attr_dev(button, "type", "button");
         attr_dev(button, "class", "close");
         attr_dev(button, "aria-label",
         /*srTexteBoutonFermer*/
         ctx[9]);
-        add_location(button, file$2, 139, 8, 4693);
+        add_location(button, file$2, 142, 8, 4805);
         attr_dev(h1, "id",
         /*idEntete*/
         ctx[7]);
         attr_dev(h1, "class", "titre-dialog");
-        add_location(h1, file$2, 155, 10, 5190);
+        add_location(h1, file$2, 158, 10, 5302);
         attr_dev(div1, "class", div1_class_value = "entete " + (
         /*type*/
         ctx[0] ? 'avec-type' : ''));
-        add_location(div1, file$2, 151, 8, 5015);
+        add_location(div1, file$2, 154, 8, 5127);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$2, 160, 10, 5337);
+        add_location(slot, file$2, 163, 10, 5449);
         attr_dev(div2, "class", "corps");
         attr_dev(div2, "id",
         /*idCorps*/
         ctx[8]);
-        add_location(div2, file$2, 159, 8, 5293);
+        add_location(div2, file$2, 162, 8, 5405);
         attr_dev(div3, "class", "principal");
-        add_location(div3, file$2, 150, 6, 4982);
+        add_location(div3, file$2, 153, 6, 5094);
         attr_dev(div4, "class", "conteneur");
-        add_location(div4, file$2, 138, 4, 4660);
+        add_location(div4, file$2, 141, 4, 4772);
         attr_dev(div5, "tabindex", "-1");
         attr_dev(div5, "aria-labelledby",
         /*idEntete*/
@@ -2458,7 +2458,7 @@
         ctx[6]);
         attr_dev(div5, "aria-modal", "true");
         attr_dev(div5, "role", "dialog");
-        add_location(div5, file$2, 122, 2, 4081);
+        add_location(div5, file$2, 124, 2, 4148);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div0, anchor);
@@ -2484,15 +2484,17 @@
         if (!mounted) {
           dispose = [listen_dev(div0, "click",
           /*click_handler*/
-          ctx[20], false, false, false), listen_dev(button, "click",
+          ctx[21], false, false, false), listen_dev(button, "click",
           /*click_handler_1*/
-          ctx[21], false, false, false), listen_dev(div5, "click",
+          ctx[22], false, false, false), listen_dev(div5, "click",
           /*clickModale*/
           ctx[12], false, false, false), listen_dev(div5, "keydown",
           /*keydown*/
-          ctx[11], false, false, false), listen_dev(div5, "introend",
-          /*ajusterModalePendantAffichage*/
-          ctx[14], false, false, false), listen_dev(div5, "outroend",
+          ctx[11], false, false, false), listen_dev(div5, "introstart",
+          /*ajusterModaleDebutAffichage*/
+          ctx[14], false, false, false), listen_dev(div5, "introend",
+          /*ajusterModaleFinAffichage*/
+          ctx[15], false, false, false), listen_dev(div5, "outroend",
           /*finAnimationFermeture*/
           ctx[13], false, false, false)];
           mounted = true;
@@ -2600,11 +2602,11 @@
       block: block,
       id: create_if_block$1.name,
       type: "if",
-      source: "(121:0) {#if estModaleAffichee}",
+      source: "(123:0) {#if estModaleAffichee}",
       ctx: ctx
     });
     return block;
-  } // (153:10) {#if type}
+  } // (156:10) {#if type}
 
 
   function create_if_block_2$1(ctx) {
@@ -2617,7 +2619,7 @@
         /*type*/
         ctx[0]);
         attr_dev(span, "aria-hidden", "true");
-        add_location(span, file$2, 153, 12, 5097);
+        add_location(span, file$2, 156, 12, 5209);
       },
       m: function mount(target, anchor) {
         insert_dev(target, span, anchor);
@@ -2639,11 +2641,11 @@
       block: block,
       id: create_if_block_2$1.name,
       type: "if",
-      source: "(153:10) {#if type}",
+      source: "(156:10) {#if type}",
       ctx: ctx
     });
     return block;
-  } // (163:8) {#if Utils.slotExiste(slots, 'pied')}
+  } // (166:8) {#if Utils.slotExiste(slots, 'pied')}
 
 
   function create_if_block_1$1(ctx) {
@@ -2654,9 +2656,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file$2, 164, 12, 5467);
+        add_location(slot, file$2, 167, 12, 5579);
         attr_dev(div, "class", "pied");
-        add_location(div, file$2, 163, 10, 5435);
+        add_location(div, file$2, 166, 10, 5547);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2670,7 +2672,7 @@
       block: block,
       id: create_if_block_1$1.name,
       type: "if",
-      source: "(163:8) {#if Utils.slotExiste(slots, 'pied')}",
+      source: "(166:8) {#if Utils.slotExiste(slots, 'pied')}",
       ctx: ctx
     });
     return block;
@@ -2691,7 +2693,7 @@
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
         attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
-        add_location(link, file$2, 172, 0, 5577);
+        add_location(link, file$2, 175, 0, 5689);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2798,7 +2800,7 @@
 
     function masquerModale(raisonFermetureModale) {
       $$invalidate(4, estModaleAffichee = false);
-      $$invalidate(15, afficher = 'false'); //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonfermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
+      $$invalidate(16, afficher = 'false'); //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonfermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
 
       var raison = raisonFermetureModale || raisonfermeture; //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
 
@@ -2817,7 +2819,7 @@
     function toggleAfficher() {
       if (mounted) {
         if (afficher === 'true') {
-          $$invalidate(16, raisonfermeture = '');
+          $$invalidate(17, raisonfermeture = '');
           Utils.ajusterInterfaceAvantAffichageModale(html, body);
           $$invalidate(4, estModaleAffichee = true);
         } else {
@@ -2845,12 +2847,15 @@
       Utils.dispatchWcEvent(thisComponent, "apresFermeture");
     }
 
-    function ajusterModalePendantAffichage(e) {
+    function ajusterModaleDebutAffichage(e) {
       var modale = thisComponent.shadowRoot.getElementById(idModale);
-      Utils.ajusterInterfacePendantAffichageModale(body, modale); //thisComponent.shadowRoot.getElementById(idModale).focus()
-
       donnerfocusPremierElementFocusable(modale);
       Utils.conserverFocusElement(modale, thisComponent);
+    }
+
+    function ajusterModaleFinAffichage(e) {
+      var modale = thisComponent.shadowRoot.getElementById(idModale);
+      Utils.ajusterInterfacePendantAffichageModale(body, modale);
     }
 
     function donnerfocusPremierElementFocusable(modale) {
@@ -2867,7 +2872,9 @@
         premierElementFocusable = elementsFocusables[0];
       }
 
-      premierElementFocusable.focus();
+      premierElementFocusable.focus({
+        preventScroll: true
+      });
     }
 
     var writable_props = ['afficher', 'type', 'estfenetremessage', 'raisonfermeture', 'titre', 'lang', 'srboutonfermer', 'idfocus', 'estboutonstextelong'];
@@ -2884,14 +2891,14 @@
     };
 
     $$self.$$set = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(15, afficher = $$props.afficher);
+      if ('afficher' in $$props) $$invalidate(16, afficher = $$props.afficher);
       if ('type' in $$props) $$invalidate(0, type = $$props.type);
       if ('estfenetremessage' in $$props) $$invalidate(1, estfenetremessage = $$props.estfenetremessage);
-      if ('raisonfermeture' in $$props) $$invalidate(16, raisonfermeture = $$props.raisonfermeture);
+      if ('raisonfermeture' in $$props) $$invalidate(17, raisonfermeture = $$props.raisonfermeture);
       if ('titre' in $$props) $$invalidate(2, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(17, lang = $$props.lang);
-      if ('srboutonfermer' in $$props) $$invalidate(18, srboutonfermer = $$props.srboutonfermer);
-      if ('idfocus' in $$props) $$invalidate(19, idfocus = $$props.idfocus);
+      if ('lang' in $$props) $$invalidate(18, lang = $$props.lang);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
+      if ('idfocus' in $$props) $$invalidate(20, idfocus = $$props.idfocus);
       if ('estboutonstextelong' in $$props) $$invalidate(3, estboutonstextelong = $$props.estboutonstextelong);
     };
 
@@ -2925,20 +2932,21 @@
         keydown: keydown,
         clickModale: clickModale,
         finAnimationFermeture: finAnimationFermeture,
-        ajusterModalePendantAffichage: ajusterModalePendantAffichage,
+        ajusterModaleDebutAffichage: ajusterModaleDebutAffichage,
+        ajusterModaleFinAffichage: ajusterModaleFinAffichage,
         donnerfocusPremierElementFocusable: donnerfocusPremierElementFocusable
       };
     };
 
     $$self.$inject_state = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(15, afficher = $$props.afficher);
+      if ('afficher' in $$props) $$invalidate(16, afficher = $$props.afficher);
       if ('type' in $$props) $$invalidate(0, type = $$props.type);
       if ('estfenetremessage' in $$props) $$invalidate(1, estfenetremessage = $$props.estfenetremessage);
-      if ('raisonfermeture' in $$props) $$invalidate(16, raisonfermeture = $$props.raisonfermeture);
+      if ('raisonfermeture' in $$props) $$invalidate(17, raisonfermeture = $$props.raisonfermeture);
       if ('titre' in $$props) $$invalidate(2, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(17, lang = $$props.lang);
-      if ('srboutonfermer' in $$props) $$invalidate(18, srboutonfermer = $$props.srboutonfermer);
-      if ('idfocus' in $$props) $$invalidate(19, idfocus = $$props.idfocus);
+      if ('lang' in $$props) $$invalidate(18, lang = $$props.lang);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
+      if ('idfocus' in $$props) $$invalidate(20, idfocus = $$props.idfocus);
       if ('estboutonstextelong' in $$props) $$invalidate(3, estboutonstextelong = $$props.estboutonstextelong);
       if ('estModaleAffichee' in $$props) $$invalidate(4, estModaleAffichee = $$props.estModaleAffichee);
       if ('html' in $$props) html = $$props.html;
@@ -2954,13 +2962,13 @@
     $$self.$$.update = function () {
       if ($$self.$$.dirty &
       /*afficher*/
-      32768) {
+      65536) {
         // Watch sur la prop afficher
         toggleAfficher();
       }
     };
 
-    return [type, estfenetremessage, titre, estboutonstextelong, estModaleAffichee, slots, idModale, idEntete, idCorps, srTexteBoutonFermer, masquerModale, keydown, clickModale, finAnimationFermeture, ajusterModalePendantAffichage, afficher, raisonfermeture, lang, srboutonfermer, idfocus, click_handler, click_handler_1];
+    return [type, estfenetremessage, titre, estboutonstextelong, estModaleAffichee, slots, idModale, idEntete, idCorps, srTexteBoutonFermer, masquerModale, keydown, clickModale, finAnimationFermeture, ajusterModaleDebutAffichage, ajusterModaleFinAffichage, afficher, raisonfermeture, lang, srboutonfermer, idfocus, click_handler, click_handler_1];
   }
 
   var DialogueModal = /*#__PURE__*/function (_SvelteElement) {
@@ -2979,14 +2987,14 @@
         props: attribute_to_object(_this.attributes),
         customElement: true
       }, instance$2, create_fragment$2, safe_not_equal, {
-        afficher: 15,
+        afficher: 16,
         type: 0,
         estfenetremessage: 1,
-        raisonfermeture: 16,
+        raisonfermeture: 17,
         titre: 2,
-        lang: 17,
-        srboutonfermer: 18,
-        idfocus: 19,
+        lang: 18,
+        srboutonfermer: 19,
+        idfocus: 20,
         estboutonstextelong: 3
       }, null);
 
@@ -3008,7 +3016,7 @@
     _createClass(DialogueModal, [{
       key: "afficher",
       get: function get() {
-        return this.$$.ctx[15];
+        return this.$$.ctx[16];
       },
       set: function set(afficher) {
         this.$$set({
@@ -3041,7 +3049,7 @@
     }, {
       key: "raisonfermeture",
       get: function get() {
-        return this.$$.ctx[16];
+        return this.$$.ctx[17];
       },
       set: function set(raisonfermeture) {
         this.$$set({
@@ -3063,7 +3071,7 @@
     }, {
       key: "lang",
       get: function get() {
-        return this.$$.ctx[17];
+        return this.$$.ctx[18];
       },
       set: function set(lang) {
         this.$$set({
@@ -3074,7 +3082,7 @@
     }, {
       key: "srboutonfermer",
       get: function get() {
-        return this.$$.ctx[18];
+        return this.$$.ctx[19];
       },
       set: function set(srboutonfermer) {
         this.$$set({
@@ -3085,7 +3093,7 @@
     }, {
       key: "idfocus",
       get: function get() {
-        return this.$$.ctx[19];
+        return this.$$.ctx[20];
       },
       set: function set(idfocus) {
         this.$$set({

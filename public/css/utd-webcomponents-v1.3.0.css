@@ -1670,6 +1670,11 @@ table.utd-table thead th, table.utd-table tbody th, table.utd-table tbody td {
     padding: 12px;    
 }
 
+/* ----- Tables avec effet zebré ----- */
+table.utd-table.rayee tbody tr:nth-of-type(even) {
+    background-color:var(--couleur-fond-gris);
+}
+
 /* ----- Tables avec bordures de lignes ----- */
 table.utd-table.bordures-lignes tbody th, table.utd-table.bordures-lignes tbody td {
     border-top: 1px solid var(--couleur-bordure-tables);    
@@ -1868,4 +1873,14 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     width: 16px;
     min-width: 16px;
     height: 10px;
+}
+
+
+
+/*====================================================================================================
+  -999- Divers
+====================================================================================================*/
+.utd-emphase{
+    background-color: var(--couleur-bleu-pale);
+    padding: 2px 4px;
 }

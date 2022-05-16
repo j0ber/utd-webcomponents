@@ -91,14 +91,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.dispatchWcEvent(thisComponent, "apresFermeture")
   }
 
-  function ajusterModalePendantAffichage(e){
+  function ajusterModaleDebutAffichage(e){
+    const modale = thisComponent.shadowRoot.getElementById(idModale)
+
+    donnerfocusPremierElementFocusable(modale)
+    Utils.conserverFocusElement(modale, thisComponent)
+  }
+
+  function ajusterModaleFinAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
     Utils.ajusterInterfacePendantAffichageModale(body, modale)
-    
-    //thisComponent.shadowRoot.getElementById(idModale).focus()
-    donnerfocusPremierElementFocusable(modale)
-
-    Utils.conserverFocusElement(modale, thisComponent)
   }
 
   function donnerfocusPremierElementFocusable(modale){
@@ -114,7 +116,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       premierElementFocusable = elementsFocusables[0]
     }
 
-    premierElementFocusable.focus()
+    premierElementFocusable.focus({preventScroll: true})
   }
 </script>
 
@@ -130,7 +132,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     on:keydown={keydown}
     in:fly={{ y: 200, duration: 500 }}
     out:fly={{ y: 200, duration: 250 }}
-    on:introend={ajusterModalePendantAffichage}
+    on:introstart={ajusterModaleDebutAffichage}
+    on:introend={ajusterModaleFinAffichage}
     on:outroend={finAnimationFermeture}
     aria-modal="true"
     role="dialog"
