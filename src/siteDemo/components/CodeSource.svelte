@@ -1,9 +1,3 @@
-<!-- 
-Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un custom element.
-<svelte:options tag="utd-menumobile" />
--->
-
-
 <script>
   import { onMount } from "svelte"
   import { fly } from "svelte/transition"

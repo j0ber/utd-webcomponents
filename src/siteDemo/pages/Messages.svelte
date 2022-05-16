@@ -1,10 +1,13 @@
 <script>
     import { onMount } from 'svelte';
     import CodeSource from '../components/CodeSource.svelte'; 
+    import TableauParams from '../components/TableauParams.svelte'; 
 
     let mounted = false;
+    let tableauParametres = [];
 
     onMount(() => {
+        tableauParametres = obtenirTableauParametres();
         message1();
         message2();
         message3();
@@ -14,6 +17,16 @@
         mounted = true;
     });
 
+    function obtenirTableauParametres() {
+        return [
+            {nom: "type", type: "String", description: `Type de message. Valeurs possibles : "" (Défaut, aucun type), "avertissement", "succes", "erreur".`},
+            {nom: "titre", type: "String", description: `Titre du message.`},
+            {nom: "corps", type: "String", description: `Corps du message.`},
+            {nom: "texteBoutonPrimaire", type: "String", description: `Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.`},
+            {nom: "texteBoutonSecondaire", type: "String", description: `Texte du bouton secondaire. Si non spécifié, le bouton secondaire n'est pas affiché.`},
+            {nom: "estBoutonsTexteLong", type: "Boolean", description: `Indique si le texte des boutons est long. Si c'est le cas, les boutons sont affichés verticalement en pleine largeur si la largeur d'écran est inférieure ou égale à 525px. (Au lieu de 425px normalement)`},
+        ];
+    }
 
     function message1() {
         document.getElementById('btnTest1').addEventListener('click', () => {
@@ -113,54 +126,33 @@
 </script>
 
 <h1>Messages</h1>
+<h2>Description</h2>
+<p>Il s'agit du composant "Dialogue d’alerte" du système de design Quebec.ca.</p>
+<p>Il apparaît lorsqu’une action immédiate est requise. Le dialogue d’alerte contient un message ainsi qu’un ou plusieurs boutons d’action. </p>
 
+<h3>Référence système de design Quebec.ca</h3>
+<a href="https://design.quebec.ca/composantes/action/dialog-modal" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+<h3>Particularités vs. le système de design Quebec.ca</h3>
+<p>Lorsqu'un type est spécifié, nous ajoutons une icône au titre du message et nous retirons le filet de couleur saumon sous le titre du message.</p>
+<p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de message il s'agit.</p>
+    
 <h2>Paramètres</h2>
-<table class="utd-table bordures-lignes">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Nom</th>
-            <th style="width: 80px;">Type</th>
-            <th>Description</th> 
-        </tr>
-    </thead> 
-    <tbody>
-        <tr>
-            <th><span>type</span></th>
-            <td>String</td> 
-            <td>Type de message. Valeurs possibles : "" (Défaut, aucun type), "avertissement", "succes", "erreur".</td>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
 
-        </tr>
-        <tr>
-            <th><span>titre</span></th>
-            <td>String</td> 
-            <td>Titre du message.</td>
-        </tr>
-        <tr>
-            <th>corps</th>
-            <td>String</td>  
-            <td>Corps du message.</td>
-        </tr>
-        <tr>
-            <th>texteBoutonPrimaire</th>
-            <td>String</td>  
-            <td>Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.</td>
-        </tr>
-        <tr>
-            <th>texteBoutonSecondaire</th>
-            <td>String</td>  
-            <td>Texte du bouton secondaire. Si non spécifié, le bouton secondaire n'est pas affiché.</td>
-        </tr>
-        <tr>
-            <th>estBoutonsTexteLong</th>
-            <td>Boolean</td>  
-            <td>Indique si le texte des boutons est long. Si c'est le cas, les boutons sont affichés verticalement en pleine largeur si la largeur d'écran est inférieure ou égale à 525px. (Au lieu de 425px normalement)</td>
-        </tr>
-
-    </tbody>
-</table>
+<h2>Retour</h2>
+<p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
+<ul>
+    <li>"primaire", si le bouton primaire a été cliqué.</li>
+    <li>"secondaire", si le bouton secondaire a été cliqué.</li>
+    <li>"ClickBackdrop", si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
+    <li>"BoutonFermer", si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
+    <li>"Escape", si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
+</ul>
 
 <h2>Exemples</h2>
-<h3>Message de type avertissement avec 2 boutons</h3>
+<h3>1- Message de type avertissement avec 2 boutons</h3>
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-16">Test 1</button>
 <div id="resultat1"></div>
 {#if mounted}
@@ -173,7 +165,7 @@
 {/if}   
 
 
-<h3>Message de type information avec 1 bouton</h3>
+<h3>2- Message de type information avec 1 bouton</h3>
 <button type="button" id="btnTest2" class="utd-btn secondaire mb-16">Test 2</button>
 <div id="resultat2"></div>
 {#if mounted}
@@ -186,7 +178,7 @@
 {/if}   
 
 
-<h3>Message de type succès avec 1 bouton</h3>
+<h3>3- Message de type succès avec 1 bouton</h3>
 <button type="button" id="btnTest3" class="utd-btn secondaire mb-16">Test 3</button>
 <div id="resultat3"></div>
 {#if mounted}
@@ -199,7 +191,7 @@
 {/if}   
 
 
-<h3>Message de type erreur avec 1 bouton</h3>
+<h3>4- Message de type erreur avec 1 bouton</h3>
 <button type="button" id="btnTest4" class="utd-btn secondaire mb-16">Test 4</button>
 <div id="resultat4"></div>
 {#if mounted}
@@ -212,7 +204,7 @@
 {/if}   
 
 
-<h3>Message sans type avec 2 boutons</h3>
+<h3>5- Message sans type avec 2 boutons</h3>
 <button type="button" id="btnTest5" class="utd-btn secondaire mb-16">Test 5</button>
 <div id="resultat5"></div>
 {#if mounted}
@@ -225,7 +217,7 @@
 {/if}   
 
 
-<h3>Message sans type avec 2 boutons et texte long</h3>
+<h3>6- Message sans type avec 2 boutons et texte long</h3>
 <button type="button" id="btnTest6" class="utd-btn secondaire mb-16">Test 6</button>
 <div id="resultat6"></div>
 {#if mounted}

@@ -499,3 +499,31 @@ export function genererId() {
  export function obtenirLanguePage() {
     return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
 }
+
+
+export function ajusterAccessibiliteLiens(texteAccessibilite) {
+    texteAccessibilite = texteAccessibilite || obtenirLanguePage() === 'fr' ? ". Ce lien sera ouvert dans un nouvel onglet." : ". This link will open in a new tab.";
+
+    document.querySelectorAll('main a[target="_blank"]').forEach(lien => { 
+
+        //Ne pas traiter les liens sans href et les liens
+        if (!lien.getAttribute('href')) {
+            return;
+        }
+        //Ne pas traiter les liens vers des fichiers pdf ou les liens ayant explicitement une classe indiquant de ne pas les considérer comme lien externe(sans-lien-externe).  TODO éventuellement rafiner la condition afin de traiter uniquement les liens vers des pages web...
+        if (lien.getAttribute('href').endsWith(".pdf") || lien.classList.contains("utd-sans-lien-externe")) {
+            return;
+        }
+
+        //Ajouter la classe lien-externe afin d'afficher l'icône d'ouverture dans une nouvelle fenêtre.
+        if (!lien.classList.contains("utd-lien-externe") && !lien.querySelector('.utd-lien-externe')) {
+            lien.classList.add("utd-lien-externe");
+        }
+
+        //Ajouter le texte pour accessibilité nouvelle fenêtre si on détecte qu'il n'est pas là. TODO rafiner cette vérification éventuellement au besoin, il pourrait arriver qu'un .sr-only soit là pour autre chose dans le lien (très peu probable)
+        if (!lien.querySelector(".utd-sr-only")) {
+            lien.innerHTML = lien.innerHTML + `<span class="sr-only">${texteAccessibilite}</span>`
+        }
+    });
+
+};

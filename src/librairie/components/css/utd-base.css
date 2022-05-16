@@ -532,6 +532,36 @@ h6 {
 
 /* TODO ajouter headers informationnels (un jour) */
 
+
+/*====================================================================================================
+  -04- Hyperliens
+====================================================================================================*/
+
+a {
+    color: var(--couleur-liens);
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    color: #3374cc;
+}
+
+/* ----- Liens externes ----- */
+
+/* Icône pour ouverture lien dans nouvelle fenêtre */
+a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-lien-externe");
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    background-size: 12px 12px;
+}
+
 /*====================================================================================================
   -10- Traitement en cours. Overlay et spinner.
 ====================================================================================================*/

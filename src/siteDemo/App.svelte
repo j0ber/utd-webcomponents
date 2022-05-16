@@ -15,6 +15,7 @@
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
 //    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
+
 </script>
 
 <div class="conteneur-principal">
