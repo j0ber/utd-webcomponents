@@ -50,6 +50,11 @@ export const message = (function () {
     
         parametres = extend(valeursDefaut, parametres);
     
+        //Si un message est déjà affiché on ne fait rien, à moins que l'affichage soit forcé.
+        if(estMessageDejaAffiche){
+            return;
+        }
+
         parametres.idControleFocusFermeture = obtenirIdControleFocusFermeture(parametres);
     
         const conteneurFenetreMessage = ajouterControle(parametres);
