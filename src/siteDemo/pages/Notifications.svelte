@@ -1,9 +1,13 @@
 <script>
     import { onMount } from 'svelte';
     import CodeSource from '../components/CodeSource.svelte'; 
+    import TableauParams from '../components/TableauParams.svelte'; 
+
     let mounted = false;
+    let tableauParametres = [];
 
     onMount(() => {
+        tableauParametres = obtenirTableauParametres();
         notification1();
         notification2();
         notification3();
@@ -12,6 +16,15 @@
         notification6();
         mounted = true;
     });
+
+    function obtenirTableauParametres() {
+        return [
+            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : "positif" (Défaut), "negatif", "neutre".`},
+            {nom: "titre", type: "String (Optionnel)", description: `Titre de la notification.`},
+            {nom: "message", type: "String", description: `Texte de la notification.`},
+            {nom: "delaiFermeture", type: "Number (Optionnel)", description: `Délai de fermeture de la notification (en millisecondes). Défaut 5000.`}
+        ];
+    }
 
     function notification1() {
         document.getElementById('test1').addEventListener('click', () => {
@@ -83,7 +96,21 @@
 </script>
 
 <h1>Notifications</h1>
+<h2>Description</h2>
+<p>Il s'agit du composant "Notification contextuelle" du système de design Quebec.ca.</p>
+<p>La notification contextuelle affiche un message temporaire qui apparaît à la suite d’une interaction humaine.</p>
+
+<h3>Référence système de design Quebec.ca</h3>
+<a href="https://design.quebec.ca/composantes/notification-contextuelle" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+<h3>Particularités vs. le système de design Quebec.ca</h3>
+<p>Lorsqu'un titre est spécifié et que le type est "positif" ou "negatif", nous ajoutons une icône au titre du message.</p>
+<p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de notification il s'agit.</p>
+    
 <h2>Paramètres</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
 <h2>Exemples</h2>
 <h3>Notification de type "positif" avec titre</h3>
 <button type="button" id="test1" class="utd-btn secondaire mb-16">Test 1</button>

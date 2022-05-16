@@ -19,12 +19,12 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String", description: `Type de message. Valeurs possibles : "" (Défaut, aucun type), "avertissement", "succes", "erreur".`},
+            {nom: "type", type: "String (Optionnel)", description: `Type de message. Valeurs possibles : "" (Défaut, aucun type), "avertissement", "succes", "erreur".`},
             {nom: "titre", type: "String", description: `Titre du message.`},
             {nom: "corps", type: "String", description: `Corps du message.`},
             {nom: "texteBoutonPrimaire", type: "String", description: `Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.`},
-            {nom: "texteBoutonSecondaire", type: "String", description: `Texte du bouton secondaire. Si non spécifié, le bouton secondaire n'est pas affiché.`},
-            {nom: "estBoutonsTexteLong", type: "Boolean", description: `Indique si le texte des boutons est long. Si c'est le cas, les boutons sont affichés verticalement en pleine largeur si la largeur d'écran est inférieure ou égale à 525px. (Au lieu de 425px normalement)`},
+            {nom: "texteBoutonSecondaire", type: "String (Optionnel)", description: `Texte du bouton secondaire. Si non spécifié, le bouton secondaire n'est pas affiché.`},
+            {nom: "estBoutonsTexteLong", type: "Boolean (Optionnel)", description: `Indique si le texte des boutons est long. Si c'est le cas, les boutons sont affichés verticalement en pleine largeur si la largeur d'écran est inférieure ou égale à 525px. (Au lieu de 425px normalement)`},
         ];
     }
 
