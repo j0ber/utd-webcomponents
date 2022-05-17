@@ -99,7 +99,8 @@
 
     let codeSource = code
 
-    return js_beautify(codeSource) 
+    codeSource = js_beautify(codeSource) 
+    return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 
   }
 

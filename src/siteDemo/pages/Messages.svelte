@@ -24,7 +24,9 @@
             {nom: "corps", type: "String", description: `Corps du message.`},
             {nom: "texteBoutonPrimaire", type: "String", description: `Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.`},
             {nom: "texteBoutonSecondaire", type: "String (Optionnel)", description: `Texte du bouton secondaire. Si non spécifié, le bouton secondaire n'est pas affiché.`},
+            {nom: "texteBoutonFermer", type: "String (Optionnel)", description: `Texte du bouton de fermeture du message. Défaut "Fermer" ou "Close" en anglais.`},
             {nom: "estBoutonsTexteLong", type: "Boolean (Optionnel)", description: `Indique si le texte des boutons est long. Si c'est le cas, les boutons sont affichés verticalement en pleine largeur si la largeur d'écran est inférieure ou égale à 525px. (Au lieu de 425px normalement)`},
+            {nom: "idControleFocusFermeture", type: "String (Optionnel)", description: `Id du contrôle auquel on redonne le focus à la fermeture de la fenêtre de message. Si non spécifié, focus redonné à l'élément actif avant l'affichage du message.`},                        
         ];
     }
 
@@ -136,12 +138,14 @@
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>Lorsqu'un type est spécifié, nous ajoutons une icône au titre du message et nous retirons le filet de couleur saumon sous le titre du message.</p>
 <p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de message il s'agit.</p>
-    
-<h2>Paramètres</h2>
+
+<h2>Méthodes</h2>
+<h3>utd.message.afficher</h3>
+<h4>Paramètres</h4>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
 
-<h2>Retour</h2>
+<h4>Retour</h4>
 <p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
 <ul class="utd-liste">
     <li><span class="utd-emphase">primaire</span>, si le bouton primaire a été cliqué.</li>

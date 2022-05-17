@@ -307,6 +307,10 @@ body {
     padding: 0;
 }
 
+p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
 
 /* Pas de margin sur un dernier paragraphe */
 p:last-child {
@@ -502,9 +506,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-h1 {
-    margin-bottom: 2rem;
+h1 {    
     margin-top: 0;
+    margin-bottom: 1rem;
     font-size: var(--utd-text-xxxl);
 }
 
@@ -520,29 +524,36 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 
 
 h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.7rem;
+    margin-top: 48px;
+    margin-bottom: 16px;
     font-size: var(--utd-text-xxl);
 }
 
 
 h3 {
     font-family: 'Roboto-Medium';
-    margin-top: 2.7rem;
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 16px;
     font-size: var(--utd-text-xl);
 }
 
 h4 {
     font-size: var(--utd-text-lg);
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est idem que marge d'un paragraphe.*/
+    margin-bottom: 8px;
 }
 
 h5 {
     font-size: 1rem;
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 0;
 }
 
 h6 {
     font-family: 'Roboto-Medium';
     font-size: 1rem;
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 0;
 }
 
 /* TODO ajouter headers informationnels (un jour) */

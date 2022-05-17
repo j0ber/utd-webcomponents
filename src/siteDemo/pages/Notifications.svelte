@@ -19,10 +19,11 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : "positif" (Défaut), "negatif", "neutre".`},
+            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : <span class="utd-emphase">positif</span> (Défaut), <span class="utd-emphase">negatif</span>, <span class="utd-emphase">neutre</span>.`},
             {nom: "titre", type: "String (Optionnel)", description: `Titre de la notification.`},
             {nom: "message", type: "String", description: `Texte de la notification.`},
-            {nom: "delaiFermeture", type: "Number (Optionnel)", description: `Délai de fermeture de la notification (en millisecondes). Défaut 5000.`}
+            {nom: "delaiFermeture", type: "Number (Optionnel)", description: `Délai de fermeture de la notification (en millisecondes). Défaut 5000.`},
+            {nom: "texteBoutonFermer", type: "String (Optionnel)", description: `Texte du bouton de fermeture de la notification. Défaut "Fermer" ou "Close" en anglais.`}            
         ];
     }
 
@@ -107,9 +108,14 @@
 <p>Lorsqu'un titre est spécifié et que le type est "positif" ou "negatif", nous ajoutons une icône au titre du message.</p>
 <p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de notification il s'agit.</p>
     
-<h2>Paramètres</h2>
+<h2>Méthodes</h2>
+<h3>utd.notification.emettre</h3>
+<h4>Paramètres</h4>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
+
+<h4>Retour</h4>
+<p>Aucun.</p>
 
 <h2>Exemples</h2>
 <h3>Notification de type "positif" avec titre</h3>
