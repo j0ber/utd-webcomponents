@@ -313,6 +313,21 @@ p:last-child {
     margin-bottom: 0!important;
 }
 
+
+/* Listes */
+ul.utd-liste  {
+    padding-left: 20px;
+}
+  
+ul.utd-liste li {
+    margin-bottom: 16px;
+}
+  
+ul.utd-liste li:last-of-type {
+margin-bottom: 0;
+}
+  
+
 .utd-d-none {
     display: none!important;
 }

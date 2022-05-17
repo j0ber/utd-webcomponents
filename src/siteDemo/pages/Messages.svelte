@@ -143,12 +143,12 @@
 
 <h2>Retour</h2>
 <p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
-<ul>
-    <li>"primaire", si le bouton primaire a été cliqué.</li>
-    <li>"secondaire", si le bouton secondaire a été cliqué.</li>
-    <li>"clickBackdrop", si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
-    <li>"boutonFermer", si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
-    <li>"escape", si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
+<ul class="utd-liste">
+    <li><span class="utd-emphase">primaire</span>, si le bouton primaire a été cliqué.</li>
+    <li><span class="utd-emphase">secondaire</span>, si le bouton secondaire a été cliqué.</li>
+    <li><span class="utd-emphase">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
+    <li><span class="utd-emphase">boutonFermer</span>, si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
+    <li><span class="utd-emphase">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
 </ul>
 
 <h2>Exemples</h2>
