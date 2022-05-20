@@ -546,14 +546,14 @@ h4 {
 h5 {
     font-size: 1rem;
     margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
-    margin-bottom: 0;
+    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 h6 {
     font-family: 'Roboto-Medium';
     font-size: 1rem;
     margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
-    margin-bottom: 0;
+    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 /* TODO ajouter headers informationnels (un jour) */
