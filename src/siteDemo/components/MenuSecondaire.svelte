@@ -23,7 +23,7 @@
   <button class="toggle" aria-haspopup="true" aria-expanded="{afficher}" aria-controls="{idMenu}" on:click={toggleAfficher}>
     <span>{titre}</span>
     <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
-    <span class="sr-only">
+    <span class="utd-sr-only">
         Appuyez sur la touche Échappe pour sortir du menu.
     </span>
   </button>

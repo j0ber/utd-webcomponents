@@ -268,7 +268,7 @@ export const traitementEnCours = (function () {
         if(!zoneNotificationsLecteurEcran){
             zoneNotificationsLecteurEcran = document.createElement("div");
             zoneNotificationsLecteurEcran.id = idZoneNotification;
-            zoneNotificationsLecteurEcran.classList.add('sr-only');
+            zoneNotificationsLecteurEcran.classList.add('utd-sr-only');
             document.body.appendChild(zoneNotificationsLecteurEcran);
         }
 
@@ -376,7 +376,7 @@ export const notification = (function () {
     function obtenirHtmlNotification(parametres, possedeTitre) {
         let html = `
             <button type="button">
-                <span class="sr-only">${parametres.texteBoutonFermer}</span>
+                <span class="utd-sr-only">${parametres.texteBoutonFermer}</span>
                 <span class="utd-icone-svg x-fermer-blanc" aria-hidden="true"></span>
             </button>`
             
@@ -523,7 +523,7 @@ export function ajusterAccessibiliteLiens(texteAccessibilite) {
 
         //Ajouter le texte pour accessibilité nouvelle fenêtre si on détecte qu'il n'est pas là. TODO rafiner cette vérification éventuellement au besoin, il pourrait arriver qu'un .sr-only soit là pour autre chose dans le lien (très peu probable)
         if (!lien.querySelector(".utd-sr-only")) {
-            lien.innerHTML = lien.innerHTML + `<span class="sr-only">${texteAccessibilite}</span>`
+            lien.innerHTML = lien.innerHTML + `<span class="utd-sr-only">${texteAccessibilite}</span>`
         }
     });
 

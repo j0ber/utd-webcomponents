@@ -336,7 +336,7 @@ margin-bottom: 0;
     display: none!important;
 }
 
-.sr-only {
+.utd-sr-only, .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;

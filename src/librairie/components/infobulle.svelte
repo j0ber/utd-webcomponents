@@ -130,7 +130,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     >
       <span class="utd-container entete">
         <h1 id={idEntete} tabindex="-1">
-          <span class="sr-only">{@html srTexteTitre}</span>
+          <span class="utd-sr-only">{@html srTexteTitre}</span>
           <span>
             {#if titre}
               {titre}
