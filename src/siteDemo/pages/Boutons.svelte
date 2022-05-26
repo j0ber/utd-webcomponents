@@ -7,7 +7,17 @@
 
 <h1>Boutons</h1>
 
-<h2>Bouton primaire</h2>
+<h2>Description</h2>
+<p>Les <strong>boutons</strong> indiquent les actions qui peuvent être exécutées sur une page. Le libellé d’un bouton annonce l'action qui se produit lorsque l'utilisateur interagit avec celui-ci.&nbsp;</p>
+<p>Quatre types de boutons sont disponibles&nbsp;: les boutons principaux, les boutons secondaires, les boutons tertiaires et les boutons d’avertissement.&nbsp;</p>
+<p>Variante « boutons avec icône » à venir.</p>
+
+<h3>Référence système de design Quebec.ca</h3>
+<a href="https://design.quebec.ca/composantes/action/boutons" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+<h2>Exemples</h2>
+
+<h3>Bouton primaire</h3>
 <div class="exemples-boutons" id="exempleBoutons1">
     <button type="button" class="utd-btn primaire">Base</button>
     <button type="button" class="utd-btn primaire compact">Compact</button>
@@ -24,7 +34,7 @@
 
 
 
-<h2>Bouton secondaire</h2>
+<h3>Bouton secondaire</h3>
 <div class="exemples-boutons" id="exempleBoutons2">
     <button type="button" class="utd-btn secondaire">Base</button>
     <button type="button" class="utd-btn secondaire compact">Compact</button>
@@ -40,7 +50,7 @@
 </utd-accordeon>
 
 
-<h2>Bouton tertiaire</h2>
+<h3>Bouton tertiaire</h3>
 <div class="exemples-boutons" id="exempleBoutons3">
     <button type="button" class="utd-btn tertiaire">Base</button>
     <button type="button" class="utd-btn tertiaire compact">Compact</button>
@@ -54,7 +64,7 @@
 </utd-accordeon>
 
 
-<h2>Bouton avertissement</h2>
+<h3>Bouton avertissement</h3>
 <div class="exemples-boutons" id="exempleBoutons4">
     <button type="button" class="utd-btn avertissement">Base</button>
     <button type="button" class="utd-btn avertissement compact">Compact</button>
