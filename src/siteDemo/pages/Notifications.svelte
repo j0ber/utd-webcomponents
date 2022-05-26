@@ -118,21 +118,21 @@
 <p>Aucun.</p>
 
 <h2>Exemples</h2>
-<h3>Notification de type "positif" avec titre</h3>
+<h3>1- Notification de type "positif" avec titre</h3>
 <button type="button" id="test1" class="utd-btn secondaire mb-16">Test 1</button>
 {#if mounted}
     <CodeSource codeSource="{notification1.toString()}" language="language-javascript">
     </CodeSource>   
 {/if}   
 
-<h3>Notification de type "positif" sans titre et délai de fermeture plus long spécifié (10 secondes)</h3>
+<h3>2- Notification de type "positif" sans titre et délai de fermeture plus long spécifié (10 secondes)</h3>
 <button type="button" id="test2" class="utd-btn secondaire mb-16">Test 2</button>
 {#if mounted}
     <CodeSource codeSource="{notification2.toString()}" language="language-javascript">
     </CodeSource>   
 {/if}   
 
-<h3>Notification de type "negatif" avec titre</h3>
+<h3>3- Notification de type "negatif" avec titre</h3>
 <button type="button" id="test3" class="utd-btn secondaire mb-16">Test 3</button>
 {#if mounted}
     <CodeSource codeSource="{notification3.toString()}" language="language-javascript">
@@ -140,7 +140,7 @@
 {/if}   
 
 
-<h3>Notification de type "negatif" sans titre</h3>
+<h3>4- Notification de type "negatif" sans titre</h3>
 <button type="button" id="test4" class="utd-btn secondaire mb-16">Test 4</button>
 {#if mounted}
     <CodeSource codeSource="{notification4.toString()}" language="language-javascript">
@@ -148,7 +148,7 @@
 {/if}   
 
 
-<h3>Notification de type "neutre" avec titre</h3>
+<h3>5- Notification de type "neutre" avec titre</h3>
 <button type="button" id="test5" class="utd-btn secondaire mb-16">Test 5</button>
 {#if mounted}
     <CodeSource codeSource="{notification5.toString()}" language="language-javascript">
@@ -156,7 +156,7 @@
 {/if}   
 
 
-<h3>Notification de type "neutre" sans titre</h3>
+<h3>6- Notification de type "neutre" sans titre</h3>
 <button type="button" id="test6" class="utd-btn secondaire mb-16">Test 6</button>
 {#if mounted}
     <CodeSource codeSource="{notification6.toString()}" language="language-javascript">
