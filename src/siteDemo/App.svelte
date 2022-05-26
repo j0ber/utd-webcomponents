@@ -4,12 +4,12 @@
     import Principe from './pages/Principe.svelte'; 
     import Utilisation from './pages/Utilisation.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
-    import AideContextuelle from './pages/AideContextuelle.svelte'; 
+    import Infobulle from './pages/Infobulle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
     import HautPage from './pages/HautPage.svelte'; 
-    import Messages from './pages/Messages.svelte'; 
-    import Modal from './pages/Modal.svelte'; 
+    import Message from './pages/Message.svelte'; 
+    import Dialogue from './pages/Dialogue.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
@@ -99,10 +99,10 @@
                                 <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
                                 <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
                                 <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
-                                <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
+                                <li><a href="/composants/dialogue" tinro-ignore use:active exact>Dialogue modal</a></li>
                                 <li><a href="/composants/hautpage" tinro-ignore use:active exact>Haut de page</a></li>
-                                <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
-                                <li><a href="/composants/messages" tinro-ignore use:active exact>Messages</a></li>
+                                <li><a href="/composants/infobulle" tinro-ignore use:active exact>Infobulle</a></li>
+                                <li><a href="/composants/message" tinro-ignore use:active exact>Message</a></li>
                                 <li><a href="/composants/notifications" tinro-ignore use:active exact>Notifications</a></li>
                                 <li><a href="/composants/traitementencours" tinro-ignore use:active exact>Traitement en cours</a></li>
                             {:else}                                    
@@ -124,10 +124,10 @@
                     <Route path="/composants/accordeon" ><Accordeon /></Route>
                     <Route path="/composants/avis" ><Avis /></Route>
                     <Route path="/composants/boutons" ><Boutons /></Route>
-                    <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
                     <Route path="/composants/hautpage" ><HautPage /></Route>
-                    <Route path="/composants/modal" ><Modal /></Route>
-                    <Route path="/composants/messages" ><Messages /></Route>
+                    <Route path="/composants/infobulle" ><Infobulle /></Route>
+                    <Route path="/composants/dialogue" ><Dialogue /></Route>
+                    <Route path="/composants/message" ><Message /></Route>
                     <Route path="/composants/notifications" ><Notifications /></Route>
                     <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
                 </main>        
@@ -136,7 +136,7 @@
         
     </div>
 </div>
-<utd-hautpage></utd-hautpage>
+<utd-hautpage id="hautPage"></utd-hautpage>
 <footer class="piv-bas-page">
     <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
     <div class="utd-container conteneur-signature-mo">

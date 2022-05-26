@@ -160,6 +160,94 @@ export const message = (function () {
 
 
 /*======================================================================================================================*/
+/* -11- DIALOGUE
+/*======================================================================================================================*/
+export const dialogue = (function () {
+
+    const elementsPublics = {};
+
+    /**
+    * Affiche une fenêtre de dialogue modal.
+    * @param {Object} parametres Paramètres.
+    * @param {Object} parametres.idDialogue Id du contrôle utd-dialog à afficher.
+    * @param {Object} parametres.idControleFocusFermeture Id du contrôle auquel on redonne le focus à la fermeture du dialogue. Si non spécifié, focus redonné à l'élément actif avant l'affichage du message.
+    */
+
+    elementsPublics.afficher = function(idDialogue, idControleFocusFermeture) {
+         
+        if(!idDialogue){
+            console.error('utd.dialogue.afficher -> Aucun id de dialogue spécifié.');
+            return;
+        }
+
+        idControleFocusFermeture = idControleFocusFermeture || obtenirIdControleFocusFermeture();
+
+        const dialogue = document.getElementById(idDialogue);
+
+        if(dialogue){
+            dialogue.setAttribute('afficher', 'true');    
+
+            if(idControleFocusFermeture){
+                dialogue.setAttribute('idfocus', idControleFocusFermeture);    
+            }   
+        } else {
+            console.error(`utd.dialogue.afficher -> Contrôle utd-dialog "${dialogue}" non trouvé.`);
+        }
+    }
+
+    elementsPublics.masquer = function(idDialogue) {
+         
+        if(!idDialogue){
+            console.error('utd.dialogue.masquer -> Aucun id de dialogue spécifié.');
+            return;
+        }
+
+        const dialogue = document.getElementById(idDialogue);
+
+        if(dialogue){
+            dialogue.setAttribute('afficher', 'false');    
+
+            const idFocus = dialogue.getAttribute('idfocus');
+
+            if(idFocus){
+                const controleFocus = document.getElementById(idFocus);
+                if(controleFocus){
+                    controleFocus.focus();
+                } else {
+                    console.log(`utd.dialogue.masquer -> Contrôle "${idFocus}" à qui redonner le focus non trouvé.`);        
+                }
+            }   
+        } else {
+            console.error(`utd.dialogue.masquer -> Contrôle utd-dialog "${dialogue}" non trouvé.`);
+        }
+    }
+
+    /**
+     * (Privée)
+     * Obtient l'id du contrôle auquel il faut redonner le focus lors de la fermeture.
+     * @returns Id du contrôle auquel il faut redonner le focus à la fermeture du message.
+     */
+    function obtenirIdControleFocusFermeture() {
+
+        if (document.activeElement) {
+            let id = document.activeElement.id;
+
+            if (!id) {
+                id = genererId();
+                document.activeElement.id = id;
+            }
+
+            return id;
+        }
+
+        return null;
+    }
+
+    return elementsPublics;
+})();
+
+
+/*======================================================================================================================*/
 /* -20- TRAITEMENT EN COURS
 /*======================================================================================================================*/
 export const traitementEnCours = (function () {

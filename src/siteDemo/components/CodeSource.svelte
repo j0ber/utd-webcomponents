@@ -6,6 +6,7 @@
   import {js_beautify} from "js-beautify"
   import { Utils } from '../../librairie/components/utils.js'
   
+  export let titre = "Code source"
   export let idElementCodeSource = ""
   export let codeSource = ""
   export let language = "language-html"
@@ -103,31 +104,32 @@
     return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 
   }
-
-
 </script>
 
-<div class="code-source">
-  <pre>
-    <code class="{language}" id={idConteneurCode}>
-      {@html codeSource}
-    </code>
-  </pre>
-  {#if estCopieSupportee}
-    <div class="zone-copie">
-      <button type="button" class="utd-btn secondaire compact avec-icone-droite copier" id="{idBoutonCopier}" data-clipboard-target="#{idConteneurCode}">
-        <span class="texte">Copier le code</span>
-        <span class="utd-icone-svg clipboard md copier" aria-hidden="true"></span>
-      </button>
-      {#if estSuccesCopie}
-        <span class="message-copie" transition:fly>Copié!</span>
+<utd-accordeon titre="{titre}">
+  <span slot="contenu">
+
+    <div class="code-source">
+      <pre>
+        <code class="{language}" id={idConteneurCode}>
+          {@html codeSource}
+        </code>
+      </pre>
+      {#if estCopieSupportee}
+        <div class="zone-copie">
+          <button type="button" class="utd-btn secondaire compact avec-icone-droite copier" id="{idBoutonCopier}" data-clipboard-target="#{idConteneurCode}">
+            <span class="texte">Copier le code</span>
+            <span class="utd-icone-svg clipboard md copier" aria-hidden="true"></span>
+          </button>
+          {#if estSuccesCopie}
+            <span class="message-copie" transition:fly>Copié!</span>
+          {/if}
+        </div>
       {/if}
+
     </div>
-  {/if}
-
-</div>
-
-
+  </span>
+</utd-accordeon>
 <style>
 </style>
 

@@ -14,20 +14,16 @@
 <a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
 <h2>Exemples</h2>
-<h3>Exemple avec attributs "titre" et "contenu"</h3>
+<h3>1- Avec attributs "titre" et "contenu"</h3>
 <div class="mb-32">
     <utd-accordeon titre="Exemple d'utilisation 1" id="exempleAccordeon1" contenu="<p>Ici un texte incroyable.</p><p>Qui peut même contenir du html.</p>">
     </utd-accordeon>
 </div>
-<utd-accordeon titre="Code source">
-    <span slot="contenu">
-        <CodeSource idElementCodeSource="exempleAccordeon1">
-        </CodeSource>   
-    </span>
-</utd-accordeon>
+<CodeSource idElementCodeSource="exempleAccordeon1">
+</CodeSource>   
 
 
-<h3>Exemple avec attribut "titre" et slot "contenu"</h3>
+<h3>2- Avec attribut "titre" et slot "contenu"</h3>
 <div class="mb-32">
     <utd-accordeon titre="Exemple d'utilisation 2" id="exempleAccordeon2">
         <span slot="contenu">
@@ -36,15 +32,11 @@
         </span>
     </utd-accordeon>
 </div>
-<utd-accordeon titre="Code source">
-    <span slot="contenu">
-        <CodeSource idElementCodeSource="exempleAccordeon2">
-        </CodeSource>   
-    </span>
-</utd-accordeon>
+<CodeSource idElementCodeSource="exempleAccordeon2">
+</CodeSource>   
 
 
-<h3>Exemple avec slots "titre" et "contenu"</h3>
+<h3>3- Avec slots "titre" et "contenu"</h3>
 <div class="mb-32">
     <utd-accordeon id="exempleAccordeon3" class="mb-32">
         <span slot="titre">
@@ -56,11 +48,7 @@
         </span>
     </utd-accordeon>
 </div>
-<utd-accordeon titre="Code source">
-    <span slot="contenu">
-        <CodeSource idElementCodeSource="exempleAccordeon3">
-        </CodeSource>   
-    </span>
-</utd-accordeon>
+<CodeSource idElementCodeSource="exempleAccordeon3">
+</CodeSource>   
 
 

@@ -98,7 +98,7 @@
 
 <h1>Notifications</h1>
 <h2>Description</h2>
-<p>Il s'agit du composant "Notification contextuelle" du système de design Quebec.ca.</p>
+<p>Il s'agit du composant <strong>notification contextuelle</strong> du système de design Quebec.ca.</p>
 <p>La notification contextuelle affiche un message temporaire qui apparaît à la suite d’une interaction humaine.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
@@ -121,70 +121,46 @@
 <h3>Notification de type "positif" avec titre</h3>
 <button type="button" id="test1" class="utd-btn secondaire mb-16">Test 1</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification1.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification1.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 <h3>Notification de type "positif" sans titre et délai de fermeture plus long spécifié (10 secondes)</h3>
 <button type="button" id="test2" class="utd-btn secondaire mb-16">Test 2</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification2.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification2.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 <h3>Notification de type "negatif" avec titre</h3>
 <button type="button" id="test3" class="utd-btn secondaire mb-16">Test 3</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification3.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification3.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
 <h3>Notification de type "negatif" sans titre</h3>
 <button type="button" id="test4" class="utd-btn secondaire mb-16">Test 4</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification4.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification4.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
 <h3>Notification de type "neutre" avec titre</h3>
 <button type="button" id="test5" class="utd-btn secondaire mb-16">Test 5</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification5.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification5.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
 <h3>Notification de type "neutre" sans titre</h3>
 <button type="button" id="test6" class="utd-btn secondaire mb-16">Test 6</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{notification6.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{notification6.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 <style>

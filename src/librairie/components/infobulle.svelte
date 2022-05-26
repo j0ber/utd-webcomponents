@@ -91,7 +91,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.ajusterInterfaceApresFermetureModale(html, body)
   }
 
-  function conserverFocusAideContextuelle(e) {
+  function conserverFocusInfobulle(e) {
     thisComponent.shadowRoot.getElementById(idEntete).focus()
     Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
@@ -123,7 +123,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       on:keydown={keydown}
       in:fly={{ y: 200, duration: 500 }}
       out:fly={{ y: 200, duration: 250 }}
-      on:introend={conserverFocusAideContextuelle}
+      on:introend={conserverFocusInfobulle}
       on:outroend={finAnimationFermeture}
       aria-modal="true"
       role="dialog"
@@ -161,7 +161,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
               {@html contenu}
             {/if}
           {/if}              
-          <p class="utd-d-none" />
           </span>
       </span>
     </span>

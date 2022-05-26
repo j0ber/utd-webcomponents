@@ -7,9 +7,19 @@
 </script>
 
 <h1>Haut de page</h1>
+<h2>Description</h2>
+<p>Le bouton <strong> haut de page</strong> permet de remonter rapidement au haut de la page.</p>
 
+<h3>Référence système de design Quebec.ca</h3>
+<a href="https://design.quebec.ca/composantes/navigation/haut-de-page" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<p>
+<h2>Exemple</h2>
+<p>Défiler la page vers le bas afin de voir le contrôle <strong>haut de page</strong> en bas à droite de la page.</p>
+<p>À noter que le contrôle en exemple devrait être inséré dans votre page à l'endroit désiré dans le DOM pour la tabulation. Généralement c'est juste avant le pied de page.</p>
+<CodeSource idElementCodeSource="hautPage">
+</CodeSource>
+
+<p class="mt-32">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse laoreet egestas metus, vel lobortis lacus. Cras tincidunt ante mauris, semper vulputate libero tincidunt ut. Quisque quis cursus velit, a venenatis tellus. Proin nec venenatis dui, eu tempus dui. Etiam sed mauris dui. Aliquam pellentesque turpis iaculis leo dapibus facilisis non et dolor. Vestibulum hendrerit, dolor at volutpat sodales, nulla metus rutrum diam, at facilisis neque odio et dui. Vestibulum a blandit neque. Maecenas sagittis imperdiet leo in mattis. Proin blandit orci non enim euismod, quis pellentesque tortor tempor. Suspendisse dui nisi, consequat vel eros et, porttitor dictum odio. Ut tempor consequat mollis.
 </p>
 <p>

@@ -410,3 +410,16 @@ header {
     margin-right: 32px;
     margin-bottom: 32px;
 }
+
+
+/*====================================================================================================
+  -14- Entête précédées d'un accordéon et accordéons
+====================================================================================================*/
+/* Si entête précédée d'un accordéon on augmente la marge */
+utd-accordeon + h2, utd-accordeon + h3, utd-accordeon + h4, utd-accordeon + h5 {
+    margin-top: 48px;
+}
+
+utd-accordeon + utd-accordeon {
+    margin-top: 32px;
+}

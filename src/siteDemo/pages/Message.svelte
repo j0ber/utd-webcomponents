@@ -127,9 +127,9 @@
     }
 </script>
 
-<h1>Messages</h1>
+<h1>Message</h1>
 <h2>Description</h2>
-<p>Il s'agit du composant "Dialogue d’alerte" du système de design Quebec.ca.</p>
+<p>Il s'agit du composant <strong>dialogue d’alerte</strong> du système de design Quebec.ca.</p>
 <p>Il apparaît lorsqu’une action immédiate est requise. Le dialogue d’alerte contient un message ainsi qu’un ou plusieurs boutons d’action. </p>
 
 <h3>Référence système de design Quebec.ca</h3>
@@ -160,12 +160,8 @@
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-16">Test 1</button>
 <div id="resultat1"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message1.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message1.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -173,12 +169,8 @@
 <button type="button" id="btnTest2" class="utd-btn secondaire mb-16">Test 2</button>
 <div id="resultat2"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message2.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message2.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -186,12 +178,8 @@
 <button type="button" id="btnTest3" class="utd-btn secondaire mb-16">Test 3</button>
 <div id="resultat3"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message3.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message3.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -199,12 +187,8 @@
 <button type="button" id="btnTest4" class="utd-btn secondaire mb-16">Test 4</button>
 <div id="resultat4"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message4.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message4.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -212,12 +196,8 @@
 <button type="button" id="btnTest5" class="utd-btn secondaire mb-16">Test 5</button>
 <div id="resultat5"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message5.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message5.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -225,12 +205,8 @@
 <button type="button" id="btnTest6" class="utd-btn secondaire mb-16">Test 6</button>
 <div id="resultat6"></div>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{message6.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{message6.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 

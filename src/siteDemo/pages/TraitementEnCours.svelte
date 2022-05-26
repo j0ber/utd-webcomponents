@@ -65,12 +65,8 @@
 <p>Simule un traitement de 5 secondes.</p>
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-16">Test 1</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{test1.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{test1.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -79,12 +75,8 @@
 <p>Simule un traitement de 5 secondes.</p>
 <button type="button" id="btnTest2" class="utd-btn primaire mb-16">Test 2</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{test2.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{test2.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 
@@ -92,12 +84,8 @@
 <p>Simule un traitement simultané de 5 secondes sur le bouton 1, 10 secondes sur le bouton 2 et 15 secondes sur le bouton 3.</p>
 <button type="button" id="btnTest3" class="utd-btn primaire compact mb-16">Test 3</button>
 {#if mounted}
-    <utd-accordeon titre="Code source">
-        <span slot="contenu">
-            <CodeSource codeSource="{test3.toString()}" language="language-javascript">
-            </CodeSource>   
-        </span>
-    </utd-accordeon>
+    <CodeSource codeSource="{test3.toString()}" language="language-javascript">
+    </CodeSource>   
 {/if}   
 
 <style>

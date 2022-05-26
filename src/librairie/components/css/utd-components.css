@@ -98,6 +98,9 @@
 /*====================================================================================================
   -40- utd-accordeon
 ====================================================================================================*/
+utd-accordeon {
+  display: block;
+}
 
 .utd-accordeon .entete button {
   font-family: 'OpenSans-SemiBold';
@@ -318,14 +321,6 @@
 
   .utd-infobulle .corps :is(h2, h3, h4, h5, h6):first-child {
     margin-top: 0;
-  }
-
-  .utd-infobulle .corps p:first-of-type {
-    margin-top: 0;
-  }
-
-  .utd-infobulle .corps p:nth-last-of-type(2) {
-    margin-bottom: 0;
   }
 
   /* Scrollbar aide contextuelle */
