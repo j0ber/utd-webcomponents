@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import css2 from 'rollup-plugin-css-porter';
 import babel from 'rollup-plugin-babel';
+import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
@@ -34,15 +35,26 @@ function serve() {
 
 export default [{
     input: 'src/utd-components.js',
-    output: {
-        sourcemap: false,
-        format: 'iife',
-        name: 'app',
-        file: `public/js/utd-webcomponents-v${pkg.version}.js`
-    },
+    output: [
+        // Version pour site démo
+        {
+            sourcemap: false,
+            format: 'iife',
+            name: 'utd',
+            file: `public/js/utd-webcomponents.min.js`
+        },
+        // Version pour diffusion
+        {
+            sourcemap: false,
+            format: 'iife',
+            name: 'utd',
+            file: `dist/utd-webcomponents.min.js`
+        }
+    ],
     plugins: [
         replace({            
-            _versionUtd_ : `v${pkg.version}`,
+            _versionUtd_ : `?v=${pkg.version}`,
+            _vUtd_ : `v${pkg.version}`,
             delimiters: ['', '']
         }),
         svelte({
@@ -55,7 +67,7 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: `public/css/utd-webcomponents-v${pkg.version}.css` }),
+        css2({ dest: `public/css/utd-webcomponents.css` }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
@@ -63,6 +75,13 @@ export default [{
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
 
         // compile to IE11 compatible ES5
+        copy({
+            targets: [
+              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `public/images`, rename: `utd-sprite.svg` },
+              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist`, rename: `utd-sprite.svg` }
+            ]
+          }),
+    
         babel({
             runtimeHelpers: true,
             extensions: [ '.js', '.mjs', '.html', '.svelte' ],
@@ -98,60 +117,21 @@ export default [{
         // If we're building for production (npm run build
         // instead of npm run dev), minify
         production && terser()
-    ],
-    watch: {
-        clearScreen: false
-    }
+    ]
 },
 {
-    input: 'src/librairie/components/js/base.js',
+    input: 'src/index.js',
     output: {
-        sourcemap: false,
-        format: 'iife',
-        name: 'utd',
-        file: `public/js/utd-utilitaires-v${pkg.version}.js`
+      file: 'dist/app.js',
+      format: 'cjs'
     },
     plugins: [
-        // compile to IE11 compatible ES5
-        babel({
-            runtimeHelpers: true,
-            extensions: [ '.js', '.mjs', '.html'],
-            exclude: [ 'node_modules/@babel/**', 'node_modules/core-js/**' ],
-            presets: [
-                [
-                    '@babel/preset-env',
-                    {
-                        targets: {
-                        ie: '11'
-                        },
-                        useBuiltIns: 'usage',
-                        corejs: 3
-                    }
-                ]
-            ],
-            plugins: [
-                '@babel/plugin-syntax-dynamic-import',
-                [
-                '@babel/plugin-transform-runtime',
-                    {
-                        useESModules: true
-                    }
-                ]
+        copy({
+            targets: [
+                { src: `public/css/utd-webcomponents.min.css`, dest: `dist`}
             ]
-        }),
-        resolve({
-            browser: true
-        }),
-        commonjs(),
-
-        // If we're building for production (npm run build
-        // instead of npm run dev), minify
-        production && terser(), 
-
-    ],
-    watch: {
-        clearScreen: false
-    }
+        })
+    ]
 },
 {
     input: 'src/siteDemo.js',
