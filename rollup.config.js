@@ -119,10 +119,11 @@ export default [{
         production && terser()
     ]
 },
+//TODO ici trouver moyen de passer des fichiers bidon pour éviter erreur
 {
-    input: 'src/index.js',
+    input: 'src/utd-dummy.js',
     output: {
-      file: 'dist/app.js',
+      file: 'build/dummy.js',
       format: 'cjs'
     },
     plugins: [
