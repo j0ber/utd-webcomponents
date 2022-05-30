@@ -48,7 +48,7 @@ export default [{
             sourcemap: false,
             format: 'iife',
             name: 'utd',
-            file: `dist/utd-webcomponents.min.js`
+            file: `dist/js/utd-webcomponents.min.js`
         }
     ],
     plugins: [
@@ -78,7 +78,9 @@ export default [{
         copy({
             targets: [
               { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `public/images`, rename: `utd-sprite.svg` },
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist`, rename: `utd-sprite.svg` }
+              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
+              { src: `src/librairie/components/fonts/*`, dest: `dist/fonts`},
+              { src: `src/librairie/components/fonts/*`, dest: `public/fonts`},
             ]
           }),
     
@@ -129,7 +131,7 @@ export default [{
     plugins: [
         copy({
             targets: [
-                { src: `public/css/utd-webcomponents.min.css`, dest: `dist`}
+                { src: `public/css/utd-webcomponents.min.css`, dest: `dist/css`}
             ]
         })
     ]

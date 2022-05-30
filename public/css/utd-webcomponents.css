@@ -211,41 +211,35 @@
 /*====================================================================================================*/
 
 
-/* On utilise volontairement uniquement le format WOFF afin d'éviter le chargement du WOFF2 qui se fait aussi dans Chrome pour une raison inconnue (on se retrouve donc à faire le double de requêtes HTTP)*/
-
-
 /* open-sans-regular - latin */
-
 @font-face {
     font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('Open Sans Regular'), local('OpenSans-Regular'), url('../fonts/open-sans-v18-latin-regular.woff') format('woff');
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url('../fonts/open-sans-v18-latin-regular.woff2') format('woff2');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 
 /* open-sans-600 - latin */
-
 @font-face {
     font-family: 'OpenSans-SemiBold';
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('../fonts/open-sans-v18-latin-600.woff') format('woff');
+    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('../fonts/open-sans-v18-latin-600.woff2') format('woff2');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 
 /* open-sans-700 - latin */
-
 @font-face {
     font-family: 'OpenSans-Bold';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/open-sans-v18-latin-700.woff') format('woff');
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/open-sans-v18-latin-700.woff2') format('woff2');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -257,31 +251,29 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto-v20-latin-regular.woff') format('woff'); 
+    src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'); 
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ 
 }*/
 
 
 /* roboto-500 - latin */
-
 @font-face {
     font-family: 'Roboto-Medium';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/roboto-v20-latin-500.woff') format('woff');
+    src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/roboto-v20-latin-500.woff2') format('woff2');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 
 /* roboto-700 - latin */
-
 @font-face {
     font-family: 'Roboto-Bold';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: local('Roboto Bold'), local('Roboto-Bold'), url('/fonts/roboto-v20-latin-700.woff') format('woff');
+    src: local('Roboto Bold'), local('Roboto-Bold'), url('/fonts/roboto-v20-latin-700.woff2') format('woff2');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
